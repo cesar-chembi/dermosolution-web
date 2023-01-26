@@ -1,0 +1,94 @@
+<!-- Define que el documento esta bajo el estandar de HTML 5 -->
+<!DOCTYPE html>
+
+<!-- Representa la raíz de un documento HTML o XHTML. Todos los demás elementos deben ser descendientes de este elemento. -->
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Formulario de Acceso</title>
+  </head>
+
+  <body>
+    <div style="width: 60%; float: left; background-color: white;">
+      <div id="central">
+        <div id="contenedor">
+          <div id="login">
+            <div class="titulo">
+            {{ 'login.titulo' | translate }}
+            </div>
+            <div class="titulo">
+              {{ 'login.aplicacion' | translate }}
+            </div>
+            <form [formGroup] = "loginform"  (ngSubmit)="submit()" id="loginform">
+
+
+              <div id="correo">
+                <label for="correo" class="label">
+                  {{ 'login.correo' | translate }}
+                </label>
+                <input type="text" formControlName ="correo"  [(ngModel)]="correo"
+                placeholder="Correo Electrónico" name="correo" required>
+                <span *ngIf="this.loginform.get('correo')?.errors?.['required']">
+                  {{ 'login.correorequerido' | translate }}
+                </span>
+                <span *ngIf="this.loginform.get('correo')?.errors?.['email']">
+                  {{ 'login.correoinvalido' | translate }}
+                </span>
+              </div>
+
+              <div id="contrasena">
+                <label for="contrasena" class="label">
+                  {{ 'login.contrasena' | translate }}:
+                </label>
+                <input type="password" formControlName ="contrasena" [(ngModel)]="contrasena" placeholder="Contraseña" name="contrasena" required>
+                <span   *ngIf="this.loginform.get('contrasena')?.errors?.['minLength']">
+                  {{ 'login.contrasenaminimo' | translate }}
+
+                </span>
+                <span  *ngIf="this.loginform.get('contrasena')?.errors?.['required']">
+                  {{ 'login.contrasenarequerida' | translate }}
+                </span>
+
+
+              </div>
+
+
+              <div style="width: 50%; float: left">
+                <button type="submit" title="Ingresar" (click)="login()" name="Ingresar" class="button ingresar">
+                  {{ 'login.botoningresar' | translate }}
+                </button>
+              </div>
+              <div style="width: 50%; float: right">
+                <button type="submit"
+                  title="Cancelar"
+                  name="Cancelar"
+                  class="button cancelar"
+                >
+                {{ 'login.botoncancelar' | translate }}
+                </button>
+              </div>
+
+
+            </form>
+            <div>{{resultado}}</div>
+
+            <div style="width: 100%">
+
+              <a class="titulo" href="#" routerLink="/registro" routerLinkActive="Active">
+                {{ 'login.crearcuenta' | translate }}
+              </a>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div style="width: 40%; float: left; background-color: white;">
+      <img src="../../assets/image/banner-main.png" alt="who-we-are" width="300px" height="500px"/>
+    </div>
+  </body>
+</html>
+<!-- Container /- -->

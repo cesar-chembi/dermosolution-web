@@ -1,0 +1,143 @@
+<!-- Define que el documento esta bajo el estandar de HTML 5 -->
+<!DOCTYPE html>
+
+<!-- Representa la raíz de un documento HTML o XHTML. Todos los demás elementos deben ser descendientes de este elemento. -->
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Formulario de Acceso</title>
+  </head>
+
+  <body>
+    <div>
+      <div>
+        <div>
+          <div id="registro">
+
+            <div class="titulo">Registro Información Académica y Profesional del Médico</div>
+            <form id="loginform">
+
+              <div id="institucion">
+                <label for="institucion" class="label">Institución Educativa:</label>
+                <input type="text" placeholder="Institución Educativa" name="institucion" required>
+              </div>
+
+              <div id="programa">
+                <label for="programa" class="label">Nombre del Programa:</label>
+                <input type="text" placeholder="Nombre del Programa" name="programa" required>
+              </div>
+
+              <div id="semestreaprobado">
+                <label for="semestreaprobado" class="label">Ultimo Semestre Aprobado:</label>
+                <input type="number" placeholder="Ultimo Semestre Aprobado" name="semestreaprobado" required>
+              </div>
+
+
+              <div id="semestrecursado">
+                <label for="semestrecursado" class="label">Fecha Ultimo Semestre Cursado:</label>
+                <input type="date" placeholder="Fecha Ultimo Semestre Cursado" name="semestrecursado" required>
+              </div>
+
+
+
+            <div id="graduado">
+              <label for="graduado" class="label">Graduado:</label>
+              <select id="graduado" placeholder="Graduado" name="graduado" required>
+                <option value="1">SI</option>
+                <option value="0">NO</option>
+              </select>
+            </div>
+
+
+            <div id="fgrado">
+              <label for="fgrado" class="label">Fecha de Grado:</label>
+              <input type="date" placeholder="Fecha de Grado" name="fgrado" required>
+            </div>
+
+
+      <div style="width: 100%; float: center">
+        <label for="fgrado" class="label">Soportes de Autenticidad:</label>
+
+
+
+        <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)"
+        accept="image/*">
+        <ng-template pTemplate="content">
+            <ul *ngIf="uploadedFiles.length">
+                <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
+            </ul>
+        </ng-template>
+</p-fileUpload>
+
+
+
+
+
+
+
+
+        <div style="width: 50%; float: right">
+              <button type="submit" title="Cargar" name="Cargar" class="button ingresar">
+                  Cargar
+                </button>
+              </div>
+              <div style="width: 50%; float: left">
+                <button
+                  type="submit"
+                  title="Cancelar"
+                  name="Cancelar"
+                  class="button cancelar"
+                >
+                  Cancelar
+                </button>
+              </div>
+</div>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div id="tabla">
+    <table class="table table-striped table-bordered" style="border-color: black;">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  </body>
+</html>
+<!-- Container /- -->
+

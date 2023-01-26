@@ -1,0 +1,145 @@
+<!-- Define que el documento esta bajo el estandar de HTML 5 -->
+<!DOCTYPE html>
+
+<!-- Representa la raíz de un documento HTML o XHTML. Todos los demás elementos deben ser descendientes de este elemento. -->
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Formulario de Acceso</title>
+  </head>
+
+  <body>
+    <div>
+      <div>
+        <div>
+          <div id="registro">
+
+            <div class="titulo">Registro del Médico</div>
+            <form id="loginform">
+
+              <div id="nombre">
+                <label for="nombre" class="label">
+                  {{ 'registro.nombres' | translate }}:
+                </label>
+                <input type="text" placeholder="Nombres" name="nombre" required>
+              </div>
+
+              <div id="apellido">
+                <label for="apellido" class="label">
+                  {{ 'registro.apellidos' | translate }}::</label>
+                <input type="text" placeholder="Apellidos" name="apellido" required>
+              </div>
+
+              <div id="fnacimiento">
+                <label for="fnacimiento" class="label">
+                  {{ 'registro.fechanacimiento' | translate }}::</label>
+                <input type="date" placeholder="Fecha de Nacimiento" name="fnacimiento" required>
+              </div>
+
+            <div id="lnacimiento">
+              <label for="lnacimiento" class="label">Lugar de Nacimiento:</label>
+              <select id="lnacimiento" placeholder="Lugar de Nacimiento" name="lnacimiento" required>
+                <option value="australia">Australia</option>
+                <option value="canada">Canada</option>
+                <option value="usa">USA</option>
+              </select>
+            </div>
+
+            <div id="celular">
+              <label for="celular" class="label">Número Celular:</label>
+              <input type="number" placeholder="Celular" name="celular" required>
+            </div>
+
+            <div id="especialidadmedica">
+              <label for="especialidadmedica" class="label">Especialidad Médica:</label>
+              <select id="especialidadmedica" placeholder="Especialidad Médica" name="especialidadmedica" required>
+                <option value="australia">Especialidad 1</option>
+                <option value="canada">Especialidad 2</option>
+                <option value="usa">Especialidad 3</option>
+              </select>
+            </div>
+
+            <div id="especialidadtipolesion">
+              <label for="especialidadtipolesion" class="label">Especialidad Tipo de Lesión:</label>
+              <select id="especialidadtipolesion" placeholder="Especialidad Tipo de Lesión" name="especialidadtipolesion" required>
+                <option value="australia">Especialidad 1</option>
+                <option value="canada">Especialidad 2</option>
+                <option value="usa">Especialidad 3</option>
+              </select>
+            </div>
+
+            <div id="especialidadformalesion">
+              <label for="especialidadformalesion" class="label">Especialidad Forma de Lesión:</label>
+              <select id="especialidadformalesion" placeholder="Especialidad Forma de Lesión" name="especialidadformalesion" required>
+                <option value="australia">Especialidad 1</option>
+                <option value="canada">Especialidad 2</option>
+                <option value="usa">Especialidad 3</option>
+              </select>
+            </div>
+
+
+            <div id="especialidadnumerolesion">
+              <label for="especialidadnumerolesion" class="label">Especialidad Número de Lesión:</label>
+              <select id="especialidadnumerolesion" placeholder="Especialidad Número de Lesión" name="especialidadnumerolesion" required>
+                <option value="australia">Especialidad 1</option>
+                <option value="canada">Especialidad 2</option>
+                <option value="usa">Especialidad 3</option>
+              </select>
+            </div>
+
+            <div id="especialidaddistribucionlesion">
+              <label for="especialidaddistribucionlesion" class="label">Especialidad Distribución de Lesión:</label>
+              <select id="especialidaddistribucionlesion" placeholder="Especialidad Distribución de Lesión" name="especialidaddistribucionlesion" required>
+                <option value="australia">Especialidad 1</option>
+                <option value="canada">Especialidad 2</option>
+                <option value="usa">Especialidad 3</option>
+              </select>
+            </div>
+
+
+            <div id="correo">
+              <label for="correo" class="label">Correo Electrónico:</label>
+              <input type="text" placeholder="Correo Electrónico" name="correo" required>
+            </div>
+
+            <div id="contrasena">
+              <label for="contrasena" class="label">Contraseña:</label>
+              <input type="password" placeholder="Contraseña" name="contrasena" required>
+            </div>
+
+            <div id="confirmarcontrasena">
+              <label for="confirmarcontrasena" class="label">Confirmar Contraseña:</label>
+              <input type="password" placeholder="Confirmar Contraseña" name="confirmarcontrasena" required>
+            </div>
+
+
+      <div style="width: 100%; float: center">
+            <div style="width: 50%; float: left">
+                <button type="submit" title="Ingresar" name="Ingresar" class="button ingresar">
+                  Ingresar
+                </button>
+              </div>
+              <div style="width: 50%; float: left">
+                <button
+                  type="submit"
+                  title="Cancelar"
+                  name="Cancelar"
+                  class="button cancelar"
+                >
+                  Cancelar
+                </button>
+              </div>
+</div>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>
+<!-- Container /- -->
+

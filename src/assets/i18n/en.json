@@ -1,0 +1,72 @@
+{
+    "menu": {
+      "inicio": "Home",
+      "registro": "Registry",
+      "academica": "Academic Information Registry",
+      "casosdermatologicos": "Consult Dermatological Cases",
+      "casosreclamados": "Consult Claimed Cases",
+      "cerrarsesion": "Logout",
+      "lenguaje": "Select language"
+    },
+
+    "login": {
+    "titulo": "Ingreso",
+    "aplicacion": "DermoSolutions",
+    "correo": "Email:",
+		"correorequerido": "El correo no puede quedar vacío",
+		"correoinvalido": "El correo no es valido",
+		"contrasena": "Password",
+		"contrasenaminimo": "La contrasena debe tener minimo 10 caracteres",
+		"contrasenarequerida": "La contrasena no puede quedar vacía",
+		"botoningresar": "Ingresar",
+		"botoncancelar": "Cancel",
+		"crearcuenta": "Create Account"
+	},
+
+  "registro": {
+    "nombres": "Names",
+    "apellidos": "Last Names",
+    "fechanacimiento": "Date of Birth",
+		"lugarnacimiento": "Lugar de Nacimiento",
+    "celular": "Cell Phone",
+    "aceptar": "Accept",
+		"salir": "Exit"
+	},
+
+
+	"detallecaso": {
+    "tituloinformacionpaciente": "Personal information",
+		"tituloinformacionpaciente2": "Patient",
+    "nombres": "Names and surnames",
+    "edad": "Age",
+		"nacionalidad": "Nationality",
+		"sexo": "Sex",
+		"lugarresidencia": "Place of Residence",
+		"tituloperfildermatologico": "Dermatological Profile",
+		"formalesion": "Forma de la Lesión",
+		"tipolesion": "Tipo de Lesión",
+		"numerolesion": "Número de Lesiones",
+		"colorlesion": "Color de la Lesión",
+		"localizacionydistribucionlesion": "Localización y Distribución de la Lesión",
+		"descripcionlesion": "Descripción de la Lesión",
+		"fotografialesion": "Fotografía de la Lesión",
+		"reclamarcaso": "Fotografía de la Lesión",
+		"salir": "Exit"
+	},
+
+  "listacaso": {
+    "tituloinformacionpaciente": "Personal information",
+		"tituloinformacionpaciente2": "Patient",
+    "nombres": "Names and surnames",
+    "edad": "Age",
+		"nacionalidad": "Nationality",
+		"sexo": "Sex",
+		"salir": "Exit",
+    "fecha": "Registration Date dd/MM/YYYY",
+    "descripcion": "Description",
+    "verdetalle": "See Detail",
+    "diagnosticado": "Diagnosed",
+    "pordiagnosticar": "To diagnose"
+
+	}
+}

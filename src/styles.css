@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+/*-- tabla --*/
+#tabla {
+  margin-left: 150px;
+  width: 80%;
+  align-content: center;
+  padding: 50px 20px;
+  border-color: black;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+background-color: #65B3FF;
+border-color: black;
+}
+.table-striped>tbody>tr:nth-child(even)>td,
+.table-striped>tbody>tr:nth-child(even)>th {
+background-color: white;
+border-color: black;
+
+}
+.table-striped>thead>tr>th {
+  background-color: #036DCB;
+  color: white;
+  border-color: black;
+}
+
+
