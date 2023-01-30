@@ -16,7 +16,7 @@ import {TableModule} from 'primeng/table';
 
 @NgModule({
   imports: [
-    CommonModule,  TranslateModule, TableModule, PanelModule,CasoreclamadoDetalleComponent, CarouselModule, ButtonModule, ToastModule
+    CommonModule,  TranslateModule, TableModule, PanelModule, CarouselModule, ButtonModule, ToastModule
   ],
   declarations: [CasodermatologicoComponent,CasodermatologicoDetalleComponent, CasoreclamadoDetalleComponent],
   exports:[CasodermatologicoDetalleComponent,CasoreclamadoDetalleComponent]
