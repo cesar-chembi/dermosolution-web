@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Product} from '../casodermatologico-detalle/producto';
 
+
 @Component({
   selector: 'app-casoreclamado-detalle',
   templateUrl: './casoreclamado-detalle.component.html',

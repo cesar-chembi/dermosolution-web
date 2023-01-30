@@ -112,10 +112,8 @@ body .ui-table .ui-table-tbody > tr > td { border: 1px solid black; }
 
 
     #registro {
-
         width: 100%;
         align-content: center;
-
         background-color: #0F89D1;
         -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
         -moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
