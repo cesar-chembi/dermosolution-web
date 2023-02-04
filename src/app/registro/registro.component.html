@@ -15,121 +15,127 @@
           <div id="registro">
 
             <div class="titulo">Registro del Médico</div>
-            <form id="loginform">
+            <form [formGroup]="medicoForm" (ngSubmit)="!medicoForm.invalid && crearMedico(medicoForm.value)">
 
+              <div id="tipoIdentificacion">
+                <label for="tipoIdentificacion" class="label">
+                  {{ 'registro.tipoIdentificacion' | translate }}:
+                </label>
+               <select placeholder="Tipo identificación" name="tipoIdentificacion" class="form-control"
+                       formControlName="tipo_identificacion" [class.is-invalid]="tipoIdentificacionNovalid"  required>
+                  <option value="CC">Cédula de ciudadanía</option>
+                  <option value="PA">Pasaporte</option>
+                </select>
+                <small *ngIf="tipoIdentificacionNovalid" class="text-bg-danger">Dato requerido</small>
+
+              </div>
+              <div id="numeroIdentificacion">
+                <label for="numeroIdentificacion" class="label">
+                  {{ 'registro.numeroIdentificacion' | translate }}:
+                </label>
+                <input type="text" placeholder="Número identificación" name="numeroIdentificacion"
+                       class="form-control" formControlName="numero_identificacion" [class.is-invalid]="numeroIdentificacionNovalid"
+                       required>
+                <small *ngIf="numeroIdentificacionNovalid" class="text-bg-danger">Dato requerido</small>
+              </div>
               <div id="nombre">
                 <label for="nombre" class="label">
                   {{ 'registro.nombres' | translate }}:
                 </label>
-                <input type="text" placeholder="Nombres" name="nombre" required>
+                <input type="text" placeholder="Nombres" name="nombre" class="form-control"
+                       [class.is-invalid]="nombresNovalid" formControlName="nombres" required>
+                <small *ngIf="nombresNovalid" class="text-bg-danger">El nombre debe tener mínimo 3 caracteres</small>
               </div>
 
               <div id="apellido">
                 <label for="apellido" class="label">
                   {{ 'registro.apellidos' | translate }}::</label>
-                <input type="text" placeholder="Apellidos" name="apellido" required>
+                <input type="text" placeholder="Apellidos" name="apellido" class="form-control"
+                       [class.is-invalid]="apellidosNovalid" formControlName="apellidos" required>
+                <small *ngIf="apellidosNovalid" class="text-bg-danger">Dato requerido</small>
               </div>
 
               <div id="fnacimiento">
                 <label for="fnacimiento" class="label">
                   {{ 'registro.fechanacimiento' | translate }}::</label>
-                <input type="date" placeholder="Fecha de Nacimiento" name="fnacimiento" required>
+                <input type="date" placeholder="Fecha de Nacimiento" name="fnacimiento"
+                       [class.is-invalid]="fechaNacimientoNovalid" class="form-control" formControlName="fecha_nacimiento" required>
+                <small *ngIf="fechaNacimientoNovalid" class="text-bg-danger">Dato requerido</small>
               </div>
 
-            <div id="lnacimiento">
-              <label for="lnacimiento" class="label">Lugar de Nacimiento:</label>
-              <select id="lnacimiento" placeholder="Lugar de Nacimiento" name="lnacimiento" required>
-                <option value="australia">Australia</option>
-                <option value="canada">Canada</option>
-                <option value="usa">USA</option>
-              </select>
-            </div>
-
-            <div id="celular">
-              <label for="celular" class="label">Número Celular:</label>
-              <input type="number" placeholder="Celular" name="celular" required>
-            </div>
-
-            <div id="especialidadmedica">
-              <label for="especialidadmedica" class="label">Especialidad Médica:</label>
-              <select id="especialidadmedica" placeholder="Especialidad Médica" name="especialidadmedica" required>
-                <option value="australia">Especialidad 1</option>
-                <option value="canada">Especialidad 2</option>
-                <option value="usa">Especialidad 3</option>
-              </select>
-            </div>
-
-            <div id="especialidadtipolesion">
-              <label for="especialidadtipolesion" class="label">Especialidad Tipo de Lesión:</label>
-              <select id="especialidadtipolesion" placeholder="Especialidad Tipo de Lesión" name="especialidadtipolesion" required>
-                <option value="australia">Especialidad 1</option>
-                <option value="canada">Especialidad 2</option>
-                <option value="usa">Especialidad 3</option>
-              </select>
-            </div>
-
-            <div id="especialidadformalesion">
-              <label for="especialidadformalesion" class="label">Especialidad Forma de Lesión:</label>
-              <select id="especialidadformalesion" placeholder="Especialidad Forma de Lesión" name="especialidadformalesion" required>
-                <option value="australia">Especialidad 1</option>
-                <option value="canada">Especialidad 2</option>
-                <option value="usa">Especialidad 3</option>
-              </select>
-            </div>
-
-
-            <div id="especialidadnumerolesion">
-              <label for="especialidadnumerolesion" class="label">Especialidad Número de Lesión:</label>
-              <select id="especialidadnumerolesion" placeholder="Especialidad Número de Lesión" name="especialidadnumerolesion" required>
-                <option value="australia">Especialidad 1</option>
-                <option value="canada">Especialidad 2</option>
-                <option value="usa">Especialidad 3</option>
-              </select>
-            </div>
-
-            <div id="especialidaddistribucionlesion">
-              <label for="especialidaddistribucionlesion" class="label">Especialidad Distribución de Lesión:</label>
-              <select id="especialidaddistribucionlesion" placeholder="Especialidad Distribución de Lesión" name="especialidaddistribucionlesion" required>
-                <option value="australia">Especialidad 1</option>
-                <option value="canada">Especialidad 2</option>
-                <option value="usa">Especialidad 3</option>
-              </select>
-            </div>
-
-
-            <div id="correo">
-              <label for="correo" class="label">Correo Electrónico:</label>
-              <input type="text" placeholder="Correo Electrónico" name="correo" required>
-            </div>
-
-            <div id="contrasena">
-              <label for="contrasena" class="label">Contraseña:</label>
-              <input type="password" placeholder="Contraseña" name="contrasena" required>
-            </div>
-
-            <div id="confirmarcontrasena">
-              <label for="confirmarcontrasena" class="label">Confirmar Contraseña:</label>
-              <input type="password" placeholder="Confirmar Contraseña" name="confirmarcontrasena" required>
-            </div>
-
-
-      <div style="width: 100%; float: center">
-            <div style="width: 50%; float: left">
-                <button type="submit" title="Ingresar" name="Ingresar" class="button ingresar">
-                  Ingresar
-                </button>
+              <div id="sexo">
+                <label for="sexo" class="label">{{ 'registro.sexo' | translate }}::</label>
+                <select placeholder="Sexo" name="sexo" class="form-control" formControlName="sexo"
+                        [class.is-invalid]="sexoNovalid" required>
+                  <option value="MUJER">MUJER</option>
+                  <option value="HOMBRE">HOMBRE</option>
+                </select>
+                <small *ngIf="sexoNovalid" class="text-bg-danger">Dato requerido</small>
               </div>
-              <div style="width: 50%; float: left">
-                <button
-                  type="submit"
-                  title="Cancelar"
-                  name="Cancelar"
-                  class="button cancelar"
-                >
-                  Cancelar
-                </button>
+              <div id="lnacimiento">
+                <label for="lnacimientos" class="label">{{ 'registro.lugarnacimiento' | translate }}::</label>
+                <select id="lnacimientos" placeholder="Lugar de Nacimiento" name="lnacimiento" class="form-control"
+                        [class.is-invalid]="lugarNacimientoNovalid" formControlName="lugar_nacimiento"  required>
+                  <option value="COL">Colombia</option>
+                  <option value="CAN">Canada</option>
+                  <option value="USA">Estados Unidos de América</option>
+                </select>
+                <small *ngIf="lugarNacimientoNovalid" class="text-bg-danger">Dato requerido</small>
               </div>
-</div>
+              <div id="lugarResidencia">
+                <label for="lugarResidencia" class="label">{{ 'registro.lugarresidencia' | translate }}::</label>
+                <input type="text" placeholder="Lugar de residencia" name="lugarResidencia"
+                       [class.is-invalid]="lugarResidenciaNovalid" class="form-control" formControlName="lugar_residencia" required>
+                <small *ngIf="lugarResidenciaNovalid" class="text-bg-danger">Dato requerido</small>
+              </div>
+
+              <div id="numeroCelular">
+                <label for="numeroCelular" class="label">{{ 'registro.celular' | translate }}::</label>
+                <input type="text" placeholder="Numero de Celular" name="clave"
+                       [class.is-invalid]="numeroCelularNovalid"
+                       class="form-control" formControlName="numero_celular" required>
+                <small *ngIf="numeroCelularNovalid" class="text-bg-danger">Dato requerido</small>
+              </div>
+              <div id="numeroRegistroProfesionalDv">
+                <label for="numeroRegistroProfesional" class="label">{{ 'registro.numeroRegistroProfesional' | translate }}::</label>
+                <input id="numeroRegistroProfesional" type="text" placeholder="Número Registro Profesional"
+                       [class.is-invalid]="numeroRegistroProfesionalNovalid" name="registroprof"
+                       class="form-control" formControlName="numero_registro_profesional" required>
+                <small *ngIf="numeroRegistroProfesionalNovalid" class="text-bg-danger">Dato requerido</small>
+              </div>
+              <div id="correo">
+                <label for="correo" class="label">{{ 'registro.correo' | translate }}::</label>
+                <input type="text" placeholder="correo" name="correo" class="form-control"
+                       [class.is-invalid]="correoNovalid" formControlName="correo" required>
+                <small *ngIf="correoNovalid" class="text-bg-danger">Dato requerido</small>
+              </div>
+              <div id="clave">
+                <label for="clave" class="label">{{ 'registro.clave' | translate }}::</label>
+                <input type="password" placeholder="Clave" name="clave" class="form-control"
+                       [class.is-invalid]="claveNovalid" formControlName="clave" required>
+                <small *ngIf="claveNovalid" class="text-bg-danger">El nombre debe tener mínimo 6 caracteres</small>
+              </div>
+
+
+              <div id="confirmarcontrasena">
+                <label for="confirmarcontrasena" class="label">Confirmar Contraseña:</label>
+                <input type="password" placeholder="Confirmar Contraseña"
+                       [class.is-invalid]="numeroIdentificacionNovalid" formControlName="confirmacionclave" name="confirmacionclave" required>
+                <small *ngIf="tipoIdentificacionNovalid" class="text-bg-danger">Las contraseñas no coinciden</small>
+              </div>
+
+              <div style="width: 100%; float: center">
+                <div style="width: 50%; float: left">
+                  <button type="submit" title="Ingresar" name="Ingresar" class="button ingresar" >
+                    Ingresar
+                  </button>
+                </div>
+                <div style="width: 50%; float: left">
+                  <button type="submit" title="Cancelar" name="Cancelar" class="button cancelar" (click)="cancelar()">
+                    Cancelar
+                  </button>
+                </div>
+              </div>
 
             </form>
           </div>
@@ -137,7 +143,12 @@
         </div>
       </div>
     </div>
-
+    <h3 class="mt-5">Formulario    </h3>
+    <pre>Estado formulario {{medicoForm.valid}}
+  <br />
+  Estatus {{medicoForm.status}}
+      </pre>
+  <pre>{{medicoForm.value | json}}</pre>
   </body>
 </html>
 
