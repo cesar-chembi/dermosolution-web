@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-casodermatologico',
-  templateUrl: './casodermatologico.component.html',
-  styleUrls: ['./casodermatologico.component.css']
+  templateUrl: './casodermatologico.component.html'
+
 })
 export class CasodermatologicoComponent implements OnInit {
 

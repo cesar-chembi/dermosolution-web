@@ -1,7 +1,4 @@
-<!-- Define que el documento esta bajo el estandar de HTML 5 -->
 <!DOCTYPE html>
-
-<!-- Representa la raíz de un documento HTML o XHTML. Todos los demás elementos deben ser descendientes de este elemento. -->
 <html lang="es">
   <head>
     <meta charset="utf-8" />
@@ -30,31 +27,34 @@
         <div class="panel-body" style="width: 45%; float: center; background-color:#0F89D1;">
           <div id="nombres">
             <label for="nombres" class="label">
-              {{ 'detallecaso.nombres' | translate }}
+              {{ 'detallecaso.nombres' | translate }} : {{caso.paciente.nombre}}
             </label>
+
+
+
           </div>
 
           <div id="edad">
             <label for="edad" class="label">
-              {{ 'detallecaso.edad' | translate }}:
+              {{ 'detallecaso.edad' | translate }}: {{caso.paciente.edad}}
             </label>
           </div>
 
           <div id="sexo">
             <label for="sexo" class="label">
-              {{ 'detallecaso.sexo' | translate }}:
+              {{ 'detallecaso.sexo' | translate }} : : {{caso.paciente.sexo}}
             </label>
           </div>
 
           <div id="nacionalidad">
             <label for="nacionalidad" class="label">
-              {{ 'detallecaso.nacionalidad' | translate }}:
+              {{ 'detallecaso.nacionalidad' | translate }}: : {{caso.paciente.nacionalidad}}
             </label>
           </div>
 
           <div id="residencia">
             <label for="residencia" class="label">
-              {{ 'detallecaso.lugarresidencia' | translate }}:
+              {{ 'detallecaso.lugarresidencia' | translate }} : {{caso.paciente.lugarresidencia}}
             </label>
           </div>
 
@@ -80,29 +80,30 @@
 <div class="panel-body" style="width: 45%; float: center; background-color:#0F89D1;">
   <div id="forma">
     <label for="forma" class="label">
-      {{ 'detallecaso.formalesion' | translate }}
+      {{ 'detallecaso.formalesion' | translate }} : {{caso.perfildermatologico.formalesion}}
     </label>
   </div>
 
   <div id="tipo">
     <label for="tipo" class="label">
-      {{ 'detallecaso.tipolesion' | translate }}
+      {{ 'detallecaso.tipolesion' | translate }} : {{caso.perfildermatologico.tipolesion}}
     </label>
   </div>
   <div id="numero">
     <label for="numero" class="label">
-      {{ 'detallecaso.numerolesion' | translate }}
+      {{ 'detallecaso.numerolesion' | translate }} : {{caso.perfildermatologico.numerolesion}}
     </label>
   </div>
   <div id="color">
     <label for="color" class="label">
-      {{ 'detallecaso.colorlesion' | translate }}
+      {{ 'detallecaso.colorlesion' | translate }} : {{caso.perfildermatologico.colorlesion}}
     </label>
   </div>
 
   <div id="localizacion">
     <label for="localizacion" class="label">
-      {{ 'detallecaso.localizacionydistribucionlesion' | translate }}
+      {{ 'detallecaso.localizacionydistribucionlesion' | translate }} :
+      {{caso.perfildermatologico.localizacionlesion}}
     </label>
   </div>
 
@@ -128,13 +129,7 @@
       <div class="panel-body" style="background-color:#0F89D1;">
         <div id="descripcioncaso">
           <label for="descripcioncaso" class="label">
-            Roma, la capital de Italia, es una extensa ciudad cosmopolita que tiene a la
-            vista casi 3,000 años de arte, arquitectura y cultura de influencia mundial.
-            Las ruinas antiguas como las del Foro y el Coliseo evocan el poder del antiguo
-            Imperio Romano. La ciudad del Vaticano, sede central de la Iglesia católica romana,
-            cuenta con la Basílica de San Pedro y los Museos del Vaticano, que albergan obras
-            maestras como los frescos de la Capilla Sixtina de Miguel Ángel.
-
+            {{caso.descripcion}}
           </label>
         </div>
 
@@ -142,15 +137,7 @@
       </div>
     </div>
 
-
-
-
-
-
-
     <br/>
-
-
 
     <div  class="panel panel-default" style="margin-left: 100px; width: 80%;background-color:#0F89D1;">
       <div class="panel-heading">
@@ -180,34 +167,45 @@
           </ng-template>
         </p-carousel>
 
-
       </div>
     </div>
 
+    <br>
+
+  <form [formGroup] = "diagnosticoform"  (ngSubmit)="submit()" id="diagnosticoform">
+
+    <div  class="panel panel-default" style="margin-left: 100px; width: 80%;background-color:#0F89D1;">
+      <div class="panel-heading">
+
+      <div class="titulo">
+      {{ 'detallecaso.diagnostico' | translate }}
+
+      </div>
+
+    <div class="panel-body" style="background-color:#0F89D1;">
+    <textarea type="text" formControlName ="diagnostico" [(ngModel)]="diagnostico"
+    placeholder="Diagnostico del medico" name="diagnostico" class="form-control" id="diagnostico" rows="3"></textarea>
+  </div>
+ </div>
+</div>
 
 
+<div id="contenedor">
+  <button type="submit" title="Ingresar" (click)="actualizarDiagnostico()" name="Ingresar" class="button ingresar">
+    {{ 'detallecaso.diagnosticar' | translate }}
+  </button>
 
-  <div id="contenedor" style="margin-left: 100px; width: 20%; float: center">
-    <div style="width: 50%; float: center">
-      <button i18n type="submit" title="Ingresar" name="Ingresar" class="button ingresar">
-        {{ 'login.botoningresar' | translate }}
-      </button>
-    </div>
-    <div style="width: 50%; float: right">
-      <button type="submit"
-        title="Cancelar"
-        name="Cancelar"
-        class="button cancelar"
-      >
-      {{ 'login.botoncancelar' | translate }}
-      </button>
-    </div>
+  <div style="width: 10%; float: right">
   </div>
 
+    <button type="submit" title="Cancelar" name="Cancelar" class="button cancelar">
+      {{ 'login.botoncancelar' | translate }}
+    </button>
+</div>
+  </form>
 
   </body>
 </html>
-<!-- Container /- -->
 
 
 

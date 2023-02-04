@@ -51,6 +51,8 @@
 		"descripcionlesion": "Descripción de la Lesión",
 		"fotografialesion": "Fotografía de la Lesión",
 		"reclamarcaso": "Fotografía de la Lesión",
+    "diagnostico": "Diagnosis",
+    "diagnosticar": "To Diagnose",
 		"salir": "Exit"
 	},
 

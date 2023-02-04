@@ -6,4 +6,6 @@ export interface Paciente {
   sexo:string;
   documento:string;
   tipodocumento:string;
+  lugarresidencia:string;
+
 }
