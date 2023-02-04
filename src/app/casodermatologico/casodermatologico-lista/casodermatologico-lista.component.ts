@@ -18,7 +18,6 @@ export class CasodermatologicoListaComponent implements OnInit {
     this.getCasos();
   }
 
-
   getCasos(): void {
     this.casodermatologicoListaService.getCasos()
     .subscribe(casos => this.casos = casos);

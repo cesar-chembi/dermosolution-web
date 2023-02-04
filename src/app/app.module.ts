@@ -4,11 +4,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { FooterModule } from './footer/footer.module';
 import { HeaderModule } from './header/header.module';
-import { LoginModule } from './login/login.module';
 import { RegistroModule } from './registro/registro.module';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { AcademicaModule } from './academica/academica.module';
-import { CasodermatologicoModule } from './casodermatologico/casodermatologico.module';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { RouteModule } from './route/route.module';
@@ -19,10 +17,12 @@ import { CookieService } from 'ngx-cookie-service';
 import { CasoreclamadoListaComponent } from './casodermatologico/casoreclamado-lista/casoreclamado-lista.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {TableModule} from 'primeng/table';
+import { TableModule} from 'primeng/table';
 import { PanelModule } from 'primeng/panel';
-import {FileUploadModule} from 'primeng/fileupload';
-
+import { FileUploadModule} from 'primeng/fileupload';
+import {CarouselModule} from 'primeng/carousel';
+import { CasodermatologicoDetalleComponent } from './casodermatologico/casodermatologico-detalle/casodermatologico-detalle.component';
+import { CasoreclamadoDetalleComponent } from './casodermatologico/casoreclamado-detalle/casoreclamado-detalle.component';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -35,10 +35,12 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent, CasodermatologicoListaComponent, CasoreclamadoListaComponent, LoginComponent
+    AppComponent, CasodermatologicoListaComponent, CasodermatologicoDetalleComponent,
+    CasoreclamadoDetalleComponent,
+    CasoreclamadoListaComponent, LoginComponent,
    ],
   imports: [
-    BrowserModule,  ReactiveFormsModule, TableModule,
+    BrowserModule,  ReactiveFormsModule, TableModule, CarouselModule,
     BrowserAnimationsModule, PanelModule, FileUploadModule,
     FooterModule, HeaderModule, RegistroModule,
     AcademicaModule, RouteModule,

@@ -1,7 +1,4 @@
-<!-- Define que el documento esta bajo el estandar de HTML 5 -->
 <!DOCTYPE html>
-
-<!-- Representa la raíz de un documento HTML o XHTML. Todos los demás elementos deben ser descendientes de este elemento. -->
 <html lang="es">
   <head>
     <meta charset="utf-8" />
@@ -9,8 +6,6 @@
   </head>
 
   <body>
-
-<!-- Tabla Prime /- -->
 
 <div id="tabla">
 
@@ -120,49 +115,49 @@
         <ng-template pTemplate="header" >
             <tr>
 
-              <th pSortableColumn="fecharegistro">{{ 'listacaso.fecha' | translate }}
+              <th id="fecharegistro" pSortableColumn="fecharegistro">{{ 'listacaso.fecha' | translate }}
                 <p-sortIcon field="fecharegistro"></p-sortIcon></th>
-              <th pSortableColumn="paciente.nombre">{{ 'listacaso.nombres' | translate }}
+              <th id="pacientenombre" pSortableColumn="paciente.nombre">{{ 'listacaso.nombres' | translate }}
                 <p-sortIcon field="paciente.nombre">
               </p-sortIcon></th>
-              <th pSortableColumn="paciente.nacionalidad">{{ 'listacaso.nacionalidad' | translate }}
+              <th id="pacientenacionalidad" pSortableColumn="paciente.nacionalidad">{{ 'listacaso.nacionalidad' | translate }}
                 <p-sortIcon field="paciente.nacionalidad">
               </p-sortIcon></th>
-              <th pSortableColumn="descripcion">{{ 'listacaso.descripcion' | translate }}
+              <th id="descripcion" pSortableColumn="descripcion">{{ 'listacaso.descripcion' | translate }}
                 <p-sortIcon field="descripcion">
               </p-sortIcon></th>
-              <th pSortableColumn="paciente.edad">{{ 'listacaso.edad' | translate }}
+              <th id="pacienteedad" pSortableColumn="paciente.edad">{{ 'listacaso.edad' | translate }}
                 <p-sortIcon field="paciente.edad">
               </p-sortIcon></th>
-              <th pSortableColumn="paciente.sexo">{{ 'listacaso.sexo' | translate }}
+              <th id="pacientesexo" pSortableColumn="paciente.sexo">{{ 'listacaso.sexo' | translate }}
                 <p-sortIcon field="paciente.sexo">
               </p-sortIcon></th>
-              <th>{{ 'listacaso.verdetalle' | translate }}</th>
+              <th id="verdetalle">{{ 'listacaso.verdetalle' | translate }}</th>
 
             </tr>
             <tr>
-                <th>
+                <th id="filtrofecharegistro">
                     <p-columnFilter type="text" field="fecharegistro"></p-columnFilter>
                 </th>
-                <th>
+                <th id="filtropacientenombre">
                     <p-columnFilter type="text" field="paciente.nombre"></p-columnFilter>
                 </th>
-                <th>
+                <th id="filtronacionalidad">
                   <p-columnFilter type="text" field="paciente.nacionalidad"></p-columnFilter>
                 </th>
-                <th>
+                <th id="filtrodescripcion">
                   <p-columnFilter type="text" field="descripcion"></p-columnFilter>
                 </th>
 
-                <th>
+                <th id="filtropacienteedad">
                   <p-columnFilter type="text" field="paciente.edad"></p-columnFilter>
                 </th>
 
-                <th>
+                <th id="filtrooacientesexo">
                   <p-columnFilter type="text" field="paciente.sexo"></p-columnFilter>
                 </th>
 
-                <th>
+                <th id="filtrodetalle">
 
                 </th>
 
@@ -199,5 +194,4 @@
 
   </body>
 </html>
-<!-- Container /- -->
 
