@@ -111,13 +111,10 @@
                 <small *ngIf="medicoForm.get('numero_registro_profesional')?.touched
                 && medicoForm.get('numero_registro_profesional')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
               </div>
-              <div style="width: 100%; float: center"  >
-                <label class="label">{{ 'registro.especialidades' | translate }}::</label>
-                <div *ngFor="let especialidad of especialidadesList">
-                <div  class="form-check">
-                  <label class="label"><input type="checkbox" id="cbox1" value="{{especialidad.id}}"> {{especialidad.nombre}}</label><br>
-                </div>
-                </div>
+              <div>
+                <label class="label">{{ 'registro.especialidades' | translate }}::</label><br/>
+                <p-multiSelect [options]="especialidadesList" [(ngModel)]="especialidadesSelected"
+                               optionLabel="nombre" optionValue="id" defaultLabel="Seleccione una o varias Especialidades"></p-multiSelect>
               </div>
               <div id="correo">
                 <label for="correo" class="label">{{ 'registro.correo' | translate }}::</label>
@@ -164,7 +161,12 @@
         </div>
       </div>
     </div>
-
+    <h3 class="mt-5">Formulario    </h3>
+    <pre>Estado formulario {{medicoForm.valid}}
+      <br />
+  Estatus {{medicoForm.status}}
+      </pre>
+    <pre>{{medicoForm.value | json}}</pre>
   </body>
 </html>
 

@@ -11,6 +11,7 @@ import {Especialidad} from "./especialidad";
 export class MedicoService {
   urlMedico: string = environment.urlMedico;
   urlEspecialidad: string = environment.urlEspecialidad;
+  urlEspecialidadMedico: string = environment.urlEspecialidadMedico;
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +21,14 @@ export class MedicoService {
   getListaEspecialidades(): Observable<Especialidad[]>{
     return this.http.get<Especialidad[]>(this.urlEspecialidad);
   }
+  adicionaEspecialidadMedico(idMedico: number, idEspecialidad: number): Observable<any>{
+    const data = {
+      "medico": idMedico,
+      "especialidad": idEspecialidad
+    }
+    return this.http.post<any>(this.urlEspecialidadMedico, data).pipe();
+  }
+
 
 
 }

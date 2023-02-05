@@ -17,6 +17,8 @@ export class RegistroComponent implements OnInit {
   tiposDocumentoList:any;
   paisesList:any;
   especialidadesList: Array<Especialidad>;
+  especialidadesSelected: Array<Especialidad>;
+  idMedico = 0;
 
   constructor(private fbuilder: FormBuilder, private medicoService: MedicoService,
               private utilidadesService: UtilidadesService  ) { }
@@ -38,7 +40,8 @@ export class RegistroComponent implements OnInit {
       numero_registro_profesional: ["", Validators.required],
       correo: ["", [Validators.required, Validators.email]],
       clave: ["", [Validators.required, Validators.minLength(6)]],
-      clave2: ["", Validators.required],
+      clave2: ["", Validators.required]
+
     },
       {
         Validators:[this.clavesIguales('clave', 'clave2'),
@@ -124,6 +127,9 @@ export class RegistroComponent implements OnInit {
       console.log(rta)
       if (rta != null){
         let mensaje = "Se creo el médico  ";
+        const idMedico = rta.id
+        console.log(idMedico)
+
         this.mensajeExito(mensaje);
       }else{
         this.mensajeAdvertencia('El usuario no se pudo crear, intenta de nuevo');
@@ -133,6 +139,15 @@ export class RegistroComponent implements OnInit {
     });
 
     this.medicoForm.reset();
+  }
+  adicionarEspecializaciones(){
+    for(let i = 0 ; i < this.especialidadesList.length ; i++){
+
+      this.medicoService.adicionaEspecialidadMedico(this.idMedico, this.especialidadesList[i].id).subscribe(rta => {
+        if (rta != null)
+          this.mensajeExito("Adicionó con exito, la especialidad al medico. ")
+      });
+    }
   }
   mensajeExito(mensaje: string ): void {
     alert(mensaje)
