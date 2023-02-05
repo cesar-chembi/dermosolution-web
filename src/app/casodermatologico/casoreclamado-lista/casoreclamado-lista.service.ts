@@ -19,12 +19,8 @@ getReclamadosFiltros(parametros: any): Observable<any> {
 
 }
 
-getReclamados(identificadormedico: string): Observable<Caso[]> {
-  const casos = of(CASOS);
-  return casos;
+getReclamados1(identificadormedico: string): Observable<Caso[]>{
+  return this.http.get<Caso[]>('http://127.0.0.1:8000/api/v1/medicos/'+identificadormedico+'/casos-medicos/');
 }
-
-
-
 
 }

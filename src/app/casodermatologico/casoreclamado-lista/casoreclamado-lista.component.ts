@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Caso } from '../casodermatologico-lista/caso';
 import { CasoreclamadoListaService } from '../casoreclamado-lista/casoreclamado-lista.service';
-import {Casobusqueda} from './casobusqueda';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 interface Pais {
@@ -23,6 +22,8 @@ interface Sexo {
 export class CasoreclamadoListaComponent implements OnInit {
 
   casos: Caso[] = [];
+  casostemp: Caso[] = [];
+  casosfinal: Caso[] = [];
   loading: boolean = false;
   nacionalidad: string;
   sexo: string;
@@ -35,7 +36,9 @@ export class CasoreclamadoListaComponent implements OnInit {
   edad:string;
   resultado: string;
 
-  constructor(private casoreclamadoListaService: CasoreclamadoListaService, public router: Router) {
+  constructor(private casoreclamadoListaService: CasoreclamadoListaService,
+    private route: ActivatedRoute,
+    public router: Router) {
 
     this.listasexo = [
       {nombre: 'Femenino', codigo: '0'},
@@ -45,9 +48,9 @@ export class CasoreclamadoListaComponent implements OnInit {
 
 
     this.listapaises = [
-      {nombre: 'Australia', codigo: 'AU'},
-      {nombre: 'Brazil', codigo: 'BR'},
-      {nombre: 'China', codigo: 'CN'},
+      {nombre: 'Colombia', codigo: 'Colombia'},
+      {nombre: 'Peru', codigo: 'Peru'},
+      {nombre: 'Argentina', codigo: 'Argentina'},
       {nombre: 'Egypt', codigo: 'EG'},
       {nombre: 'France', codigo: 'FR'},
       {nombre: 'Germany', codigo: 'DE'},
@@ -61,7 +64,8 @@ export class CasoreclamadoListaComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getCasosReclamados('10');
+    let id = this.route.snapshot.paramMap.get('id')!;
+    this.getCasosReclamados('1');
   }
 
 
@@ -95,34 +99,78 @@ export class CasoreclamadoListaComponent implements OnInit {
   }
 
 
-  nuevaConsultar(){
-    this.ngOnInit();
-    //this.casostemp = [];
+     nuevaConsultar(){
+      this.ngOnInit();
+
+      this.casostemp = [];
+    }
+
+      consultar() {
+        const parametros = {finicial: this.finicial, nombre: this.nombre,
+          edad: this.edad, ffinal: this.ffinal,
+          nacionalidad: this.nacionalidad, sexo: this.sexo,
+          descripcion: this.descripcion
+        };
+
+        this.casostemp = this.casos;
+        this.casos = [];
+        let startDate;
+        let endDate;
+        let casosFecha;
+        let casosEdad;
+        let casosNacionalidad;
+        let casosSexo;
+        let casosNombre;
+        let casosDescripcion;
+
+        if(this.nombre  !== undefined){
+          casosNombre = this.casostemp.filter(caso => caso.paciente.nombres.match(this.nombre));
+
+        }
+
+        if(this.edad !== undefined){
+          casosEdad = this.casostemp.filter(c => c.paciente.edad == parseInt(this.edad));
+
+        }
+
+
+        if(this.nacionalidad !== undefined){
+          casosNacionalidad = this.casostemp.filter(c => c.paciente.lugar_nacimiento == this.nacionalidad);
+
+        }
+
+        if(this.sexo !== undefined){
+          casosSexo = this.casostemp.filter(c => c.paciente.sexo == this.sexo);
+
+        }
+
+        if(this.descripcion !== undefined){
+          casosDescripcion = this.casostemp.filter(c => c.descripcion == this.descripcion);
+
+        }
+
+
+        if(this.finicial !== undefined && this.ffinal !== undefined){
+         startDate = new Date(this.finicial);
+         endDate = new Date(this.ffinal);
+         //let casosFecha = this.casostemp.filter(c => new Date(c.fecharegistro) > startDate && new Date(c.fecharegistro) < endDate);
+         //this.casos.concat(casosFecha);
+        }
+
+        this.casos =casosNombre.concat(casosEdad).concat(casosNacionalidad).concat(casosSexo).concat(casosDescripcion)
+        this.casostemp = [];
+
   }
 
-  consultar() {
-    const parametros = {finicial: this.finicial, nombre: this.nombre,
-      edad: this.edad, ffinal: this.ffinal,
-      nacionalidad: this.nacionalidad, sexo: this.sexo,
-      descripcion: this.descripcion
-    };
 
-console.log(parametros);
-    this.casoreclamadoListaService.getReclamadosFiltros(parametros).subscribe(
-      data => {
-        console.log(data);
-        this.router.navigateByUrl('/');
-      },
-      error => {
-        console.log(error);
-      });
-  }
+  getCasosReclamados(identificadormedico: string): void {
+    this.casoreclamadoListaService.getReclamados1(identificadormedico).subscribe(
+       casos => {
+        this.casos = casos;
+      }
+       );
+    }
 
 
-
-  getCasosReclamados(identificador: string): void {
-    this.casoreclamadoListaService.getReclamados(identificador)
-    .subscribe(casos => this.casos = casos);
-  }
 
 }

@@ -13,14 +13,10 @@ export class CasoreclamadoDetalleService {
 constructor(private http: HttpClient) { }
 
 
-
-
-getCasoDetalleId(identificadorcaso: number): Observable<any> {
-  const casos = of(CASOS[0]);
-  return casos;
-  //return this.http.post("https://reqres.in/api/login", identificadorcaso);
-
+getReclamadosDetalle(identificadorpacinete: number): Observable<Caso>{
+  return this.http.get<Caso>('http://127.0.0.1:8000/api/v1/pacientes/'+identificadorpacinete+'/casos-medicos/');
 }
+
 
 
 actualizarDiagnosticoCaso(identificadorcaso: number, diagnostico: string): Observable<any> {

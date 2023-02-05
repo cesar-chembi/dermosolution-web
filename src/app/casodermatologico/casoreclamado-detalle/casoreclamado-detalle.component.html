@@ -27,7 +27,7 @@
         <div class="panel-body" style="width: 45%; float: center; background-color:#0F89D1;">
           <div id="nombres">
             <label for="nombres" class="label">
-              {{ 'detallecaso.nombres' | translate }} : {{caso.paciente.nombre}}
+              {{ 'detallecaso.nombres' | translate }} : {{caso.paciente.nombres}}
             </label>
 
 
@@ -36,25 +36,25 @@
 
           <div id="edad">
             <label for="edad" class="label">
-              {{ 'detallecaso.edad' | translate }}: {{caso.paciente.edad}}
+              {{ 'detallecaso.edad' | translate }} : {{caso.paciente.edad}}
             </label>
           </div>
 
           <div id="sexo">
             <label for="sexo" class="label">
-              {{ 'detallecaso.sexo' | translate }} : : {{caso.paciente.sexo}}
+              {{ 'detallecaso.sexo' | translate }} : {{caso.paciente.sexo}}
             </label>
           </div>
 
           <div id="nacionalidad">
             <label for="nacionalidad" class="label">
-              {{ 'detallecaso.nacionalidad' | translate }}: : {{caso.paciente.nacionalidad}}
+              {{ 'detallecaso.nacionalidad' | translate }} : {{caso.paciente.lugar_nacimiento}}
             </label>
           </div>
 
           <div id="residencia">
             <label for="residencia" class="label">
-              {{ 'detallecaso.lugarresidencia' | translate }} : {{caso.paciente.lugarresidencia}}
+              {{ 'detallecaso.lugarresidencia' | translate }} : {{caso.paciente.lugar_residencia}}
             </label>
           </div>
 
@@ -77,39 +77,39 @@
     </div>
 
   </div>
-<div class="panel-body" style="width: 45%; float: center; background-color:#0F89D1;">
-  <div id="forma">
-    <label for="forma" class="label">
-      {{ 'detallecaso.formalesion' | translate }} : {{caso.perfildermatologico.formalesion}}
-    </label>
-  </div>
-
-  <div id="tipo">
-    <label for="tipo" class="label">
-      {{ 'detallecaso.tipolesion' | translate }} : {{caso.perfildermatologico.tipolesion}}
-    </label>
-  </div>
-  <div id="numero">
-    <label for="numero" class="label">
-      {{ 'detallecaso.numerolesion' | translate }} : {{caso.perfildermatologico.numerolesion}}
-    </label>
-  </div>
-  <div id="color">
-    <label for="color" class="label">
-      {{ 'detallecaso.colorlesion' | translate }} : {{caso.perfildermatologico.colorlesion}}
-    </label>
-  </div>
-
-  <div id="localizacion">
-    <label for="localizacion" class="label">
-      {{ 'detallecaso.localizacionydistribucionlesion' | translate }} :
-      {{caso.perfildermatologico.localizacionlesion}}
-    </label>
-  </div>
-
-        </div>
-   </div>
+  <div class="panel-body" style="width: 50%; float: center; background-color:#0F89D1;">
+    <div id="forma">
+      <label for="forma" class="label">
+        {{ 'detallecaso.formalesion' | translate }} : {{caso.descripcion}}
+      </label>
     </div>
+
+    <div id="tipo">
+      <label for="tipo" class="label">
+        {{ 'detallecaso.tipolesion' | translate }} : {{caso.descripcion}}
+      </label>
+    </div>
+    <div id="numero">
+      <label for="numero" class="label">
+        {{ 'detallecaso.numerolesion' | translate }} : {{caso.descripcion}}
+      </label>
+    </div>
+    <div id="color">
+      <label for="color" class="label">
+        {{ 'detallecaso.colorlesion' | translate }} : {{caso.descripcion}}
+      </label>
+    </div>
+
+    <div id="localizacion">
+      <label for="localizacion" class="label">
+        {{ 'detallecaso.localizacionydistribucionlesion' | translate }} :
+        {{caso.descripcion}}
+      </label>
+    </div>
+
+          </div>
+     </div>
+      </div>
 
 
 

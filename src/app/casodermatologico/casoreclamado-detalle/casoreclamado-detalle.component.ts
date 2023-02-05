@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Caso } from '../casodermatologico-lista/caso';
 import { CasoreclamadoDetalleService } from './casoreclamado-detalle.service';
-
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-casoreclamado-detalle',
@@ -17,7 +17,8 @@ export class CasoreclamadoDetalleComponent implements OnInit {
   resultado: string;
 
 	responsiveOptions: any[];
-  constructor(private casoreclamadoDetalleService: CasoreclamadoDetalleService) {
+  constructor(private casoreclamadoDetalleService: CasoreclamadoDetalleService,   private route: ActivatedRoute,
+    ) {
     this.responsiveOptions = [
       {
           breakpoint: '1024px',
@@ -40,16 +41,25 @@ export class CasoreclamadoDetalleComponent implements OnInit {
 
 
   ngOnInit() {
-    this.consultarDetalleReclamadoPorId(10);
+
+    let id = this.route.snapshot.paramMap.get('id')!;
+    let idpaciente = this.route.snapshot.paramMap.get('idpaciente')!;
+    this.consultarDetalleReclamadoPorId(parseInt(id),parseInt(idpaciente));
     console.log('estamos en el init del detalle');
   }
 
 
-  consultarDetalleReclamadoPorId(idcaso: number): void {
-    this.casoreclamadoDetalleService.getCasoDetalleId(idcaso)
-    .subscribe(caso => this.caso = caso);
-    console.log(this.caso);
-  }
+
+  consultarDetalleReclamadoPorId(identificadorcaso: number, identificadorpaciente: number): void {
+    this.casoreclamadoDetalleService.getReclamadosDetalle(identificadorpaciente).subscribe(
+       casos => {
+        this.caso = casos[0];
+      }
+       );
+
+       console.log(this.caso[0]);
+    }
+
 
   actualizarDiagnostico():void{
     console.log('aguas el diagnostico')
