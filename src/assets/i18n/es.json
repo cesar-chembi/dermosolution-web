@@ -39,7 +39,8 @@
     "correo": "Correo electrónico",
     "clave": "Contraseña / clave",
     "aceptar": "Aceptar",
-		"salir": "Salir"
+		"salir": "Salir",
+    "especialidades": "Marque la especializaciones que posee"
 	},
 
 	"detallecaso": {

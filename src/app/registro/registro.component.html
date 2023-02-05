@@ -15,18 +15,19 @@
           <div id="registro">
 
             <div class="titulo">Registro del Médico</div>
-            <form [formGroup]="medicoForm" (ngSubmit)="!medicoForm.invalid && crearMedico(medicoForm.value)">
+            <form [formGroup]="medicoForm" (ngSubmit)="crearMedico()">
 
               <div id="tipoIdentificacion">
                 <label for="tipoIdentificacion" class="label">
                   {{ 'registro.tipoIdentificacion' | translate }}:
                 </label>
                <select placeholder="Tipo identificación" name="tipoIdentificacion" class="form-control"
-                       formControlName="tipo_identificacion" [class.is-invalid]="tipoIdentificacionNovalid"  required>
-                  <option value="CC">Cédula de ciudadanía</option>
-                  <option value="PA">Pasaporte</option>
+                       formControlName="tipo_identificacion" required>
+                 <option *ngFor="let tipoDoc of tiposDocumentoList" [ngValue]="tipoDoc.nombrecorto">{{tipoDoc.tipo}}</option>
+
                 </select>
-                <small *ngIf="tipoIdentificacionNovalid" class="text-bg-danger">Dato requerido</small>
+                <small *ngIf="medicoForm.get('tipo_identificacion')?.touched
+                && medicoForm.get('tipo_identificacion')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
 
               </div>
               <div id="numeroIdentificacion">
@@ -34,95 +35,115 @@
                   {{ 'registro.numeroIdentificacion' | translate }}:
                 </label>
                 <input type="text" placeholder="Número identificación" name="numeroIdentificacion"
-                       class="form-control" formControlName="numero_identificacion" [class.is-invalid]="numeroIdentificacionNovalid"
+                       class="form-control" formControlName="numero_identificacion"
                        required>
-                <small *ngIf="numeroIdentificacionNovalid" class="text-bg-danger">Dato requerido</small>
+                <small *ngIf="medicoForm.get('numero_identificacion')?.touched
+                && medicoForm.get('numero_identificacion')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
               </div>
+
               <div id="nombre">
                 <label for="nombre" class="label">
                   {{ 'registro.nombres' | translate }}:
                 </label>
                 <input type="text" placeholder="Nombres" name="nombre" class="form-control"
-                       [class.is-invalid]="nombresNovalid" formControlName="nombres" required>
-                <small *ngIf="nombresNovalid" class="text-bg-danger">El nombre debe tener mínimo 3 caracteres</small>
+                       formControlName="nombres" required>
+                <small *ngIf="medicoForm.get('nombres')?.touched && medicoForm.get('nombres')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
+                <small *ngIf="medicoForm.get('nombres')?.touched
+                && medicoForm.get('clave')?.errors?.['minlength']" class="text-bg-danger">La lomgitud debe ser mínimo 3 caracteres</small>
               </div>
 
               <div id="apellido">
                 <label for="apellido" class="label">
                   {{ 'registro.apellidos' | translate }}::</label>
                 <input type="text" placeholder="Apellidos" name="apellido" class="form-control"
-                       [class.is-invalid]="apellidosNovalid" formControlName="apellidos" required>
-                <small *ngIf="apellidosNovalid" class="text-bg-danger">Dato requerido</small>
+                       formControlName="apellidos" required>
+                <small *ngIf="medicoForm.get('apellidos')?.touched
+                && medicoForm.get('apellidos')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
               </div>
 
               <div id="fnacimiento">
                 <label for="fnacimiento" class="label">
                   {{ 'registro.fechanacimiento' | translate }}::</label>
                 <input type="date" placeholder="Fecha de Nacimiento" name="fnacimiento"
-                       [class.is-invalid]="fechaNacimientoNovalid" class="form-control" formControlName="fecha_nacimiento" required>
-                <small *ngIf="fechaNacimientoNovalid" class="text-bg-danger">Dato requerido</small>
+                       class="form-control" formControlName="fecha_nacimiento" required>
+                <small *ngIf="medicoForm.get('fecha_nacimiento')?.touched
+                && medicoForm.get('fecha_nacimiento')?.errors?.['required'] " class="text-bg-danger">Este fecha no puede ser mayor a hoy</small>
               </div>
 
               <div id="sexo">
                 <label for="sexo" class="label">{{ 'registro.sexo' | translate }}::</label>
-                <select placeholder="Sexo" name="sexo" class="form-control" formControlName="sexo"
-                        [class.is-invalid]="sexoNovalid" required>
+                <select placeholder="Sexo" name="sexo" class="form-control" formControlName="sexo" required>
                   <option value="MUJER">MUJER</option>
                   <option value="HOMBRE">HOMBRE</option>
                 </select>
-                <small *ngIf="sexoNovalid" class="text-bg-danger">Dato requerido</small>
+                <small *ngIf="medicoForm.get('sexo')?.touched
+                && medicoForm.get('sexo')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
               </div>
               <div id="lnacimiento">
                 <label for="lnacimientos" class="label">{{ 'registro.lugarnacimiento' | translate }}::</label>
                 <select id="lnacimientos" placeholder="Lugar de Nacimiento" name="lnacimiento" class="form-control"
-                        [class.is-invalid]="lugarNacimientoNovalid" formControlName="lugar_nacimiento"  required>
-                  <option value="COL">Colombia</option>
-                  <option value="CAN">Canada</option>
-                  <option value="USA">Estados Unidos de América</option>
+                        formControlName="lugar_nacimiento"  required>
+                  <option *ngFor="let pais of paisesList" [ngValue]="pais.cod">{{pais.nombre}}</option>
                 </select>
-                <small *ngIf="lugarNacimientoNovalid" class="text-bg-danger">Dato requerido</small>
+                <small *ngIf="medicoForm.get('lugar_nacimiento')?.touched
+                && medicoForm.get('lugar_nacimiento')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
               </div>
               <div id="lugarResidencia">
                 <label for="lugarResidencia" class="label">{{ 'registro.lugarresidencia' | translate }}::</label>
                 <input type="text" placeholder="Lugar de residencia" name="lugarResidencia"
-                       [class.is-invalid]="lugarResidenciaNovalid" class="form-control" formControlName="lugar_residencia" required>
-                <small *ngIf="lugarResidenciaNovalid" class="text-bg-danger">Dato requerido</small>
+                       class="form-control" formControlName="lugar_residencia" required>
+                <small *ngIf="medicoForm.get('lugar_residencia')?.touched
+                && medicoForm.get('lugar_residencia')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
               </div>
 
               <div id="numeroCelular">
                 <label for="numeroCelular" class="label">{{ 'registro.celular' | translate }}::</label>
-                <input type="text" placeholder="Numero de Celular" name="clave"
-                       [class.is-invalid]="numeroCelularNovalid"
+                <input type="text" placeholder="Numero de Celular" name="numeroCelular"
                        class="form-control" formControlName="numero_celular" required>
-                <small *ngIf="numeroCelularNovalid" class="text-bg-danger">Dato requerido</small>
+                <small *ngIf="medicoForm.get('numero_celular')?.touched
+                && medicoForm.get('numero_celular')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
               </div>
               <div id="numeroRegistroProfesionalDv">
                 <label for="numeroRegistroProfesional" class="label">{{ 'registro.numeroRegistroProfesional' | translate }}::</label>
                 <input id="numeroRegistroProfesional" type="text" placeholder="Número Registro Profesional"
-                       [class.is-invalid]="numeroRegistroProfesionalNovalid" name="registroprof"
+                       name="registroprof"
                        class="form-control" formControlName="numero_registro_profesional" required>
-                <small *ngIf="numeroRegistroProfesionalNovalid" class="text-bg-danger">Dato requerido</small>
+                <small *ngIf="medicoForm.get('numero_registro_profesional')?.touched
+                && medicoForm.get('numero_registro_profesional')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
+              </div>
+              <div style="width: 100%; float: center"  >
+                <label class="label">{{ 'registro.especialidades' | translate }}::</label>
+                <div *ngFor="let especialidad of especialidadesList">
+                <div  class="form-check">
+                  <label class="label"><input type="checkbox" id="cbox1" value="{{especialidad.id}}"> {{especialidad.nombre}}</label><br>
+                </div>
+                </div>
               </div>
               <div id="correo">
                 <label for="correo" class="label">{{ 'registro.correo' | translate }}::</label>
                 <input type="text" placeholder="correo" name="correo" class="form-control"
-                       [class.is-invalid]="correoNovalid" formControlName="correo" required>
-                <small *ngIf="correoNovalid" class="text-bg-danger">Dato requerido</small>
+                       formControlName="correo" required>
+                <small *ngIf="medicoForm.get('correo')?.touched
+                && medicoForm.get('correo')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
               </div>
               <div id="clave">
                 <label for="clave" class="label">{{ 'registro.clave' | translate }}::</label>
                 <input type="password" placeholder="Clave" name="clave" class="form-control"
-                       [class.is-invalid]="claveNovalid" formControlName="clave" required>
-                <small *ngIf="claveNovalid" class="text-bg-danger">El nombre debe tener mínimo 6 caracteres</small>
+                       formControlName="clave" required>
+                <small *ngIf="medicoForm.get('clave')?.touched && medicoForm.get('clave')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
+                <small *ngIf="medicoForm.get('clave')?.touched
+                && medicoForm.get('clave')?.errors?.['minlength']" class="text-bg-danger">La lomgitud debe ser mínimo 6 caracteres</small>
               </div>
 
 
-              <div id="confirmarcontrasena">
-                <label for="confirmarcontrasena" class="label">Confirmar Contraseña:</label>
+              <div id="clave2">
+                <label for="clave2" class="label">Confirmar Contraseña:</label>
                 <input type="password" placeholder="Confirmar Contraseña"
-                       [class.is-invalid]="numeroIdentificacionNovalid" formControlName="confirmacionclave" name="confirmacionclave" required>
-                <small *ngIf="tipoIdentificacionNovalid" class="text-bg-danger">Las contraseñas no coinciden</small>
+                       formControlName="clave2" name="clave2" required>
+                <small *ngIf="medicoForm.get('clave2')?.touched
+                && medicoForm.get('clave2')?.errors?.['required']" class="text-bg-danger">Las claves no coinciden. </small>
               </div>
+
 
               <div style="width: 100%; float: center">
                 <div style="width: 50%; float: left">
@@ -143,12 +164,7 @@
         </div>
       </div>
     </div>
-    <h3 class="mt-5">Formulario    </h3>
-    <pre>Estado formulario {{medicoForm.valid}}
-  <br />
-  Estatus {{medicoForm.status}}
-      </pre>
-  <pre>{{medicoForm.value | json}}</pre>
+
   </body>
 </html>
 
