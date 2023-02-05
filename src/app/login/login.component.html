@@ -25,7 +25,7 @@
                   {{ 'login.correo' | translate }}
                 </label>
                 <input type="text" formControlName ="correo"  [(ngModel)]="correo"
-                placeholder="Correo Electrónico" name="correo" required>
+                placeholder="Correo Electrónico Paciente" name="correo" required>
                 <span *ngIf="this.loginform.get('correo')?.errors?.['required']">
                   {{ 'login.correorequerido' | translate }}
                 </span>
