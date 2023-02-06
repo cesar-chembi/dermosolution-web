@@ -1,15 +1,19 @@
 import { CasoreclamadoDetalleComponent } from './casoreclamado-detalle.component';
 import { CasoreclamadoDetalleService } from './casoreclamado-detalle.service';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute} from '@angular/router';
+
+
 
 describe('Service: CasoreclamadoDetalle', () => {
   let servicio: CasoreclamadoDetalleService;
   let clienteHttp: HttpClient;
   let component:  CasoreclamadoDetalleComponent;
+  let router: ActivatedRoute;
 
   beforeEach(() => {
     servicio = new CasoreclamadoDetalleService(clienteHttp);
-    component = new CasoreclamadoDetalleComponent(servicio);
+    component = new CasoreclamadoDetalleComponent(servicio, router);
   });
 
 

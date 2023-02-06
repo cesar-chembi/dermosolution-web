@@ -1,16 +1,12 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
-
-const host = '157.253.238.75';
-const port = '8084';
-const appName = 'frontstepbystep-api';
-const rootApi = 'api';
+const host = 'http://localhost:8000/';
 
 export const environment = {
   production: false,
-  baseUrl: `http://${host}:${port}/${appName}/${rootApi}/`
+  urlMedico: `${host}api/v1/medicos/`,
+  urlPaciente: `${host}api/v1/pacientes/`,
+  urlEspecialidad: `${host}api/v1/especialiades/`,
+  urlEspecialidadMedico: `${host}api/v1/medicosespecialidad/`
 
-  //http://127.0.0.1:8000/api/v1/medicos/1/casos-medicos/
-};
+}
+
 

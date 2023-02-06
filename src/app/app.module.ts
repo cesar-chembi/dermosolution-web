@@ -19,6 +19,8 @@ import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableModule} from 'primeng/table';
 import { PanelModule } from 'primeng/panel';
+import {MessageModule} from 'primeng/message';
+import {MessagesModule} from 'primeng/messages';
 import { FileUploadModule} from 'primeng/fileupload';
 import {CarouselModule} from 'primeng/carousel';
 import { CasodermatologicoDetalleComponent } from './casodermatologico/casodermatologico-detalle/casodermatologico-detalle.component';
@@ -41,8 +43,8 @@ export function HttpLoaderFactory(http: HttpClient) {
    ],
   imports: [
     BrowserModule,  ReactiveFormsModule, TableModule, CarouselModule,
-    BrowserAnimationsModule, PanelModule, FileUploadModule,
-    FooterModule, HeaderModule, RegistroModule,
+    BrowserAnimationsModule, PanelModule, FileUploadModule, MessageModule,
+    FooterModule, HeaderModule, RegistroModule, MessagesModule,
     AcademicaModule, RouteModule,
     HttpClientModule,
     FormsModule,
