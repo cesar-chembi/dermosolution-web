@@ -1,37 +1,21 @@
-/* tslint:disable:no-unused-variable */
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
+import { CasodermatologicoListaService} from './casodermatologico-lista.service'
 import { CasodermatologicoListaComponent } from './casodermatologico-lista.component';
 
-/*
 describe('CasodermatologicoListaComponent', () => {
   let component: CasodermatologicoListaComponent;
-  let fixture: ComponentFixture<CasodermatologicoListaComponent>;
-
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ CasodermatologicoListaComponent ]
-    })
-    .compileComponents();
-  }));
+  let servicio: CasodermatologicoListaService;
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CasodermatologicoListaComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    servicio = new CasodermatologicoListaService();
+    component = new CasodermatologicoListaComponent(servicio);
   });
 
 
+  it('validar que solo retorna arreglo con los casos', () => {
 
+   // expect(servicio.getCasos.length > 0);
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(component.getCasos.length > 0);
   });
 });
-function beforeEach(arg0: () => void) {
-  throw new Error('Function not implemented.');
-}
-
-*/

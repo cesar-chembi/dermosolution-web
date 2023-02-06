@@ -8,7 +8,6 @@ import { RegistroComponent } from '../registro/registro.component';
 import { AcademicaComponent } from '../academica/academica.component';
 import { CasodermatologicoDetalleComponent } from '../casodermatologico/casodermatologico-detalle/casodermatologico-detalle.component';
 import { CasodermatologicoListaComponent } from '../casodermatologico/casodermatologico-lista/casodermatologico-lista.component';
-import { AppComponent } from '../app.component';
 import { CasoreclamadoListaComponent } from '../casodermatologico/casoreclamado-lista/casoreclamado-lista.component';
 import { CasoreclamadoDetalleComponent } from '../casodermatologico/casoreclamado-detalle/casoreclamado-detalle.component';
 
@@ -18,7 +17,7 @@ const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
   { path: 'academica', component: AcademicaComponent },
   { path: 'detalle/:id', component: CasodermatologicoDetalleComponent },
-  { path: 'detallereclamados/:id', component: CasoreclamadoDetalleComponent },
+  { path: 'detallereclamados/:id/:idpaciente', component: CasoreclamadoDetalleComponent },
   { path: 'listacasos', component: CasodermatologicoListaComponent },
   { path: 'casosreclamados', component: CasoreclamadoListaComponent }
 
@@ -29,7 +28,7 @@ const routes: Routes = [
   imports: [ RouterModule.forRoot(routes),
     CommonModule
   ],
-  exports: [ RouterModule ],
+  exports: [ RouterModule , ],
   declarations: [RouteComponent]
 })
 export class RouteModule { }

@@ -1,7 +1,4 @@
-<!-- Define que el documento esta bajo el estandar de HTML 5 -->
 <!DOCTYPE html>
-
-<!-- Representa la raíz de un documento HTML o XHTML. Todos los demás elementos deben ser descendientes de este elemento. -->
 <html lang="es">
   <head>
     <meta charset="utf-8" />
@@ -162,24 +159,6 @@
       <div class="panel-body" style="background-color:#0F89D1;">
 
 
-        <p-carousel [value]="items" [numVisible]="3" [numScroll]="3">
-          <ng-template let-item pTemplate="item">
-            <div class="item">{{ item }}</div>
-            <div class="mb-3">
-              <img src="assets/image/{{item}}.jpg"
-              [alt]="item" styleClass="product-image" />
-          </div>
-          <div class="car-buttons mt-5">
-            <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-search"></p-button>
-
-        </div>
-          </ng-template>
-        </p-carousel>
-
-
-
-        <!-- End Example Code -->
-
 
       </div>
     </div>
@@ -206,8 +185,6 @@
 
   </body>
 </html>
-<!-- Container /- -->
-
 
 
 

@@ -1,7 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
-import {Product} from './producto';
-import { ProductService } from './Product.service';
 
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -13,8 +12,8 @@ export class CasodermatologicoDetalleComponent implements OnInit {
 
   @Input() casoDetalle!: CasodermatologicoDetalleComponent;
 
-  //imgags: string[];
-  products: Product[];
+
+
 
   items = ["item1", "item2", "item3", "item4", "item5"];
 
@@ -44,16 +43,6 @@ export class CasodermatologicoDetalleComponent implements OnInit {
 
 
   ngOnInit() {
-
-
-   /*
-    this.imgags = [
-      'assets/bg.jpg',
-      'assets/car.png',
-      'assets/canberra.jpg',
-      'assets/holi.jpg'
-    ];
-    */
 
   }
 

@@ -223,12 +223,13 @@ body .ui-table .ui-table-tbody > tr > td { border: 1px solid black; }
     color: white;
     border-color: black;
     transition: box-shadow 0.2s;
+    border: 3px solid black;
   }
 
   :host ::ng-deep .row-impar {
     background: white !important;
     color: white;
-    border-color: black;
+    border-color: black !important;;
     transition: box-shadow 0.2s;
   }
 
@@ -252,14 +253,26 @@ body .ui-table .ui-table-tbody > tr > td { border: 1px solid black; }
 }
 
 
+:host ::ng-deep .p-datatable .p-datatable-tbody > tr > td {
+  text-align: left;
+  border: 3px solid black;
+  border-width: 0 0 2px 0;
+  padding: 1rem 1rem;
+  }
+
+
+
 
 :host ::ng-deep .p-datatable .p-datatable-thead > tr > th {
   text-align: left;
   padding: 1rem 1rem;
-  border: 1px solid #e9ecef;
+  border: 2px solid black;
+  border-color: #E13535;
   border-width: 0 0 1px 0;
   font-weight: 600;
   color: white;
   background: #036DCB;
   transition: box-shadow 0.2s;
 }
+
+

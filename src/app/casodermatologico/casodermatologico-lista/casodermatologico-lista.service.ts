@@ -8,11 +8,13 @@ import { Caso } from './caso';
 })
 export class CasodermatologicoListaService {
 
-constructor() { }
+constructor() {
+ // This is intentional
+}
 
 
 getCasos(): Observable<Caso[]> {
-  const casos = of(CASOS);
+ const casos = null;
   return casos;
 }
 
