@@ -26,8 +26,6 @@ import {CarouselModule} from 'primeng/carousel';
 import { CasodermatologicoDetalleComponent } from './casodermatologico/casodermatologico-detalle/casodermatologico-detalle.component';
 import { CasoreclamadoDetalleComponent } from './casodermatologico/casoreclamado-detalle/casoreclamado-detalle.component';
 import {ToastModule} from 'primeng/toast';
-import {MessagesModule} from 'primeng/messages';
-import {MessageModule} from 'primeng/message';
 import {MessageService} from "primeng/api";
 
 export function createTranslateLoader(http: HttpClient) {
