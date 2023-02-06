@@ -26,13 +26,21 @@
 	},
 
   "registro": {
+    "tipoIdentificacion": "Tipo de identificación",
+    "numeroIdentificacion": "Número de identificación",
+    "sexo": "Sexo",
     "nombres": "Nombres",
     "apellidos": "Apellidos",
     "fechanacimiento": "Fecha de Nacimiento",
 		"lugarnacimiento": "Lugar de Nacimiento",
-    "celular": "Celular",
+		"lugarresidencia": "Lugar de Residencia",
+    "celular": "número de Celular(móvil)",
+    "numeroRegistroProfesional": "Numero registro profesional",
+    "correo": "Correo electrónico",
+    "clave": "Contraseña / clave",
     "aceptar": "Aceptar",
-		"salir": "Salir"
+		"salir": "Salir",
+    "especialidades": "Marque la especializaciones que posee"
 	},
 
 	"detallecaso": {

@@ -25,7 +25,10 @@ import { FileUploadModule} from 'primeng/fileupload';
 import {CarouselModule} from 'primeng/carousel';
 import { CasodermatologicoDetalleComponent } from './casodermatologico/casodermatologico-detalle/casodermatologico-detalle.component';
 import { CasoreclamadoDetalleComponent } from './casodermatologico/casoreclamado-detalle/casoreclamado-detalle.component';
-
+import {ToastModule} from 'primeng/toast';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import {MessageService} from "primeng/api";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -48,6 +51,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     AcademicaModule, RouteModule,
     HttpClientModule,
     FormsModule,
+    ToastModule,
+    MessagesModule,
+    MessageModule,
     TranslateModule.forRoot({
       defaultLanguage: 'es',
       useDefaultLang: true,
@@ -63,7 +69,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       enableTitleTranslate: true,
     })
   ],
-  providers: [CookieService],
+  providers: [CookieService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
