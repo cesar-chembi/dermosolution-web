@@ -9,127 +9,152 @@
   </head>
 
   <body>
+  <p-toast></p-toast>
     <div>
       <div>
         <div>
           <div id="registro">
 
             <div class="titulo">Registro del Médico</div>
-            <form id="loginform">
+            <form [formGroup]="medicoForm" (ngSubmit)="crearMedico()">
+
+              <div id="tipoIdentificacion">
+                <label for="tipoIdentificacion" class="label">
+                  {{ 'registro.tipoIdentificacion' | translate }}:
+                </label>
+               <select placeholder="Tipo identificación" name="tipoIdentificacion" class="form-control"
+                       formControlName="tipo_identificacion" required>
+                 <option *ngFor="let tipoDoc of tiposDocumentoList" [ngValue]="tipoDoc.nombrecorto">{{tipoDoc.tipo}}</option>
+
+                </select>
+                <small *ngIf="medicoForm.get('tipo_identificacion')?.touched
+                && medicoForm.get('tipo_identificacion')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
+
+              </div>
+              <div id="numeroIdentificacion">
+                <label for="numeroIdentificacion" class="label">
+                  {{ 'registro.numeroIdentificacion' | translate }}:
+                </label>
+                <input type="text" placeholder="Número identificación" name="numeroIdentificacion"
+                       class="form-control" formControlName="numero_identificacion"
+                       required>
+                <small *ngIf="medicoForm.get('numero_identificacion')?.touched
+                && medicoForm.get('numero_identificacion')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
+              </div>
 
               <div id="nombre">
                 <label for="nombre" class="label">
                   {{ 'registro.nombres' | translate }}:
                 </label>
-                <input type="text" placeholder="Nombres" name="nombre" required>
+                <input type="text" placeholder="Nombres" name="nombre" class="form-control"
+                       formControlName="nombres" required>
+                <small *ngIf="medicoForm.get('nombres')?.touched && medicoForm.get('nombres')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
+                <small *ngIf="medicoForm.get('nombres')?.touched
+                && medicoForm.get('nombres')?.errors?.['minlength']" class="text-bg-danger">La lomgitud debe ser mínimo 3 caracteres</small>
               </div>
 
               <div id="apellido">
                 <label for="apellido" class="label">
                   {{ 'registro.apellidos' | translate }}::</label>
-                <input type="text" placeholder="Apellidos" name="apellido" required>
+                <input type="text" placeholder="Apellidos" name="apellido" class="form-control"
+                       formControlName="apellidos" required>
+                <small *ngIf="medicoForm.get('apellidos')?.touched
+                && medicoForm.get('apellidos')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
               </div>
 
               <div id="fnacimiento">
                 <label for="fnacimiento" class="label">
                   {{ 'registro.fechanacimiento' | translate }}::</label>
-                <input type="date" placeholder="Fecha de Nacimiento" name="fnacimiento" required>
+                <input type="date" placeholder="Fecha de Nacimiento" name="fnacimiento"
+                       class="form-control" formControlName="fecha_nacimiento" required>
+                <small *ngIf="medicoForm.get('fecha_nacimiento')?.touched
+                && medicoForm.get('fecha_nacimiento')?.errors?.['required'] " class="text-bg-danger">Este fecha no puede ser mayor a hoy</small>
               </div>
 
-            <div id="lnacimiento">
-              <label for="lnacimiento" class="label">Lugar de Nacimiento:</label>
-              <select id="lnacimiento" placeholder="Lugar de Nacimiento" name="lnacimiento" required>
-                <option value="australia">Australia</option>
-                <option value="canada">Canada</option>
-                <option value="usa">USA</option>
-              </select>
-            </div>
-
-            <div id="celular">
-              <label for="celular" class="label">Número Celular:</label>
-              <input type="number" placeholder="Celular" name="celular" required>
-            </div>
-
-            <div id="especialidadmedica">
-              <label for="especialidadmedica" class="label">Especialidad Médica:</label>
-              <select id="especialidadmedica" placeholder="Especialidad Médica" name="especialidadmedica" required>
-                <option value="australia">Especialidad 1</option>
-                <option value="canada">Especialidad 2</option>
-                <option value="usa">Especialidad 3</option>
-              </select>
-            </div>
-
-            <div id="especialidadtipolesion">
-              <label for="especialidadtipolesion" class="label">Especialidad Tipo de Lesión:</label>
-              <select id="especialidadtipolesion" placeholder="Especialidad Tipo de Lesión" name="especialidadtipolesion" required>
-                <option value="australia">Especialidad 1</option>
-                <option value="canada">Especialidad 2</option>
-                <option value="usa">Especialidad 3</option>
-              </select>
-            </div>
-
-            <div id="especialidadformalesion">
-              <label for="especialidadformalesion" class="label">Especialidad Forma de Lesión:</label>
-              <select id="especialidadformalesion" placeholder="Especialidad Forma de Lesión" name="especialidadformalesion" required>
-                <option value="australia">Especialidad 1</option>
-                <option value="canada">Especialidad 2</option>
-                <option value="usa">Especialidad 3</option>
-              </select>
-            </div>
-
-
-            <div id="especialidadnumerolesion">
-              <label for="especialidadnumerolesion" class="label">Especialidad Número de Lesión:</label>
-              <select id="especialidadnumerolesion" placeholder="Especialidad Número de Lesión" name="especialidadnumerolesion" required>
-                <option value="australia">Especialidad 1</option>
-                <option value="canada">Especialidad 2</option>
-                <option value="usa">Especialidad 3</option>
-              </select>
-            </div>
-
-            <div id="especialidaddistribucionlesion">
-              <label for="especialidaddistribucionlesion" class="label">Especialidad Distribución de Lesión:</label>
-              <select id="especialidaddistribucionlesion" placeholder="Especialidad Distribución de Lesión" name="especialidaddistribucionlesion" required>
-                <option value="australia">Especialidad 1</option>
-                <option value="canada">Especialidad 2</option>
-                <option value="usa">Especialidad 3</option>
-              </select>
-            </div>
-
-
-            <div id="correo">
-              <label for="correo" class="label">Correo Electrónico:</label>
-              <input type="text" placeholder="Correo Electrónico" name="correo" required>
-            </div>
-
-            <div id="contrasena">
-              <label for="contrasena" class="label">Contraseña:</label>
-              <input type="password" placeholder="Contraseña" name="contrasena" required>
-            </div>
-
-            <div id="confirmarcontrasena">
-              <label for="confirmarcontrasena" class="label">Confirmar Contraseña:</label>
-              <input type="password" placeholder="Confirmar Contraseña" name="confirmarcontrasena" required>
-            </div>
-
-
-      <div style="width: 100%; float: center">
-            <div style="width: 50%; float: left">
-                <button type="submit" title="Ingresar" name="Ingresar" class="button ingresar">
-                  Ingresar
-                </button>
+              <div id="sexo">
+                <label for="sexo" class="label">{{ 'registro.sexo' | translate }}::</label>
+                <select placeholder="Sexo" name="sexo" class="form-control" formControlName="sexo" required>
+                  <option value="MUJER">MUJER</option>
+                  <option value="HOMBRE">HOMBRE</option>
+                </select>
+                <small *ngIf="medicoForm.get('sexo')?.touched
+                && medicoForm.get('sexo')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
               </div>
-              <div style="width: 50%; float: left">
-                <button
-                  type="submit"
-                  title="Cancelar"
-                  name="Cancelar"
-                  class="button cancelar"
-                >
-                  Cancelar
-                </button>
+              <div id="lnacimiento">
+                <label for="lnacimientos" class="label">{{ 'registro.lugarnacimiento' | translate }}::</label>
+                <select id="lnacimientos" placeholder="Lugar de Nacimiento" name="lnacimiento" class="form-control"
+                        formControlName="lugar_nacimiento" required>
+                  <option *ngFor="let pais of paisesList" [ngValue]="pais.cod" selected="COL">{{pais.nombre}}</option>
+                </select>
+                <small *ngIf="medicoForm.get('lugar_nacimiento')?.touched
+                && medicoForm.get('lugar_nacimiento')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
               </div>
-</div>
+              <div id="lugarResidencia">
+                <label for="lugarResidencia" class="label">{{ 'registro.lugarresidencia' | translate }}::</label>
+                <input type="text" placeholder="Lugar de residencia" name="lugarResidencia"
+                       class="form-control" formControlName="lugar_residencia" required>
+                <small *ngIf="medicoForm.get('lugar_residencia')?.touched
+                && medicoForm.get('lugar_residencia')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
+              </div>
+
+              <div id="numeroCelular">
+                <label for="numeroCelular" class="label">{{ 'registro.celular' | translate }}::</label>
+                <input type="text" placeholder="Numero de Celular" name="numeroCelular"
+                       class="form-control" formControlName="numero_celular" required>
+                <small *ngIf="medicoForm.get('numero_celular')?.touched
+                && medicoForm.get('numero_celular')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
+              </div>
+              <div id="numeroRegistroProfesionalDv">
+                <label for="numeroRegistroProfesional" class="label">{{ 'registro.numeroRegistroProfesional' | translate }}::</label>
+                <input id="numeroRegistroProfesional" type="text" placeholder="Número Registro Profesional"
+                       name="registroprof"
+                       class="form-control" formControlName="numero_registro_profesional" required>
+                <small *ngIf="medicoForm.get('numero_registro_profesional')?.touched
+                && medicoForm.get('numero_registro_profesional')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
+              </div>
+              <div>
+                <label class="label">{{ 'registro.especialidades' | translate }}::</label><br/>
+                <p-multiSelect [options]="especialidadesList" formControlName="especialidadesSelected"
+                               optionLabel="nombre" optionValue="id" defaultLabel="Seleccione una o varias Especialidades"></p-multiSelect>
+              </div>
+              <div id="correo">
+                <label for="correo" class="label">{{ 'registro.correo' | translate }}::</label>
+                <input type="text" placeholder="correo" name="correo" class="form-control"
+                       formControlName="correo" required>
+                <small *ngIf="medicoForm.get('correo')?.touched
+                && medicoForm.get('correo')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
+              </div>
+              <div id="clave">
+                <label for="clave" class="label">{{ 'registro.clave' | translate }}::</label>
+                <input type="password" placeholder="Clave" name="clave" class="form-control"
+                       formControlName="clave" required>
+                <small *ngIf="medicoForm.get('clave')?.touched && medicoForm.get('clave')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
+                <small *ngIf="medicoForm.get('clave')?.touched
+                && medicoForm.get('clave')?.errors?.['minlength']" class="text-bg-danger">La lomgitud debe ser mínimo 6 caracteres</small>
+              </div>
+
+
+              <div id="clave2">
+                <label for="clave2" class="label">Confirmar Contraseña:</label>
+                <input type="password" placeholder="Confirmar Contraseña"
+                       formControlName="clave2" name="clave2" required>
+                <small *ngIf="medicoForm.get('clave2')?.touched
+                && medicoForm.get('clave2')?.errors?.['required']" class="text-bg-danger">Las claves no coinciden. </small>
+              </div>
+
+
+              <div style="width: 100%; float: center">
+                <div style="width: 50%; float: left">
+                  <button type="submit" title="Ingresar" name="Ingresar" class="button ingresar" >
+                    Ingresar
+                  </button>
+                </div>
+                <div style="width: 50%; float: left">
+                  <button type="submit" title="Cancelar" name="Cancelar" class="button cancelar" (click)="cancelar()">
+                    Cancelar
+                  </button>
+                </div>
+              </div>
 
             </form>
           </div>
@@ -137,7 +162,6 @@
         </div>
       </div>
     </div>
-
   </body>
 </html>
 
