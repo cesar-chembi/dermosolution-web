@@ -9,6 +9,7 @@
   </head>
 
   <body>
+  <p-toast></p-toast>
     <div>
       <div>
         <div>
@@ -49,7 +50,7 @@
                        formControlName="nombres" required>
                 <small *ngIf="medicoForm.get('nombres')?.touched && medicoForm.get('nombres')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
                 <small *ngIf="medicoForm.get('nombres')?.touched
-                && medicoForm.get('clave')?.errors?.['minlength']" class="text-bg-danger">La lomgitud debe ser mínimo 3 caracteres</small>
+                && medicoForm.get('nombres')?.errors?.['minlength']" class="text-bg-danger">La lomgitud debe ser mínimo 3 caracteres</small>
               </div>
 
               <div id="apellido">
@@ -82,8 +83,8 @@
               <div id="lnacimiento">
                 <label for="lnacimientos" class="label">{{ 'registro.lugarnacimiento' | translate }}::</label>
                 <select id="lnacimientos" placeholder="Lugar de Nacimiento" name="lnacimiento" class="form-control"
-                        formControlName="lugar_nacimiento"  required>
-                  <option *ngFor="let pais of paisesList" [ngValue]="pais.cod">{{pais.nombre}}</option>
+                        formControlName="lugar_nacimiento" required>
+                  <option *ngFor="let pais of paisesList" [ngValue]="pais.cod" selected="COL">{{pais.nombre}}</option>
                 </select>
                 <small *ngIf="medicoForm.get('lugar_nacimiento')?.touched
                 && medicoForm.get('lugar_nacimiento')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
@@ -113,7 +114,7 @@
               </div>
               <div>
                 <label class="label">{{ 'registro.especialidades' | translate }}::</label><br/>
-                <p-multiSelect [options]="especialidadesList" [(ngModel)]="especialidadesSelected"
+                <p-multiSelect [options]="especialidadesList" formControlName="especialidadesSelected"
                                optionLabel="nombre" optionValue="id" defaultLabel="Seleccione una o varias Especialidades"></p-multiSelect>
               </div>
               <div id="correo">
@@ -161,12 +162,6 @@
         </div>
       </div>
     </div>
-    <h3 class="mt-5">Formulario    </h3>
-    <pre>Estado formulario {{medicoForm.valid}}
-      <br />
-  Estatus {{medicoForm.status}}
-      </pre>
-    <pre>{{medicoForm.value | json}}</pre>
   </body>
 </html>
 

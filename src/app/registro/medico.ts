@@ -12,6 +12,7 @@ export class Medico {
   numero_registro_profesional : string;
   correo : string;
   clave : string;
+  casos_medicos:any[]
     constructor(id : number,  tipoIdentificacion : string,   numeroIdentificacion : number,   nombres : string, apellidos : string,
               fecha_nacimiento : Date,  sexo :string, lugar_nacimiento : string, lugar_residencia : string, numero_celular : string,
               numero_registro_profesional : string, correo : string, clave : string) {
@@ -27,5 +28,6 @@ export class Medico {
     this.numero_registro_profesional = numero_registro_profesional;
     this.correo = correo;
     this.clave = clave;
+    this.casos_medicos=[];
   }
 }

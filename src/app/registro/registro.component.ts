@@ -4,6 +4,8 @@ import {Medico} from "./medico";
 import {MedicoService} from "./medico.service";
 import {UtilidadesService} from "../general/utilidades.service";
 import {Especialidad} from "./especialidad";
+import {Message} from 'primeng//api';
+import {MessageService} from 'primeng/api';
 
 
 @Component({
@@ -16,12 +18,12 @@ export class RegistroComponent implements OnInit {
   submitted = false;
   tiposDocumentoList:any;
   paisesList:any;
-  especialidadesList: Array<Especialidad>;
-  especialidadesSelected: Array<Especialidad>;
+  especialidadesList: Especialidad[];
+  especialidadesSelected: Especialidad[];
   idMedico = 0;
 
   constructor(private fbuilder: FormBuilder, private medicoService: MedicoService,
-              private utilidadesService: UtilidadesService  ) { }
+              private utilidadesService: UtilidadesService, private messageService: MessageService  ) { }
 
   ngOnInit(): void {
     this.tiposDocumentoList = this.utilidadesService.getTiposDocumento()
@@ -40,7 +42,8 @@ export class RegistroComponent implements OnInit {
       numero_registro_profesional: ["", Validators.required],
       correo: ["", [Validators.required, Validators.email]],
       clave: ["", [Validators.required, Validators.minLength(6)]],
-      clave2: ["", Validators.required]
+      clave2: ["", Validators.required],
+      especialidadesSelected: []
 
     },
       {
@@ -103,14 +106,12 @@ export class RegistroComponent implements OnInit {
     return null;
   }
   crearMedico(): void {
-
     const fechaOK = this.validarFechas()
     if (fechaOK)
     {
       this.medicoForm.get('fecha_nacimiento')?.setValue("");
       return ;
     }
-
     const noIguales = this.claves12Novalido()
     if (noIguales) {
       this.medicoForm.get('clave2')?.setValue("");
@@ -123,14 +124,13 @@ export class RegistroComponent implements OnInit {
       })
     }
     const nuevoMedico = this.medicoForm.value;
+    this.especialidadesSelected = this.medicoForm.get('especialidadesSelected')?.value;
+    nuevoMedico.casos_medicos = [];
     this.medicoService.crear(nuevoMedico).subscribe(rta => {
-      console.log(rta)
       if (rta != null){
-        let mensaje = "Se creo el médico  ";
-        const idMedico = rta.id
-        console.log(idMedico)
-
-        this.mensajeExito(mensaje);
+        this.mensajeExito("Se creo el médico  se asignó su ID: "+rta.id);
+        this.idMedico = rta.id
+        this.adicionarEspecializaciones()
       }else{
         this.mensajeAdvertencia('El usuario no se pudo crear, intenta de nuevo');
 
@@ -141,19 +141,18 @@ export class RegistroComponent implements OnInit {
     this.medicoForm.reset();
   }
   adicionarEspecializaciones(){
-    for(let i = 0 ; i < this.especialidadesList.length ; i++){
-
-      this.medicoService.adicionaEspecialidadMedico(this.idMedico, this.especialidadesList[i].id).subscribe(rta => {
+    for(let i = 0 ; i < this.especialidadesSelected.length ; i++){
+      this.medicoService.adicionaEspecialidadMedico(this.idMedico, parseInt(""+this.especialidadesSelected[i])).subscribe(rta => {
         if (rta != null)
-          this.mensajeExito("Adicionó con exito, la especialidad al medico. ")
+            this.mensajeExito("Adicionó con exito, la especialidad al médico. ")
       });
     }
   }
   mensajeExito(mensaje: string ): void {
-    alert(mensaje)
+    this.messageService.add({severity:'success', summary:'Información', detail:mensaje});
   }
   mensajeAdvertencia(mensaje:string): void {
-    alert(mensaje)
+    this.messageService.add({severity:'warning', summary:'Información', detail:mensaje});
   }
 
   cancelar(): void {
