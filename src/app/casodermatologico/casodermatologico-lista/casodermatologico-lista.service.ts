@@ -14,7 +14,7 @@ constructor() {
 
 
 getCasos(): Observable<Caso[]> {
-  const casos = of(CASOS);
+ const casos = null;
   return casos;
 }
 

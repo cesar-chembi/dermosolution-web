@@ -1,0 +1,7 @@
+[
+  {"nombrecorto":"RC", "tipo": "REGISTRO CIVIL"},
+  {"nombrecorto":"TI", "tipo": "TARJETA IDENTIDAD"},
+  {"nombrecorto":"CC", "tipo": "CEDULA CIUDADANIA"},
+  {"nombrecorto":"PA", "tipo": "PASAPORTE"},
+  {"nombrecorto":"TE", "tipo": "TARJETA_EXTRANJERIA"}
+]

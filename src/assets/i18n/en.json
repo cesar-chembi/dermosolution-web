@@ -24,11 +24,18 @@
 	},
 
   "registro": {
+    "tipoIdentificacion": "ID Type",
+    "numeroIdentificacion": "Identification number",
     "nombres": "Names",
     "apellidos": "Last Names",
     "fechanacimiento": "Date of Birth",
-		"lugarnacimiento": "Lugar de Nacimiento",
+		"lugarnacimiento": "Place of birth",
     "celular": "Cell Phone",
+    "sexo": "Gender",
+    "lugarresidencia": "Place of residence",
+    "numeroRegistroProfesional": "Professional registration number",
+    "correo": "Email",
+    "clave": "Password",
     "aceptar": "Accept",
 		"salir": "Exit"
 	},

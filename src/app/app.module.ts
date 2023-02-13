@@ -19,11 +19,14 @@ import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableModule} from 'primeng/table';
 import { PanelModule } from 'primeng/panel';
+import {MessageModule} from 'primeng/message';
+import {MessagesModule} from 'primeng/messages';
 import { FileUploadModule} from 'primeng/fileupload';
 import {CarouselModule} from 'primeng/carousel';
 import { CasodermatologicoDetalleComponent } from './casodermatologico/casodermatologico-detalle/casodermatologico-detalle.component';
 import { CasoreclamadoDetalleComponent } from './casodermatologico/casoreclamado-detalle/casoreclamado-detalle.component';
-
+import {ToastModule} from 'primeng/toast';
+import {MessageService} from "primeng/api";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -41,11 +44,14 @@ export function HttpLoaderFactory(http: HttpClient) {
    ],
   imports: [
     BrowserModule,  ReactiveFormsModule, TableModule, CarouselModule,
-    BrowserAnimationsModule, PanelModule, FileUploadModule,
-    FooterModule, HeaderModule, RegistroModule,
+    BrowserAnimationsModule, PanelModule, FileUploadModule, MessageModule,
+    FooterModule, HeaderModule, RegistroModule, MessagesModule,
     AcademicaModule, RouteModule,
     HttpClientModule,
     FormsModule,
+    ToastModule,
+    MessagesModule,
+    MessageModule,
     TranslateModule.forRoot({
       defaultLanguage: 'es',
       useDefaultLang: true,
@@ -61,7 +67,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       enableTitleTranslate: true,
     })
   ],
-  providers: [CookieService],
+  providers: [CookieService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

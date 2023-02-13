@@ -170,13 +170,13 @@
                 <tr [ngClass]="{'row-impar': (c.id % 2) == 0, 'row-par': (c.id % 2) != 0}">
 
                   <td>{{ c.fecharegistro }}</td>
-                  <td>{{ c.paciente.nombre }}</td>
-                  <td>{{ c.paciente.nacionalidad }}</td>
+                  <td>{{ c.paciente.nombres }}</td>
+                  <td>{{ c.paciente.lugar_nacimiento }}</td>
                   <td>{{ c.descripcion }}</td>
                   <td>{{ c.paciente.edad }}</td>
                   <td>{{ c.paciente.sexo }}</td>
                   <td>
-                    <a href="#" routerLink="/detallereclamados/{{ c.id }}">
+                    <a href="#" routerLink="/detallereclamados/{{ c.id }}/{{ c.paciente.id }}">
 
                     <div *ngIf="c.estado == '1'">
                        <button type="submit" title="Ingresar" name="Ingresar" class="button consultar">
@@ -184,7 +184,7 @@
                       </button>
                     </div>
 
-                    <div *ngIf="c.estado == '2'">
+                    <div *ngIf="c.estado == 'CREADO'">
                       <button type="submit" title="Ingresar" name="Ingresar" class="button cancelar">
                           {{ 'listacaso.pordiagnosticar' | translate }}
                         </button>
