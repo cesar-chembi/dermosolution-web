@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "start:production": "ng serve -o --configuration production",
+    "build:production": "ng build --configuration=production"
   },
   "private": true,
   "dependencies": {

@@ -1,4 +1,5 @@
-const host = 'http://localhost:8000/';
+//const host = 'http://localhost:8000/';
+const host = 'https://dermosbkend.onrender.com/';
 
 export const environment = {
   production: false,
@@ -8,5 +9,3 @@ export const environment = {
   urlEspecialidadMedico: `${host}api/v1/medicosespecialidad/`
 
 }
-
-
