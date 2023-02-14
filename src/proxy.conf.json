@@ -1,9 +1,6 @@
 {
-  "/api/v1": {
+  "/api/*": {
     "target": "https://dermosbkend.onrender.com",
     "secure": false,
-      "pathRewrite": {
-        "^/api/v1": ""
-    }
   }
 }
