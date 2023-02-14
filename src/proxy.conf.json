@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://dermosbkend.onrender.com:4200",
+    "target": "http://localhost:4200",
     "secure": false,
       "pathRewrite": {
         "^/api": ""
