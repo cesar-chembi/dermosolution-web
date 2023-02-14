@@ -1,6 +1,6 @@
 {
   "/api/v1": {
-    "target": "http://localhost:4200",
+    "target": "https://dermoweb.onrender.com",
     "secure": false,
       "pathRewrite": {
         "^/api/v1": ""
