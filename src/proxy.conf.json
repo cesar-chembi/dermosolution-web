@@ -1,8 +1,7 @@
 {
   "/api": {
     "target": "https://dermosbkend.onrender.com:4200",
-    "secure": true,
-      "changeOrigin": true,
+    "secure": false,
       "pathRewrite": {
         "^/api": ""
     }
