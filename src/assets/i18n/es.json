@@ -42,6 +42,21 @@
 		"salir": "Salir",
     "especialidades": "Marque la especializaciones que posee"
 	},
+  "soporte": {
+    "medico": "Médico",
+    "tipo_soporte": "Tipo de soporte",
+    "institucion_educativa": "Institución educativa",
+    "nombre_programa": "Nombre del programa",
+    "descripcion": "Descripción",
+    "graduado": "¿Es graduado?",
+    "fecha_grado": "Fecha de grado",
+    "fecha_soporte": "Fecha de soporte",
+    "validado": "Validado",
+    "aceptar": "Aceptar",
+    "cancelar": "Cancelar",
+    "soportes": "Archivos de soporte",
+    "archivo": "Archivo"
+  },
 
 	"detallecaso": {
     "tituloinformacionpaciente": "Información Personal",

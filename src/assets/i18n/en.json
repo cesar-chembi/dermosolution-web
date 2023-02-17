@@ -37,8 +37,24 @@
     "correo": "Email",
     "clave": "Password",
     "aceptar": "Accept",
+    "cancelar": "Cancel",
 		"salir": "Exit"
 	},
+  "soporte": {
+    "medico": "Doctor",
+    "tipo_soporte": "Support type",
+    "institucion_educativa": "Educational institution",
+    "nombre_programa": "Program namea",
+    "descripcion": "Description",
+    "graduado": "¿Graduate?",
+    "fecha_grado": "Degree date",
+    "fecha_soporte": "Support date",
+    "validado": "Validated",
+    "aceptar": "Accept",
+    "cancelar": "Cancel",
+    "soportes": "Support file",
+    "archivo": "File"
+  },
 
 
 	"detallecaso": {

@@ -125,6 +125,10 @@ export class RegistroComponent implements OnInit {
     }
     const nuevoMedico = this.medicoForm.value;
     this.especialidadesSelected = this.medicoForm.get('especialidadesSelected')?.value;
+    if (this.especialidadesSelected === null){
+      this.mensajeAdvertencia('Debe selecionar Especialidades, o crearlas primero. !!');
+      return ;
+    }
     nuevoMedico.casos_medicos = [];
     this.medicoService.crear(nuevoMedico).subscribe(rta => {
       if (rta != null){

@@ -7,76 +7,95 @@
   </head>
 
   <body>
+  <p-toast></p-toast>
     <div>
       <div>
         <div>
           <div id="registro">
 
             <div class="titulo">Registro Información Académica y Profesional del Médico</div>
-            <form id="loginform">
-
-              <div id="institucion">
-                <label for="institucion" class="label">Institución Educativa:</label>
-                <input type="text" placeholder="Institución Educativa" name="institucion" required>
+            <form id="soportesForm"  [formGroup]="soporteForm" (ngSubmit)="crearSoporte()">
+              <div id="medico">
+                <label for="medico" class="label">{{ 'soporte.medico' | translate }}:</label>
+                <input type="text" placeholder="Médico" name="medico" formControlName="medico" required>
+                <small *ngIf="soporteForm.get('medico')?.touched
+                && soporteForm.get('medico')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
               </div>
-
-              <div id="programa">
-                <label for="programa" class="label">Nombre del Programa:</label>
-                <input type="text" placeholder="Nombre del Programa" name="programa" required>
+              <div id="tipoSoporte">
+                <label for="tipoSoporte" class="label">
+                  {{ 'soporte.tipo_soporte' | translate }}:
+                </label>
+                <select placeholder="Tipo Soporte" name="tipoSoporte" class="form-control"
+                        formControlName="tipo_soporte" required>
+                  <option *ngFor="let tiposoporte of tiposSoporteList" [ngValue]="tiposoporte.nombrecorto">{{tiposoporte.tipo}}</option>
+                </select>
+                <small *ngIf="soporteForm.get('tipo_soporte')?.touched
+                && soporteForm.get('tipo_soporte')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
               </div>
-
-              <div id="semestreaprobado">
-                <label for="semestreaprobado" class="label">Ultimo Semestre Aprobado:</label>
-                <input type="number" placeholder="Ultimo Semestre Aprobado" name="semestreaprobado" required>
+              <div id="institucioneducativa">
+                <label for="institucioneducativa" class="label">
+                  {{ 'soporte.institucion_educativa' | translate }}:
+                </label>
+                <input type="text" placeholder="Número identificación" name="institucioneducativa"
+                       class="form-control" formControlName="institucion_educativa"
+                       required>
+                <small *ngIf="soporteForm.get('institucion_educativa')?.touched
+                && soporteForm.get('institucion_educativa')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
               </div>
-
-
-              <div id="semestrecursado">
-                <label for="semestrecursado" class="label">Fecha Ultimo Semestre Cursado:</label>
-                <input type="date" placeholder="Fecha Ultimo Semestre Cursado" name="semestrecursado" required>
+              <div id="nombreprograma">
+                <label for="nombreprograma" class="label">
+                  {{ 'soporte.nombre_programa' | translate }}:
+                </label>
+                <input type="text" placeholder="Nombre del Programa" name="nombreprograma"
+                       class="form-control" formControlName="nombre_programa"
+                       required>
+                <small *ngIf="soporteForm.get('nombre_programa')?.touched
+                && soporteForm.get('nombre_programa')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
               </div>
+              <div id="descripcion">
+                <label for="descripcion" class="label">
+                  {{ 'soporte.descripcion' | translate }}:
+                </label>
+                <textarea laceholder="Descripción" name="descripcion"
+                       class="form-control" formControlName="descripcion" rows="3" cols="50" required >
+                </textarea>
+                <small *ngIf="soporteForm.get('descripcion')?.touched
+                && soporteForm.get('descripcion')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
+              </div>
+              <div id="fgrado">
+                <label for="fgrado" class="label">
+                  {{ 'soporte.fecha_grado' | translate }}:</label>
+                <input type="date" placeholder="Fecha de grado" name="fgrado"
+                       class="form-control" formControlName="fecha_grado" required>
+                <small *ngIf="soporteForm.get('fecha_grado')?.touched
+                && soporteForm.get('fecha_grado')?.errors?.['required'] " class="text-bg-danger">Este fecha no puede ser mayor a hoy</small>
+              </div>
+              <div id="graduado">
+                <label for="graduado" class="label">{{ 'soporte.graduado' | translate }}:</label>
+                <select  placeholder="Graduado" name="graduado" formControlName="graduado" required>
+                  <option value="1">SI</option>
+                  <option value="0">NO</option>
+                </select>
+                <small *ngIf="soporteForm.get('graduado')?.touched
+                && soporteForm.get('graduado')?.errors?.['required'] " class="text-bg-danger">Este dato es requerido</small>
+              </div>
+              <div id="files">
+                <label for="file" class="label">{{ 'soporte.archivo' | translate }}:</label>
+                <input
+                  formControlName="file"
+                  id="file"
+                  type="file"
+                  class="form-control"
+                  (change)="onFileChange($event)">
+                <small *ngIf="soporteForm.get('file')?.touched && soporteForm.get('file')?.invalid
+                && soporteForm.get('file')?.errors?.['required'] " class="text-bg-danger">Este dato es requerido</small>
 
-
-
-            <div id="graduado">
-              <label for="graduado" class="label">Graduado:</label>
-              <select id="graduado" placeholder="Graduado" name="graduado" required>
-                <option value="1">SI</option>
-                <option value="0">NO</option>
-              </select>
-            </div>
-
-
-            <div id="fgrado">
-              <label for="fgrado" class="label">Fecha de Grado:</label>
-              <input type="date" placeholder="Fecha de Grado" name="fgrado" required>
-            </div>
-
-
+              </div>
       <div style="width: 100%; float: center">
-        <label for="fgrado" class="label">Soportes de Autenticidad:</label>
-
-
-
-        <p-fileUpload name="demo[]" url="./upload.php" (onUpload)="onUpload($event)"
-        accept="image/*">
-        <ng-template pTemplate="content">
-            <ul *ngIf="uploadedFiles.length">
-                <li *ngFor="let file of uploadedFiles">{{file.name}} - {{file.size}} bytes</li>
-            </ul>
-        </ng-template>
-</p-fileUpload>
-
-
-
-
-
-
-
 
         <div style="width: 50%; float: right">
               <button type="submit" title="Cargar" name="Cargar" class="button ingresar">
-                  Cargar
+                {{ 'soporte.aceptar' | translate }}
                 </button>
               </div>
               <div style="width: 50%; float: left">
@@ -86,7 +105,7 @@
                   name="Cancelar"
                   class="button cancelar"
                 >
-                  Cancelar
+                  {{ 'soporte.cancelar' | translate }}
                 </button>
               </div>
 </div>
@@ -100,7 +119,45 @@
 
     <br>
     <br>
+  <div id="tabla">
+    <div class="card">
+      <p-table #dt2 [value]="soportes" dataKey="id"
+               [rows]="10" [showCurrentPageReport]="true"
+               [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
+               [paginator]="true" id="myTable"
+               currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+               [globalFilterFields]="['fecharegistro','paciente.nombre','paciente.nacionalidad','paciente.edad']"
+      >
+        <ng-template pTemplate="header" >
+          <tr>
+            <th id="tiposoporteT" >{{ 'soporte.tipo_soporte' | translate }}</th>
+            <th id="institucionT" >{{ 'soporte.institucion_educativa' | translate }}</th>
+            <th id="programaT" >{{ 'soporte.nombre_programa' | translate }}</th>
+            <th id="fechagradoT" > {{ 'soporte.fecha_grado' | translate }}</th>
+            <th id="archivoT" > {{ 'soporte.archivo' | translate }}</th>
+          </tr>
+        </ng-template>
 
+
+        <ng-template pTemplate="body" let-c>
+          <tr [ngClass]="{'row-impar': (c.id % 2) == 0, 'row-par': (c.id % 2) != 0}">
+
+            <td>{{ c.tipo_soporte }}</td>
+            <td>{{ c.institucion_educativa }}</td>
+            <td>{{ c.nombre_programa }}</td>
+            <td>{{ c.fecha_grado }}</td>
+            <td>{{ c.url }}</td>
+
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="5">No customers found.</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
   </body>
 </html>
 

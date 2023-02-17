@@ -5,5 +5,6 @@ export const environment = {
   urlMedico: `${host}api/v1/medicos/`,
   urlPaciente: `${host}api/v1/pacientes/`,
   urlEspecialidad: `${host}api/v1/especialiades/`,
-  urlEspecialidadMedico: `${host}api/v1/medicosespecialidad/`
+  urlEspecialidadMedico: `${host}api/v1/medicosespecialidad/`,
+  urlSoportesMedico: `${host}api/v1/soportes/`
 }
