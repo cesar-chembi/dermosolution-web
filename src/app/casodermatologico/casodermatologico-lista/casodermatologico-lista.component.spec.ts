@@ -1,21 +1,25 @@
 
 import { CasodermatologicoListaService} from './casodermatologico-lista.service'
 import { CasodermatologicoListaComponent } from './casodermatologico-lista.component';
+import { HttpClient } from '@angular/common/http';
+import { Router, ActivatedRoute} from '@angular/router';
+
 
 describe('CasodermatologicoListaComponent', () => {
+  let clienteHttp: HttpClient;
   let component: CasodermatologicoListaComponent;
-  let servicio: CasodermatologicoListaService;
+  let service: CasodermatologicoListaService;
+  let router: ActivatedRoute;
+  let route: Router;
 
   beforeEach(() => {
-    servicio = new CasodermatologicoListaService();
-    component = new CasodermatologicoListaComponent(servicio);
-  });
+    service = new CasodermatologicoListaService(clienteHttp);
+    component = new CasodermatologicoListaComponent(service, router, route);
+   });
 
 
   it('validar que solo retorna arreglo con los casos', () => {
 
-   // expect(servicio.getCasos.length > 0);
-
-    expect(component.getCasos.length > 0);
+     expect(component.getCasos.length > 0);
   });
 });
