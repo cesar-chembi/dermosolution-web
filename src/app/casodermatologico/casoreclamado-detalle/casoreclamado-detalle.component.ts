@@ -4,6 +4,8 @@ import { Caso } from '../casodermatologico-lista/caso';
 import { CasoreclamadoDetalleService } from './casoreclamado-detalle.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {Message,MessageService} from 'primeng/api';
+import { Diagnostico } from './diagnostico';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -15,12 +17,17 @@ export class CasoreclamadoDetalleComponent implements OnInit {
 
   msgs2: Message[];
 
+  diagnosticoobjeto: Diagnostico;
   caso : Caso;
   diagnostico : string;
   items = ["item1", "item2", "item3", "item4", "item5"];
   resultado: string;
-
+  aceptado : boolean = true;
+  isdisable : boolean = true;
+  idmedico:string;
 	responsiveOptions: any[];
+  pipe = new DatePipe('en-US');
+  fechaActual:string;
   constructor(private casoreclamadoDetalleService: CasoreclamadoDetalleService,
      private route: ActivatedRoute
     ) {
@@ -47,10 +54,10 @@ export class CasoreclamadoDetalleComponent implements OnInit {
 
   ngOnInit() {
 
-    let id = this.route.snapshot.paramMap.get('id')!;
+    this.idmedico = this.route.snapshot.paramMap.get('id')!;
     let idpaciente = this.route.snapshot.paramMap.get('idpaciente')!;
-    this.consultarDetalleReclamadoPorId(parseInt(id),parseInt(idpaciente));
-    console.log('estamos en el init del detalle');
+    this.consultarDetalleReclamadoPorId(parseInt(this.idmedico),parseInt(idpaciente));
+
   }
 
 
@@ -59,6 +66,7 @@ export class CasoreclamadoDetalleComponent implements OnInit {
     this.casoreclamadoDetalleService.getReclamadosDetalle(identificadorpaciente).subscribe(
        casos => {
         this.caso = casos[0];
+
       }
        );
 
@@ -69,10 +77,18 @@ export class CasoreclamadoDetalleComponent implements OnInit {
   actualizarDiagnostico():void{
     console.log('aguas el diagnostico')
     console.log(this.diagnostico)
-    this.casoreclamadoDetalleService.actualizarDiagnosticoCaso(this.caso.id, this.diagnostico)
+    let date: Date = new Date();
+    this.fechaActual = null;
+    this.fechaActual = this.pipe.transform(Date.now(), 'yyyy-MM-dd');
+
+    this.diagnosticoobjeto = new Diagnostico(this.caso.id, this.fechaActual,this.diagnostico,
+      parseInt(this.idmedico),this.aceptado, this.fechaActual);
+    this.casoreclamadoDetalleService.actualizarDiagnosticoCaso(
+      this.caso.id, parseInt(this.idmedico) ,
+      this.diagnostico, this.aceptado, this.fechaActual, this.diagnosticoobjeto)
     .subscribe(rta => {
       console.log(rta)
-        if (rta == null){
+        if (rta != null){
 
         this.msgs2 = [({severity:'success',
         summary:'Success', detail:'El diagnostico medico se registro correctamente'})];
@@ -87,6 +103,8 @@ export class CasoreclamadoDetalleComponent implements OnInit {
       }
 
   });
+
+
   }
 
 

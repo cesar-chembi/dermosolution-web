@@ -7,5 +7,6 @@ export const environment = {
   urlEspecialidad: `${host}api/v1/especialiades/`,
   urlEspecialidadMedico: `${host}api/v1/medicosespecialidad/`
 
+
 }
 

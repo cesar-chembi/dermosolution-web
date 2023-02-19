@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'academica', component: AcademicaComponent },
-  { path: 'detalle/:id', component: CasodermatologicoDetalleComponent },
+  { path: 'detalle/:id/:idpaciente', component: CasodermatologicoDetalleComponent },
   { path: 'detallereclamados/:id/:idpaciente', component: CasoreclamadoDetalleComponent },
   { path: 'listacasos', component: CasodermatologicoListaComponent },
   { path: 'casosreclamados', component: CasoreclamadoListaComponent }
