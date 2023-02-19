@@ -1,4 +1,5 @@
-const host = 'http://localhost:8000/';
+//const host = 'http://localhost:8000/';
+const host = 'https://dermosbkend.onrender.com/';
 
 export const environment = {
   production: false,
