@@ -41,8 +41,8 @@ export class CasoreclamadoListaComponent implements OnInit {
     public router: Router) {
 
     this.listasexo = [
-      {nombre: 'Femenino', codigo: '0'},
-      {nombre: 'Masculino', codigo: '1'}
+      {nombre: 'MUJER', codigo: 'MUJER'},
+      {nombre: 'HOMBRE', codigo: 'HOMBRE'}
 
     ]
 

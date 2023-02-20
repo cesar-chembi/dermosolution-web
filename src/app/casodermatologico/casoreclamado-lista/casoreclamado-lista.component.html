@@ -109,7 +109,7 @@
             [rows]="10" [showCurrentPageReport]="true"
             [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
             [paginator]="true" id="myTable"
-            currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} entries"
+            currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
             [globalFilterFields]="['fecharegistro','paciente.nombre','paciente.nacionalidad','paciente.edad']"
             >
 
@@ -166,11 +166,11 @@
 
                 </tr>
             </ng-template>
-            <ng-template pTemplate="body" let-c>
-                <tr [ngClass]="{'row-impar': (c.id % 2) == 0, 'row-par': (c.id % 2) != 0}">
+            <ng-template pTemplate="body" let-c ngFor let-i="rowIndex">
+              <tr [ngClass]="{'row-impar': (i % 2) == 0, 'row-par': (i % 2) != 0}">
 
-                  <td>{{ c.fecharegistro }}</td>
-                  <td>{{ c.paciente.nombres }}</td>
+                  <td>{{ c.fecha_creacion }}</td>
+                  <td>{{ c.paciente.nombres }} {{c.paciente.apellidos}}</td>
                   <td>{{ c.paciente.lugar_nacimiento }}</td>
                   <td>{{ c.descripcion }}</td>
                   <td>{{ c.paciente.edad }}</td>
@@ -178,13 +178,13 @@
                   <td>
                     <a href="#" routerLink="/detallereclamados/{{ c.id }}/{{ c.paciente.id }}">
 
-                    <div *ngIf="c.estado == '1'">
+                    <div *ngIf="c.estado == 'DIAGNOSTICADO'">
                        <button type="submit" title="Ingresar" name="Ingresar" class="button consultar">
                         {{ 'listacaso.diagnosticado' | translate }}
                       </button>
                     </div>
 
-                    <div *ngIf="c.estado == 'CREADO'">
+                    <div *ngIf="c.estado == 'RECLAMADO'">
                       <button type="submit" title="Ingresar" name="Ingresar" class="button cancelar">
                           {{ 'listacaso.pordiagnosticar' | translate }}
                         </button>

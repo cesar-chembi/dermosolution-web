@@ -15,13 +15,6 @@ export class CasoreclamadoListaService {
 constructor(private http: HttpClient) { }
 
 
-
-getReclamadosFiltros(parametros: any): Observable<any> {
-
-  return this.http.post("https://reqres.in/api/login", parametros);
-
-}
-
 getReclamados1(identificadormedico: string): Observable<Caso[]>{
   return this.http.get<Caso[]>(this.urlMedico+identificadormedico+'/casos-medicos/');
 }

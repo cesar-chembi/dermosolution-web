@@ -52,6 +52,7 @@
 		"sexo": "Sexo",
 		"lugarresidencia": "Lugar de Residencia",
 		"tituloperfildermatologico": "Perfil Dermatológico",
+    "informacionbasicalesion": "Información Básica de la Lesión del ",
     "formalesion": "Forma de la Lesión",
 		"tipolesion": "Tipo de Lesión",
 		"numerolesion": "Número de Lesiones",
@@ -59,9 +60,9 @@
 		"localizacionydistribucionlesion": "Localización y Distribución de la Lesión",
 		"descripcionlesion": "Descripción de la Lesión",
 		"fotografialesion": "Fotografía de la Lesión",
-		"reclamarcaso": "Fotografía de la Lesión",
-    "diagnostico": "Diagnóstico",
+		"diagnostico": "Diagnóstico",
     "diagnosticar": "Diagnosticar",
+    "reclamarcaso": "Reclamar Caso",
 		"salir": "Salir"
 	},
 
