@@ -231,6 +231,7 @@ body .ui-table .ui-table-tbody > tr > td { border: 1px solid black; }
     color: white;
     border-color: black !important;;
     transition: box-shadow 0.2s;
+    border: 3px solid black;
   }
 
   :host ::ng-deep .p-datatable .p-datatable-header {
@@ -267,7 +268,7 @@ body .ui-table .ui-table-tbody > tr > td { border: 1px solid black; }
   text-align: left;
   padding: 1rem 1rem;
   border: 2px solid black;
-  border-color: #E13535;
+  border-color: black;
   border-width: 0 0 1px 0;
   font-weight: 600;
   color: white;

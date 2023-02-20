@@ -12,163 +12,144 @@
 
   <body class="p-3 m-0 border-0 bd-example">
 
-    <div id="contenedor" style="background-color:white;">
-        <div class="panel panel-default" style="width: 45%; float: center; background-color:#0F89D1;">
-        <div class="panel-heading">
+    <div style="width: 100%" class="row">
+       <div style="width: 50%" class="col">
 
-          <div class="titulo">
-            {{ 'detallecaso.tituloinformacionpaciente' | translate }}
-            </div>
-            <div class="titulo">
-              {{ 'detallecaso.tituloinformacionpaciente2' | translate }}
-            </div>
+    <p-panel header=" {{ 'detallecaso.tituloinformacionpaciente' | translate }}
+     {{ 'detallecaso.tituloinformacionpaciente2' | translate }}" [toggleable]="true">
 
-          </div>
-        <div class="panel-body" style="width: 45%; float: center; background-color:#0F89D1;">
-          <div id="nombres">
-            <label for="nombres" class="label">
-              {{ 'detallecaso.nombres' | translate }} : {{caso.paciente.nombres}}
-            </label>
-
-
-
-          </div>
-
-          <div id="edad">
-            <label for="edad" class="label">
-              {{ 'detallecaso.edad' | translate }} : {{caso.paciente.edad}}
-            </label>
-          </div>
-
-          <div id="sexo">
-            <label for="sexo" class="label">
-              {{ 'detallecaso.sexo' | translate }} : {{caso.paciente.sexo}}
-            </label>
-          </div>
-
-          <div id="nacionalidad">
-            <label for="nacionalidad" class="label">
-              {{ 'detallecaso.nacionalidad' | translate }} : {{caso.paciente.lugar_nacimiento}}
-            </label>
-          </div>
-
-          <div id="residencia">
-            <label for="residencia" class="label">
-              {{ 'detallecaso.lugarresidencia' | translate }} : {{caso.paciente.lugar_residencia}}
-            </label>
-          </div>
-
-        </div>
-      </div>
-
-<div style="width: 10%; float: center; background-color:white;"></div>
-
-
-<div class="panel panel-default" style="width: 45%; float: center; background-color:#0F89D1;">
-
-<div class="panel-heading">
-
-  <div class="titulo">
-    {{ 'detallecaso.tituloperfildermatologico' | translate }}
+     <div id="nombres">
+      <label for="nombres" class="label2">
+        {{ 'detallecaso.nombres' | translate }} : {{caso.paciente.nombres}}  {{caso.paciente.apellidos}}
+      </label>
     </div>
 
-    <div class="titulo">
-      {{ 'detallecaso.tituloinformacionpaciente2' | translate }}
+    <div id="edad">
+      <label for="edad" class="label2">
+        {{ 'detallecaso.edad' | translate }} : {{caso.paciente.edad}}
+      </label>
     </div>
+
+    <div id="sexo">
+      <label for="sexo" class="label2">
+        {{ 'detallecaso.sexo' | translate }} : {{caso.paciente.sexo}}
+      </label>
+    </div>
+
+    <div id="nacionalidad">
+      <label for="nacionalidad" class="label2">
+        {{ 'detallecaso.nacionalidad' | translate }} : {{caso.paciente.lugar_nacimiento}}
+      </label>
+    </div>
+
+    <div id="residencia">
+      <label for="residencia" class="label2">
+        {{ 'detallecaso.lugarresidencia' | translate }} : {{caso.paciente.lugar_residencia}}
+      </label>
+    </div>
+
+
+    </p-panel>
 
   </div>
-  <div class="panel-body" style="width: 50%; float: center; background-color:#0F89D1;">
+<div style="width: 50%" class="col">
+
+    <p-panel header=" {{ 'detallecaso.tituloperfildermatologico' | translate }}
+    {{ 'detallecaso.tituloinformacionpaciente2' | translate }}" [toggleable]="true">
+     Content
+   </p-panel>
+
+</div>
+
+    </div>
+
+
+<br/>
+
+
+    <div style="width: 100%" class="row">
+      <div style="width: 50%" class="col">
+
+   <p-panel header=" {{ 'detallecaso.informacionbasicalesion' | translate }}
+    {{ 'detallecaso.tituloinformacionpaciente2' | translate }}" [toggleable]="true">
+
     <div id="forma">
-      <label for="forma" class="label">
-        {{ 'detallecaso.formalesion' | translate }} : {{caso.descripcion}}
-      </label>
-    </div>
-
-    <div id="tipo">
-      <label for="tipo" class="label">
-        {{ 'detallecaso.tipolesion' | translate }} : {{caso.descripcion}}
-      </label>
-    </div>
-    <div id="numero">
-      <label for="numero" class="label">
-        {{ 'detallecaso.numerolesion' | translate }} : {{caso.descripcion}}
-      </label>
-    </div>
-    <div id="color">
-      <label for="color" class="label">
-        {{ 'detallecaso.colorlesion' | translate }} : {{caso.descripcion}}
-      </label>
-    </div>
-
-    <div id="localizacion">
-      <label for="localizacion" class="label">
-        {{ 'detallecaso.localizacionydistribucionlesion' | translate }} :
-        {{caso.descripcion}}
-      </label>
-    </div>
-
-          </div>
+      <label for="forma" class="label2">
+         {{ 'detallecaso.formalesion' | translate }} : {{caso.descripcion}}
+       </label>
      </div>
-      </div>
+
+     <div id="tipo">
+       <label for="tipo" class="label2">
+         {{ 'detallecaso.tipolesion' | translate }} : {{caso.descripcion}}
+       </label>
+     </div>
+     <div id="numero">
+       <label for="numero" class="label2">
+         {{ 'detallecaso.numerolesion' | translate }} : {{caso.descripcion}}
+       </label>
+     </div>
+     <div id="color">
+       <label for="color" class="label2">
+         {{ 'detallecaso.colorlesion' | translate }} : {{caso.descripcion}}
+       </label>
+     </div>
+
+     <div id="localizacion">
+       <label for="localizacion" class="label2">
+         {{ 'detallecaso.localizacionydistribucionlesion' | translate }} :
+         {{caso.descripcion}}
+       </label>
+     </div>
+
+
+
+   </p-panel>
+
+ </div>
+<div style="width: 50%" class="col">
+
+   <p-panel header="  {{ 'detallecaso.descripcionlesion' | translate }}
+   {{ 'detallecaso.tituloinformacionpaciente2' | translate }}" [toggleable]="true">
+
+   <div id="descripcioncaso">
+    <label for="descripcioncaso" class="label2">
+      {{caso.descripcion}}
+    </label>
+  </div>
+
+  </p-panel>
+
+</div>
+
+   </div>
 
 
 
     <br/>
 
-    <div class="panel panel-default" style="margin-left: 100px;  width: 80%; float: center; background-color:#0F89D1;">
-      <div class="panel-heading">
 
-        <div class="titulo">
-          {{ 'detallecaso.descripcionlesion' | translate }}
-          </div>
-          <div class="titulo">
-            {{ 'detallecaso.tituloinformacionpaciente2' | translate }}
-          </div>
+    <p-panel header="{{ 'detallecaso.fotografialesion' | translate }}
+    {{ 'detallecaso.tituloinformacionpaciente2' | translate }}" [toggleable]="true">
 
-        </div>
-      <div class="panel-body" style="background-color:#0F89D1;">
-        <div id="descripcioncaso">
-          <label for="descripcioncaso" class="label">
-            {{caso.descripcion}}
-          </label>
-        </div>
+    <div class="panel-body" style="background-color:#0F89D1;">
+    <p-carousel [value]="items" [numVisible]="4" [numScroll]="4">
+     <ng-template let-item pTemplate="item">
+       <div class="itemlabel">{{ item }}</div>
+       <div class="mb-3">
+         <img src="assets/image/{{item}}.jpg"
+         [alt]="item" styleClass="product-image" />
+     </div>
+     <div class="car-buttons mt-5">
+       <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-search"></p-button>
+
+   </div>
+     </ng-template>
+   </p-carousel>
+ </div>
+   </p-panel>
 
 
-      </div>
-    </div>
-
-    <br/>
-
-    <div  class="panel panel-default" style="margin-left: 100px; width: 80%;background-color:#0F89D1;">
-      <div class="panel-heading">
-
-        <div class="titulo">
-          {{ 'detallecaso.fotografialesion' | translate }}
-
-          </div>
-          <div class="titulo">
-            {{ 'detallecaso.tituloinformacionpaciente2' | translate }}
-          </div>
-
-        </div>
-      <div class="panel-body" style="background-color:#0F89D1;">
-
-        <p-carousel [value]="items" [numVisible]="3" [numScroll]="3">
-          <ng-template let-item pTemplate="item">
-            <div class="item">{{ item }}</div>
-            <div class="mb-3">
-              <img src="assets/image/{{item}}.jpg"
-              [alt]="item" styleClass="product-image" />
-          </div>
-          <div class="car-buttons mt-5">
-            <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-search"></p-button>
-
-        </div>
-          </ng-template>
-        </p-carousel>
-
-      </div>
-    </div>
 
     <br>
 
@@ -183,15 +164,31 @@
       </div>
 
     <div class="panel-body" style="background-color:#0F89D1;">
-    <textarea type="text" formControlName ="diagnostico" [(ngModel)]="diagnostico"
-    placeholder="Diagnostico del medico" name="diagnostico" class="form-control" id="diagnostico" rows="3"></textarea>
+
+      <div *ngIf="caso.estado == 'DIAGNOSTICADO'">
+        <textarea [disabled]="isdisable" type="text" formControlName ="diagnostico" [(ngModel)]="caso.diagnosticos"
+         name="diagnostico" class="form-control"
+        id="diagnosticotextarea" rows="3" ></textarea>
+      </div>
+
+      <div *ngIf="caso.estado == 'RECLAMADO'">
+        <textarea type="text" formControlName ="diagnostico" [(ngModel)]="diagnostico"
+         placeholder="Diagnostico del medico" name="diagnostico" class="form-control"
+        id="diagnostico" rows="3"></textarea>
+      </div>
+
+
   </div>
  </div>
 </div>
 
 <p-messages  [(value)]="msgs2"></p-messages>
 
-<div id="contenedor">
+<div *ngIf="caso.estado == 'RECLAMADO'">
+  <div id="contenedor" >
+
+
+
   <button type="submit" title="Ingresar" (click)="actualizarDiagnostico()" name="Ingresar" class="button ingresar">
     {{ 'detallecaso.diagnosticar' | translate }}
   </button>
@@ -203,6 +200,7 @@
     <button type="submit" title="Cancelar" name="Cancelar" class="button cancelar">
       {{ 'login.botoncancelar' | translate }}
     </button>
+ </div>
 </div>
   </form>
 

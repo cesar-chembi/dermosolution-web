@@ -1,21 +1,24 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { CASOS } from './mock-casos';
-import { Caso } from './caso';
+import { Caso } from '../casodermatologico-lista/caso';
+import {environment} from "../../../environments/environment";
+
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CasodermatologicoListaService {
 
-constructor() {
- // This is intentional
-}
+  urlCasosMedicos: string = environment.urlCasosMedicos;
+
+  constructor(private http: HttpClient) { }
 
 
-getCasos(): Observable<Caso[]> {
- const casos = null;
-  return casos;
+getCreados(): Observable<Caso[]>{
+  return this.http.get<Caso[]>(this.urlCasosMedicos);
 }
 
 
