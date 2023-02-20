@@ -1,0 +1,7 @@
+[
+  {"nombrecorto":"PREGRADO", "tipo": "PREGRADO"},
+  {"nombrecorto":"ESPECIALIZACION", "tipo": "ESPECIALIZACION"},
+  {"nombrecorto":"CERTIFICACION", "tipo": "CERTIFICACION"},
+  {"nombrecorto":"SEMINARIO", "tipo": "SEMINARIO"},
+  {"nombrecorto":"DIPLOMADO", "tipo": "DIPLOMADO"}
+]

@@ -125,7 +125,7 @@
                 && medicoForm.get('correo')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
               </div>
               <div id="clave">
-                <label for="clave" class="label">{{ 'registro.clave' | translate }}::</label>
+                <label for="clave" class="label">{{ 'registro.clave' | translate }}:</label>
                 <input type="password" placeholder="Clave" name="clave" class="form-control"
                        formControlName="clave" required>
                 <small *ngIf="medicoForm.get('clave')?.touched && medicoForm.get('clave')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
@@ -146,12 +146,12 @@
               <div style="width: 100%; float: center">
                 <div style="width: 50%; float: left">
                   <button type="submit" title="Ingresar" name="Ingresar" class="button ingresar" >
-                    Ingresar
+                    {{ 'registro.aceptar' | translate }}
                   </button>
                 </div>
                 <div style="width: 50%; float: left">
                   <button type="submit" title="Cancelar" name="Cancelar" class="button cancelar" (click)="cancelar()">
-                    Cancelar
+                    {{ 'registro.cancelar' | translate }}
                   </button>
                 </div>
               </div>
