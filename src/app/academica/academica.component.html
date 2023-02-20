@@ -148,7 +148,7 @@
             <td>{{ c.institucion_educativa }}</td>
             <td>{{ c.nombre_programa }}</td>
             <td>{{ c.fecha_grado }}</td>
-            <td><a href="{{c.url}}" target="_blank">{{ 'soporte.ver' | translate }}</a> </td>
+            <td><a href="{{c.url}}" target="_blank" rel="noopener">{{ 'soporte.ver' | translate }}</a> </td>
             <td>
               <button  title=""  (click)="showDialog(c.id)"  name="borrar" class="button ingresar">
               {{ 'soporte.borrar' | translate }}
