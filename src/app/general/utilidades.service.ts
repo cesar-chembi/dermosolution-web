@@ -22,5 +22,4 @@ export class UtilidadesService {
     let Paises: any = paises;
     return Paises
   }
-
 }

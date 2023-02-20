@@ -6,7 +6,8 @@ import {MessageService} from "primeng/api";
 import {SoporteService} from "./soporte.service";
 import {Soporte} from "./soporte";
 import { UploadResponse } from 'aws-s3-upload-ash/dist/types';
-import { environment } from "../../environments/environment";
+import { EnvService } from '../servicios/env.service';
+
 @Component({
   selector: 'app-academica',
   templateUrl: './academica.component.html',
@@ -21,20 +22,24 @@ export class AcademicaComponent implements OnInit {
   tiposSoporteList:any;
   fileSelected: any = null;
   idSoporteSelect : number = 0;
-
+  datosList:any;
+  awsAK:string;
+  awsSK:string;
+  S3CustomClient: AWSS3UploadAshClient;
 
   config = {
-    bucketName: 'dermosolutionsweb',
+    bucketName: '',
     dirName: 'soportes', /* optional - when use: e.g BUCKET_ROOT/dirName/fileName.extesion */
-    region: 'us-east-1',
-    accessKeyId: environment.AWS_ACCESS_KEY,
-    secretAccessKey: environment.AWS_SECRET_KEY,
-    s3Url: 'https://dermosolutionsweb.s3.amazonaws.com/'
+    region: '',
+    accessKeyId: '',
+    secretAccessKey: '',
+    s3Url: ''
   }
-  S3CustomClient: AWSS3UploadAshClient = new AWSS3UploadAshClient(this.config);
+
 
   constructor(private fbuilder: FormBuilder, private soporteService: SoporteService,
-              private utilidadesService: UtilidadesService, private messageService: MessageService) { }
+              private utilidadesService: UtilidadesService, private messageService: MessageService,
+              private env: EnvService) { }
 
 
   uploadedFiles: any[] = [];
@@ -47,6 +52,7 @@ export class AcademicaComponent implements OnInit {
   }
   ngOnInit() {
     let fechaHoy = new Date()
+    this.iniciarBucket()
     this.getSoportes();
     this.tiposSoporteList = this.utilidadesService.getTiposSoporte()
     this.soporteForm = this.fbuilder.group({
@@ -64,6 +70,15 @@ export class AcademicaComponent implements OnInit {
       {
         Validators:[this.validarFecha('fecha_grado')]
       });
+  }
+  iniciarBucket(){
+    console.log(this.datosList)
+    this.config.bucketName = this.env.s3;
+    this.config.s3Url = this.env.HTTPS3;
+    this.config.region = this.env.S3REGION;
+    this.config.accessKeyId = this.env.AWS_AKEY;
+    this.config.secretAccessKey = this.env.AWS_SKEY;
+    this.S3CustomClient = new AWSS3UploadAshClient(this.config);
   }
 
   validarFecha(fecha_grado: string){

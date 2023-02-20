@@ -6,9 +6,7 @@ export const environment = {
   urlPaciente: `${host}api/v1/pacientes/`,
   urlEspecialidad: `${host}api/v1/especialiades/`,
   urlEspecialidadMedico: `${host}api/v1/medicosespecialidad/`,
-  urlSoportesMedico: `${host}api/v1/soportes/`,
-  AWS_ACCESS_KEY: "AKIAYPMBOS4NNNRLS7Q4",
-  AWS_SECRET_KEY: "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"
+  urlSoportesMedico: `${host}api/v1/soportes/`
 }
 
 
