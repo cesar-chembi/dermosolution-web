@@ -53,7 +53,16 @@
     "aceptar": "Accept",
     "cancelar": "Cancel",
     "soportes": "Support file",
-    "archivo": "File"
+    "archivo": "File",
+    "acciones": "Actions",
+    "borrar":"Remove",
+    "ver":"View",
+    "vacio": "No Support found.",
+    "borrarpreg": "Do you delete record ?.",
+    "encabezadocrear": "Add support. ",
+    "tituloFormcrear": "Fill out the following information",
+    "titulogeneral":"Registration of Academic and Professional Information of the Physician"
+
   },
 
 

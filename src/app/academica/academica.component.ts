@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Especialidad} from "../registro/especialidad";
-import {MedicoService} from "../registro/medico.service";
+import AWSS3UploadAshClient from "aws-s3-upload-ash";
 import {UtilidadesService} from "../general/utilidades.service";
 import {MessageService} from "primeng/api";
 import {SoporteService} from "./soporte.service";
-import {Caso} from "../casodermatologico/casodermatologico-lista/caso";
 import {Soporte} from "./soporte";
-
+import { UploadResponse } from 'aws-s3-upload-ash/dist/types';
+import { environment } from "../../environments/environment";
 @Component({
   selector: 'app-academica',
   templateUrl: './academica.component.html',
@@ -20,10 +19,22 @@ export class AcademicaComponent implements OnInit {
   submitted = false;
   idSoporte = 0;
   tiposSoporteList:any;
-  archivo: any;
+  fileSelected: any = null;
+  idSoporteSelect : number = 0;
+
+
+  config = {
+    bucketName: 'dermosolutionsweb',
+    dirName: 'soportes', /* optional - when use: e.g BUCKET_ROOT/dirName/fileName.extesion */
+    region: 'us-east-1',
+    accessKeyId: environment.AWS_ACCESS_KEY,
+    secretAccessKey: environment.AWS_SECRET_KEY,
+    s3Url: 'https://dermosolutionsweb.s3.amazonaws.com/'
+  }
+  S3CustomClient: AWSS3UploadAshClient = new AWSS3UploadAshClient(this.config);
 
   constructor(private fbuilder: FormBuilder, private soporteService: SoporteService,
-              private utilidadesService: UtilidadesService, private messageService: MessageService  ) { }
+              private utilidadesService: UtilidadesService, private messageService: MessageService) { }
 
 
   uploadedFiles: any[] = [];
@@ -48,9 +59,7 @@ export class AcademicaComponent implements OnInit {
       fecha_grado: ["", Validators.required],
       fecha_soporte:[fechaHoy.getFullYear()+"-"+(fechaHoy.getMonth() + 1)+"-"+fechaHoy.getDate()],
       validado: ["0", Validators.required],
-      file: ['', Validators.required],
-      url: ['', Validators.required],
-      fileSource: ['', Validators.required]
+      file: ["", Validators.required]
     },
       {
         Validators:[this.validarFecha('fecha_grado')]
@@ -76,6 +85,9 @@ export class AcademicaComponent implements OnInit {
 
   }
   crearSoporte(): void {
+    this.handleSendFile()
+  }
+  registraSoporte(locationfile: string): void {
 
     if (this.soporteForm.invalid){
       return Object.values(this.soporteForm.controls).forEach(control =>{
@@ -83,11 +95,11 @@ export class AcademicaComponent implements OnInit {
       })
     }
     const nuevoSoporte = this.soporteForm.value;
-    const formData = new FormData();
-    formData.append('file', this.soporteForm.get('fileSource').value);
+    nuevoSoporte.url  = locationfile;
     this.soporteService.crear(nuevoSoporte).subscribe(rta => {
       if (rta != null){
-        this.mensajeExito("Se creo el soporte  se asignó su ID: "+rta.id);
+        this.mensajeExito("Se creo el soporte  al medico");
+        this.getSoportes()
       }else{
         this.mensajeAdvertencia('El soporte no se pudo adicionar, intenta de nuevo');
 
@@ -114,15 +126,57 @@ export class AcademicaComponent implements OnInit {
   onFileChange(event) {
 
     if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.archivo = file;
-      this.soporteForm.patchValue({
-        fileSource: file
-      });
+      this.fileSelected = event.target.files[0];
+
     }
   }
   getSoportes()
-  {
-    this.soporteService.getListaSoportes().subscribe(soportes => this.soportes = soportes);
+  { const idMedico = 1;
+    this.soporteService.getListaSoportesByMedico(idMedico).subscribe(soportes => this.soportes = soportes);
   }
+
+
+  async handleSendFile() {
+    await this.S3CustomClient
+      .uploadFile(this.fileSelected, this.fileSelected.type, undefined, this.fileSelected.name, "private")
+      .then((data: UploadResponse) => {
+        //console.log(data)
+        //this.mensajeExito("Archivo subido"+data.location)
+        this.registraSoporte(data.location)
+      })
+      .catch((err: any) => {console.error(err)
+        this.mensajeAdvertencia("Error al enviar el Archivo al S3, no se puede registrar el soporte")
+      })
+  }
+  borrarSoporte(){
+    if (this.idSoporteSelect ==0){
+      this.mensajeAdvertencia('No ha selecionado un soporte para borrar');
+      return ;
+    }
+    this.display = false;
+    this.soporteService.borrarSoporteMedico(this.idSoporteSelect).subscribe(rta => {
+        if (rta == null){
+          this.mensajeExito("Se eliminó el soporte del medico");
+          this.getSoportes()
+          this.idSoporteSelect = 0
+        }else{
+          this.mensajeAdvertencia('El soporte no se pudo eliminar, intenta de nuevo');
+        }
+      },
+      error => {
+        this.mensajeAdvertencia(error.message)
+      });
+
+  }
+  display: boolean = false;
+
+  showDialog(id: number) {
+    this.idSoporteSelect = id;
+    this.display = true;
+  }
+  hideDialog() {
+
+    this.display = false;
+  }
+
 }

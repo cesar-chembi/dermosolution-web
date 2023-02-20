@@ -11,6 +11,7 @@ import {Especialidad} from "../registro/especialidad";
 })
 export class SoporteService {
   urlSoportesMedico: string = environment.urlSoportesMedico;
+  urlMedico: string = environment.urlMedico;
 
   constructor(private http: HttpClient) { }
   crear(soporte: Soporte): Observable<any>{
@@ -18,6 +19,12 @@ export class SoporteService {
   }
   getListaSoportes(): Observable<Soporte[]>{
     return this.http.get<Soporte[]>(this.urlSoportesMedico);
+  }
+  getListaSoportesByMedico(idMedico: number): Observable<Soporte[]>{
+    return this.http.get<Soporte[]>(this.urlMedico+idMedico+'/soportes/');
+  }
+  borrarSoporteMedico(idSoporte: number): Observable<any>{
+    return this.http.delete<any>(`${this.urlSoportesMedico}${idSoporte}/`);
   }
 
 }

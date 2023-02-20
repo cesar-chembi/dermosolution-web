@@ -55,7 +55,15 @@
     "aceptar": "Aceptar",
     "cancelar": "Cancelar",
     "soportes": "Archivos de soporte",
-    "archivo": "Archivo"
+    "archivo": "Archivo",
+    "acciones": "Acciones",
+    "borrar":"Eliminar",
+    "ver":"Ver",
+    "vacio": "No hay soportes actualmente",
+    "borrarpreg": "¿ Desea borrar el soporte?.",
+    "encabezadocrear": "Adicionar soporte. ",
+    "tituloFormcrear":"Diligencie los siguientes datos",
+    "titulogeneral":"Registro Información Académica y Profesional del Médico"
   },
 
 	"detallecaso": {
