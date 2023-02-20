@@ -187,3 +187,47 @@
   }
 
 
+  :host ::ng-deep .row-par {
+    background: #65B3FF !important;
+    color: white;
+    border-color: black;
+    transition: box-shadow 0.2s;
+  }
+
+  :host ::ng-deep .row-impar {
+    background: white !important;
+    color: white;
+    border-color: black;
+    transition: box-shadow 0.2s;
+  }
+  :host ::ng-deep .p-datatable .p-datatable-header {
+    background: #036DCB;
+    color: #495057;
+    border: 1px solid black;
+    border-width: 1px 0 1px 0;
+    padding: 1rem 1rem;
+    font-weight: 600;
+  }
+
+
+  :host ::ng-deep .p-panel .p-panel-header {
+    border: 1px solid #dee2e6;
+    padding: 1rem;
+    background: #036DCB;
+    color: white;
+    border-top-right-radius: 1px;
+    border-top-left-radius: 1px;
+  }
+
+
+
+  :host ::ng-deep .p-datatable .p-datatable-thead > tr > th {
+    text-align: left;
+    padding: 1rem 1rem;
+    border: 1px solid #e9ecef;
+    border-width: 0 0 1px 0;
+    font-weight: 600;
+    color: white;
+    background: #036DCB;
+    transition: box-shadow 0.2s;
+  }

@@ -15,7 +15,7 @@ export class AppComponent {
       value: 'en',
     },
     {
-      key: 'Spanish',
+      key: 'Español',
       value: 'es',
     },
   ];

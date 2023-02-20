@@ -27,6 +27,8 @@ import { CasodermatologicoDetalleComponent } from './casodermatologico/casoderma
 import { CasoreclamadoDetalleComponent } from './casodermatologico/casoreclamado-detalle/casoreclamado-detalle.component';
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from "primeng/api";
+import {EnvServiceProvider} from "./servicios/env.service.provider";
+
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -67,7 +69,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       enableTitleTranslate: true,
     })
   ],
-  providers: [CookieService, MessageService],
+  providers: [CookieService, MessageService, EnvServiceProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

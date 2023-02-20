@@ -10,7 +10,7 @@ export interface Caso {
   paciente:Paciente;
   //medico: Medico;
   //perfildermatologico: Perfildermatologico;
-  //diagnostico:string;
+  diagnosticos:string[];
   //fotografias: Fotografiacaso[];
 
 

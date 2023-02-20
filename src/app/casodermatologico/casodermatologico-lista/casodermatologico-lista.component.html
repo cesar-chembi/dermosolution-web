@@ -12,78 +12,89 @@
   <p-panel header="Consulta Casos Dermatológicos">
 
     <div id="registro">
-      <form id="loginform">
+      <form id="filtroform" [formGroup] = "filtroform"  (ngSubmit)="submit()">
 
-       <div id="contenedor">
-        <div id="finicial">
-          <label for="finicial" class="label">Fecha Inicial de Registro:</label>
-          <input type="date" placeholder="Fecha Inicial de Registro:" name="finicial">
-        </div>
-
-
-        <div id="paciente">
-          <label for="paciente" class="label">Nombre del Paciente:</label>
-          <input type="text" placeholder="Nombre del Paciente" name="paciente">
-        </div>
-
-        <div id="edad">
-          <label for="edad" class="label">Edad del Paciente:</label>
-          <input type="number" placeholder="Edad del Paciente:" name="edad">
-        </div>
+        <div id="contenedor">
+         <div id="finicial">
+           <label for="finicial" class="label">Fecha Inicial de Registro:</label>
+           <input type="date" formControlName ="finicial" [(ngModel)]="finicial" placeholder="Fecha Inicial de Registro:" name="finicial">
+         </div>
 
 
+         <div id="nombre">
+           <label for="nombre" class="label">Nombre del Paciente:</label>
+           <input type="text" formControlName ="nombre" [(ngModel)]="nombre" placeholder="Nombre del Paciente" name="nombre">
+         </div>
 
-      </div>
-
-      <div  id="contenedor">
-        <div id="ffinal">
-          <label for="ffinal" class="label">Fecha Final de Registro:</label>
-          <input type="date" placeholder="Fecha Final de Registro:" name="ffinal">
-        </div>
-
-        <div id="nacionalidad">
-          <label for="nacionalidad" class="label">Nacionalidad del Paciente:</label>
-          <select id="nacionalidad" placeholder="Nacionalidad del Paciente:" name="nacionalidad">
-            <option value="0">Argentina</option>
-            <option value="1">Colombia</option>
-            <option value="2">Ecuador</option>
-          </select>
-        </div>
-
-
-        <div id="sexo">
-          <label for="sexo" class="label">Sexo:</label>
-          <select id="sexo" placeholder="Sexo" name="sexo">
-            <option value="1">Masculino</option>
-            <option value="0">Femenino</option>
-          </select>
-        </div>
-
-      </div>
-
-
-    <div id="fila">
-
-
-      <div id="descripcion">
-        <label for="descripcion" class="label">Descripción Caso:</label>
-        <input type="text" placeholder="Descripción Caso" name="descripcion" required>
-      </div>
-
-
-    </div>
-    <div id="contenedor">
-
-      <button type="submit" title="Consultar" name="consultar" class="button consultar">
-            Consultar
-          </button>
-        </div>
+         <div id="edad">
+           <label for="edad" class="label">Edad del Paciente:</label>
+           <input type="number" formControlName ="edad" [(ngModel)]="edad" placeholder="Edad del Paciente:" name="edad">
+         </div>
 
 
 
+       </div>
+
+       <div  id="contenedor">
+         <div id="ffinal" >
+           <label for="ffinal" class="label">Fecha Final de Registro:</label>
+           <input type="date" formControlName ="ffinal" [(ngModel)]="ffinal" placeholder="Fecha Final de Registro:" name="ffinal">
+         </div>
+
+         <div id="nacionalidad">
+           <label for="nacionalidad" class="label">Nacionalidad</label>
+           <select name="nacionalidad" [(ngModel)]="nacionalidad" (change) = "valueChangeNacionalidad($event)">
+             <option *ngFor="let pais of listapaises" [value]="pais.codigo">
+               <span>{{ pais.nombre }}</span>
+             </option>
+           </select>
+         </div>
 
 
-      </form>
+         <div id="sexo" >
+           <label for="sexo" class="label">Sexo:</label>
+           <select id="sexo" placeholder="Sexo" name="sexo" [(ngModel)]="sexo" (change) = "valueChangeSexo($event)">
+             <option *ngFor="let s of listasexo" [value]="s.codigo">
+               <span>{{ s.nombre }}</span>
+             </option>
+           </select>
+         </div>
+
+       </div>
+
+
+     <div id="fila">
+
+
+       <div id="descripcion" >
+         <label for="descripcion" class="label">Descripción Caso:</label>
+         <input type="text" formControlName ="descripcion" [(ngModel)]="descripcion" placeholder="Descripción Caso" name="descripcion" required>
+       </div>
+
+
+     </div>
+     <div id="contenedor">
+
+
+       <button type="submit" title="Consultar" (click)="consultar()" name="consultar" class="button consultar">
+             Consultar
+       </button>
+
+       <div style="width: 10%; float: right">
+       </div>
+
+     <button type="submit" title="Cancelar" (click)="nuevaConsultar()" name="consultar" class="button cancelar">
+         Nueva Consulta
+   </button>
+ </div>
+
+
+ <br>
+
+
+
+
+       </form>
     </div>
 
 </p-panel>
@@ -92,92 +103,88 @@
 </div>
 
 
-
 <div id="tabla">
   <div class="card">
-    <h5>Filter Row</h5>
-    <p>Filters are displayed inline within a separate row.</p>
     <p-table #dt2 [value]="casos" dataKey="id"
         [rows]="10" [showCurrentPageReport]="true"
         [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
         [paginator]="true" id="myTable"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
         [globalFilterFields]="['fecharegistro','paciente.nombre','paciente.nacionalidad','paciente.edad']"
         >
-        <ng-template pTemplate="caption">
-            <div class="flex">
-                <span class="p-input-icon-left ml-auto">
-                    <i class="pi pi-search"></i>
-                    <input pInputText type="text" (input)="dt2.filterGlobal($event.target, 'contains')" placeholder="Search keyword" />
-                </span>
-            </div>
-        </ng-template>
+
         <ng-template pTemplate="header" >
             <tr>
 
-              <th id="fecharegistro" pSortableColumn="fecharegistro">{{ 'listacaso.fecha' | translate }}
+              <th id="rfecharegistro" pSortableColumn="fecharegistro">{{ 'listacaso.fecha' | translate }}
                 <p-sortIcon field="fecharegistro"></p-sortIcon></th>
-              <th id="pacientenombre" pSortableColumn="paciente.nombre">{{ 'listacaso.nombres' | translate }}
+              <th id="rpacientenombre" pSortableColumn="paciente.nombre">{{ 'listacaso.nombres' | translate }}
                 <p-sortIcon field="paciente.nombre">
               </p-sortIcon></th>
-              <th id="pacientenacionalidad" pSortableColumn="paciente.nacionalidad">{{ 'listacaso.nacionalidad' | translate }}
+              <th id="rnacionalidad" pSortableColumn="paciente.nacionalidad">{{ 'listacaso.nacionalidad' | translate }}
                 <p-sortIcon field="paciente.nacionalidad">
               </p-sortIcon></th>
-              <th id="descripcion" pSortableColumn="descripcion">{{ 'listacaso.descripcion' | translate }}
+              <th id="descripcionT" pSortableColumn="descripcion">{{ 'listacaso.descripcion' | translate }}
+
                 <p-sortIcon field="descripcion">
               </p-sortIcon></th>
-              <th id="pacienteedad" pSortableColumn="paciente.edad">{{ 'listacaso.edad' | translate }}
+              <th id="redad" pSortableColumn="paciente.edad">{{ 'listacaso.edad' | translate }}
                 <p-sortIcon field="paciente.edad">
               </p-sortIcon></th>
-              <th id="pacientesexo" pSortableColumn="paciente.sexo">{{ 'listacaso.sexo' | translate }}
+              <th id="rsexo" pSortableColumn="paciente.sexo">{{ 'listacaso.sexo' | translate }}
                 <p-sortIcon field="paciente.sexo">
               </p-sortIcon></th>
-              <th id="verdetalle">{{ 'listacaso.verdetalle' | translate }}</th>
+              <th id="rdetalle">{{ 'listacaso.verdetalle' | translate }}</th>
 
             </tr>
             <tr>
-                <th id="filtrofecharegistro">
+
+                <th id="rfiltrofecharegistro">
                     <p-columnFilter type="text" field="fecharegistro"></p-columnFilter>
                 </th>
-                <th id="filtropacientenombre">
+                <th id="rfiltronombre">
                     <p-columnFilter type="text" field="paciente.nombre"></p-columnFilter>
                 </th>
-                <th id="filtronacionalidad">
+                <th id="rfiltronacionalidad">
                   <p-columnFilter type="text" field="paciente.nacionalidad"></p-columnFilter>
                 </th>
-                <th id="filtrodescripcion">
+
+                <th id="rfiltrodescripcion">
                   <p-columnFilter type="text" field="descripcion"></p-columnFilter>
                 </th>
 
-                <th id="filtropacienteedad">
+                <th id="rfiltroedad">
                   <p-columnFilter type="text" field="paciente.edad"></p-columnFilter>
                 </th>
 
-                <th id="filtrooacientesexo">
+                <th id="rfiltrosexo">
                   <p-columnFilter type="text" field="paciente.sexo"></p-columnFilter>
                 </th>
 
-                <th id="filtrodetalle">
+                <th id="rfiltrodetalle">
 
                 </th>
 
             </tr>
         </ng-template>
-        <ng-template pTemplate="body" let-c>
-            <tr [ngClass]="{'row-impar': (c.id % 2) == 0, 'row-par': (c.id % 2) != 0}">
+        <ng-template pTemplate="body" let-c ngFor let-i="rowIndex">
+            <tr [ngClass]="{'row-impar': (i % 2) == 0, 'row-par': (i % 2) != 0}">
 
-              <td>{{ c.fecharegistro }}</td>
-              <td>{{ c.paciente.nombre }}</td>
-              <td>{{ c.paciente.nacionalidad }}</td>
+              <td>{{ c.fecha_creacion }}</td>
+              <td>{{ c.paciente.nombres }} {{c.paciente.apellidos}}</td>
+              <td>{{ c.paciente.lugar_nacimiento }}</td>
               <td>{{ c.descripcion }}</td>
               <td>{{ c.paciente.edad }}</td>
               <td>{{ c.paciente.sexo }}</td>
               <td>
-                <a href="#" routerLink="/detalle/{{ c.id }}">
+                <a href="#" routerLink="/detalle/{{ c.id }}/{{ c.paciente.id }}">
 
-                  <button type="submit" title="Ingresar" name="Ingresar" class="button consultar">
-                    {{ 'login.botoningresar' | translate }}
+                <div *ngIf="c.estado == 'CREADO'">
+                   <button type="submit" title="Ingresar" name="Ingresar" class="button consultar">
+                    {{ 'listacaso.verdetalle' | translate }}
                   </button>
+                </div>
+
                 </a>
                 </td>
 
@@ -185,13 +192,12 @@
         </ng-template>
         <ng-template pTemplate="emptymessage">
             <tr>
-                <td colspan="5">No customers found.</td>
+                <td colspan="5">No se encontraron registros.</td>
             </tr>
         </ng-template>
     </p-table>
 </div>
 </div>
-
-  </body>
+</body>
 </html>
 

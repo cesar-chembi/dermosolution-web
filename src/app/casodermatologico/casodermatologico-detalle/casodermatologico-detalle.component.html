@@ -7,184 +7,175 @@
 
   <body class="p-3 m-0 border-0 bd-example">
 
-    <div id="contenedor" style="background-color:white;">
-        <div class="panel panel-default" style="width: 45%; float: center; background-color:#0F89D1;">
-        <div class="panel-heading">
+    <div style="width: 100%" class="row">
+      <div style="width: 50%" class="col">
 
-          <div class="titulo">
-            {{ 'detallecaso.tituloinformacionpaciente' | translate }}
-            </div>
-            <div class="titulo">
-              {{ 'detallecaso.tituloinformacionpaciente2' | translate }}
-            </div>
+   <p-panel header=" {{ 'detallecaso.tituloinformacionpaciente' | translate }}
+    {{ 'detallecaso.tituloinformacionpaciente2' | translate }}" [toggleable]="true">
 
-          </div>
-        <div class="panel-body" style="width: 45%; float: center; background-color:#0F89D1;">
-          <div id="nombres">
-            <label for="nombres" class="label">
-              {{ 'detallecaso.nombres' | translate }}
-            </label>
-          </div>
-
-          <div id="edad">
-            <label for="edad" class="label">
-              {{ 'detallecaso.edad' | translate }}:
-            </label>
-          </div>
-
-          <div id="sexo">
-            <label for="sexo" class="label">
-              {{ 'detallecaso.sexo' | translate }}:
-            </label>
-          </div>
-
-          <div id="nacionalidad">
-            <label for="nacionalidad" class="label">
-              {{ 'detallecaso.nacionalidad' | translate }}:
-            </label>
-          </div>
-
-          <div id="residencia">
-            <label for="residencia" class="label">
-              {{ 'detallecaso.lugarresidencia' | translate }}:
-            </label>
-          </div>
-
-        </div>
-      </div>
-
-<div style="width: 10%; float: center; background-color:white;"></div>
-
-
-<div class="panel panel-default" style="width: 45%; float: center; background-color:#0F89D1;">
-
-<div class="panel-heading">
-
-  <div class="titulo">
-    {{ 'detallecaso.tituloperfildermatologico' | translate }}
-    </div>
-
-    <div class="titulo">
-      {{ 'detallecaso.tituloinformacionpaciente2' | translate }}
-    </div>
-
-  </div>
-<div class="panel-body" style="width: 45%; float: center; background-color:#0F89D1;">
-  <div id="forma">
-    <label for="forma" class="label">
-      {{ 'detallecaso.formalesion' | translate }}
-    </label>
-  </div>
-
-  <div id="tipo">
-    <label for="tipo" class="label">
-      {{ 'detallecaso.tipolesion' | translate }}
-    </label>
-  </div>
-  <div id="numero">
-    <label for="numero" class="label">
-      {{ 'detallecaso.numerolesion' | translate }}
-    </label>
-  </div>
-  <div id="color">
-    <label for="color" class="label">
-      {{ 'detallecaso.colorlesion' | translate }}
-    </label>
-  </div>
-
-  <div id="localizacion">
-    <label for="localizacion" class="label">
-      {{ 'detallecaso.localizacionydistribucionlesion' | translate }}
-    </label>
-  </div>
-
-        </div>
+    <div id="nombres">
+     <label for="nombres" class="label2">
+       {{ 'detallecaso.nombres' | translate }} : {{caso.paciente.nombres}}  {{caso.paciente.apellidos}}
+     </label>
    </div>
+
+   <div id="edad">
+     <label for="edad" class="label2">
+       {{ 'detallecaso.edad' | translate }} : {{caso.paciente.edad}}
+     </label>
+   </div>
+
+   <div id="sexo">
+     <label for="sexo" class="label2">
+       {{ 'detallecaso.sexo' | translate }} : {{caso.paciente.sexo}}
+     </label>
+   </div>
+
+   <div id="nacionalidad">
+     <label for="nacionalidad" class="label2">
+       {{ 'detallecaso.nacionalidad' | translate }} : {{caso.paciente.lugar_nacimiento}}
+     </label>
+   </div>
+
+   <div id="residencia">
+     <label for="residencia" class="label2">
+       {{ 'detallecaso.lugarresidencia' | translate }} : {{caso.paciente.lugar_residencia}}
+     </label>
+   </div>
+
+
+   </p-panel>
+
+ </div>
+<div style="width: 50%" class="col">
+
+   <p-panel header=" {{ 'detallecaso.tituloperfildermatologico' | translate }}
+   {{ 'detallecaso.tituloinformacionpaciente2' | translate }}" [toggleable]="true">
+    Content
+  </p-panel>
+
+</div>
+
+   </div>
+
+
+<br/>
+
+
+   <div style="width: 100%" class="row">
+     <div style="width: 50%" class="col">
+
+  <p-panel header=" {{ 'detallecaso.informacionbasicalesion' | translate }}
+   {{ 'detallecaso.tituloinformacionpaciente2' | translate }}" [toggleable]="true">
+
+   <div id="forma">
+     <label for="forma" class="label2">
+        {{ 'detallecaso.formalesion' | translate }} : {{caso.descripcion}}
+      </label>
+    </div>
+
+    <div id="tipo">
+      <label for="tipo" class="label2">
+        {{ 'detallecaso.tipolesion' | translate }} : {{caso.descripcion}}
+      </label>
+    </div>
+    <div id="numero">
+      <label for="numero" class="label2">
+        {{ 'detallecaso.numerolesion' | translate }} : {{caso.descripcion}}
+      </label>
+    </div>
+    <div id="color">
+      <label for="color" class="label2">
+        {{ 'detallecaso.colorlesion' | translate }} : {{caso.descripcion}}
+      </label>
+    </div>
+
+    <div id="localizacion">
+      <label for="localizacion" class="label2">
+        {{ 'detallecaso.localizacionydistribucionlesion' | translate }} :
+        {{caso.descripcion}}
+      </label>
     </div>
 
 
 
-    <br/>
+  </p-panel>
 
-    <div class="panel panel-default" style="margin-left: 100px;  width: 80%; float: center; background-color:#0F89D1;">
-      <div class="panel-heading">
+</div>
+<div style="width: 50%" class="col">
 
-        <div class="titulo">
-          {{ 'detallecaso.descripcionlesion' | translate }}
-          </div>
-          <div class="titulo">
-            {{ 'detallecaso.tituloinformacionpaciente2' | translate }}
-          </div>
+  <p-panel header="  {{ 'detallecaso.descripcionlesion' | translate }}
+  {{ 'detallecaso.tituloinformacionpaciente2' | translate }}" [toggleable]="true">
 
-        </div>
-      <div class="panel-body" style="background-color:#0F89D1;">
-        <div id="descripcioncaso">
-          <label for="descripcioncaso" class="label">
-            Roma, la capital de Italia, es una extensa ciudad cosmopolita que tiene a la
-            vista casi 3,000 años de arte, arquitectura y cultura de influencia mundial.
-            Las ruinas antiguas como las del Foro y el Coliseo evocan el poder del antiguo
-            Imperio Romano. La ciudad del Vaticano, sede central de la Iglesia católica romana,
-            cuenta con la Basílica de San Pedro y los Museos del Vaticano, que albergan obras
-            maestras como los frescos de la Capilla Sixtina de Miguel Ángel.
+  <div id="descripcioncaso">
+   <label for="descripcioncaso" class="label2">
+     {{caso.descripcion}}
+   </label>
+ </div>
 
-          </label>
-        </div>
+ </p-panel>
+
+</div>
+
+  </div>
 
 
-      </div>
+
+   <br/>
+
+
+   <p-panel header="{{ 'detallecaso.fotografialesion' | translate }}
+   {{ 'detallecaso.tituloinformacionpaciente2' | translate }}" [toggleable]="true">
+
+   <div class="panel-body" style="background-color:#0F89D1;">
+   <p-carousel [value]="items" [numVisible]="4" [numScroll]="4">
+    <ng-template let-item pTemplate="item">
+      <div class="itemlabel">{{ item }}</div>
+      <div class="mb-3">
+        <img src="assets/image/{{item}}.jpg"
+        [alt]="item" styleClass="product-image" />
     </div>
+    <div class="car-buttons mt-5">
+      <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-search"></p-button>
+
+  </div>
+    </ng-template>
+  </p-carousel>
+</div>
+  </p-panel>
 
 
+    <br>
 
-
-
-
-
-    <br/>
-
-
+  <form [formGroup] = "reclamarcasoform"  (ngSubmit)="submit()" id="reclamarcasoform">
 
     <div  class="panel panel-default" style="margin-left: 100px; width: 80%;background-color:#0F89D1;">
       <div class="panel-heading">
 
-        <div class="titulo">
-          {{ 'detallecaso.fotografialesion' | translate }}
 
-          </div>
-          <div class="titulo">
-            {{ 'detallecaso.tituloinformacionpaciente2' | translate }}
-          </div>
+ </div>
+</div>
 
-        </div>
-      <div class="panel-body" style="background-color:#0F89D1;">
+<p-messages  [(value)]="msgs2"></p-messages>
 
-
-
-      </div>
-    </div>
+<div id="contenedor" >
+  <button type="submit" title="Ingresar" (click)="reclamarCaso()" name="Ingresar" class="button ingresar">
+    {{ 'detallecaso.reclamarcaso' | translate }}
+  </button>
 
 
-
-  <div id="contenedor" style="margin-left: 100px; width: 20%; float: center">
-    <div style="width: 50%; float: center">
-      <button i18n type="submit" title="Ingresar" name="Ingresar" class="button ingresar">
-        {{ 'login.botoningresar' | translate }}
-      </button>
-    </div>
-    <div style="width: 50%; float: right">
-      <button type="submit"
-        title="Cancelar"
-        name="Cancelar"
-        class="button cancelar"
-      >
-      {{ 'login.botoncancelar' | translate }}
-      </button>
-    </div>
+  <div style="width: 10%; float: right">
   </div>
 
+    <button type="submit" title="Cancelar" name="Cancelar" class="button cancelar">
+      {{ 'login.botoncancelar' | translate }}
+    </button>
+</div>
+  </form>
 
   </body>
 </html>
+
 
 
 
