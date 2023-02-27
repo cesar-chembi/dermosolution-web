@@ -1,6 +1,6 @@
 import { Perfildermatologico } from "../casodermatologico-detalle/perfildermatologico";
 import { Paciente } from "./paciente";
-import {Fotografiacaso } from "../casodermatologico-detalle/fotografiacaso"
+import {Imagenesdiagnosticas } from "../casodermatologico-detalle/imagenesdiagnosticas"
 
 export interface Caso {
   id: number;
@@ -11,7 +11,7 @@ export interface Caso {
   //medico: Medico;
   //perfildermatologico: Perfildermatologico;
   diagnosticos:string[];
-  //fotografias: Fotografiacaso[];
 
+  imagenesdiagnosticas: Imagenesdiagnosticas[];
 
 }

@@ -28,6 +28,10 @@ import { CasoreclamadoDetalleComponent } from './casodermatologico/casoreclamado
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from "primeng/api";
 import {EnvServiceProvider} from "./servicios/env.service.provider";
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+// Interceptors
+import { AuthInterceptorService } from './login/AuthInterceptorService.service';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -69,7 +73,14 @@ export function HttpLoaderFactory(http: HttpClient) {
       enableTitleTranslate: true,
     })
   ],
-  providers: [CookieService, MessageService, EnvServiceProvider],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    },
+
+    CookieService, MessageService, EnvServiceProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

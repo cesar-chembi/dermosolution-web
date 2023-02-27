@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import AWSS3UploadAshClient from "aws-s3-upload-ash";
+//import AWSS3UploadAshClient from "aws-s3-upload-ash";
 import {UtilidadesService} from "../general/utilidades.service";
 import {MessageService} from "primeng/api";
 import {SoporteService} from "./soporte.service";
 import {Soporte} from "./soporte";
-import { UploadResponse } from 'aws-s3-upload-ash/dist/types';
+//import { UploadResponse } from 'aws-s3-upload-ash/dist/types';
 import { EnvService } from '../servicios/env.service';
 
 @Component({
@@ -25,7 +25,7 @@ export class AcademicaComponent implements OnInit {
   datosList:any;
   awsAK:string;
   awsSK:string;
-  S3CustomClient: AWSS3UploadAshClient;
+  //S3CustomClient: AWSS3UploadAshClient;
 
   config = {
     bucketName: '',
@@ -78,7 +78,7 @@ export class AcademicaComponent implements OnInit {
     this.config.region = this.env.S3REGION;
     this.config.accessKeyId = this.env.AWS_AKEY;
     this.config.secretAccessKey = this.env.AWS_SKEY;
-    this.S3CustomClient = new AWSS3UploadAshClient(this.config);
+    //this.S3CustomClient = new AWSS3UploadAshClient(this.config);
   }
 
   validarFecha(fecha_grado: string){
@@ -99,9 +99,13 @@ export class AcademicaComponent implements OnInit {
     }
 
   }
+
+/*
   crearSoporte(): void {
     this.handleSendFile()
   }
+*/
+
   registraSoporte(locationfile: string): void {
 
     if (this.soporteForm.invalid){
@@ -150,7 +154,7 @@ export class AcademicaComponent implements OnInit {
     this.soporteService.getListaSoportesByMedico(idMedico).subscribe(soportes => this.soportes = soportes);
   }
 
-
+/*
   async handleSendFile() {
     await this.S3CustomClient
       .uploadFile(this.fileSelected, this.fileSelected.type, undefined, this.fileSelected.name, "private")
@@ -163,6 +167,8 @@ export class AcademicaComponent implements OnInit {
         this.mensajeAdvertencia("Error al enviar el Archivo al S3, no se puede registrar el soporte")
       })
   }
+*/
+
   borrarSoporte(){
     if (this.idSoporteSelect ==0){
       this.mensajeAdvertencia('No ha selecionado un soporte para borrar');

@@ -131,20 +131,15 @@
 
     <p-panel header="{{ 'detallecaso.fotografialesion' | translate }}
     {{ 'detallecaso.tituloinformacionpaciente2' | translate }}" [toggleable]="true">
-
-    <div class="panel-body" style="background-color:#0F89D1;">
-    <p-carousel [value]="items" [numVisible]="4" [numScroll]="4">
-     <ng-template let-item pTemplate="item">
-       <div class="itemlabel">{{ item }}</div>
-       <div class="mb-3">
-         <img src="assets/image/{{item}}.jpg"
-         [alt]="item" styleClass="product-image" />
-     </div>
-     <div class="car-buttons mt-5">
-       <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-search"></p-button>
-
-   </div>
-     </ng-template>
+      <div class="panel-body" style="background-color:#0F89D1;">
+        <p-carousel [value]="caso.imagenesdiagnosticas" [numVisible]="4" [numScroll]="4">
+         <ng-template let-item pTemplate="item">
+           <div class="itemlabel">{{ item.descripcion }}</div>
+           <div class="mb-3">
+             <img src="{{item.url}}" width="300" height="300"
+             [alt]="item.descripcion" styleClass="product-image" />
+         </div>
+         </ng-template>
    </p-carousel>
  </div>
    </p-panel>

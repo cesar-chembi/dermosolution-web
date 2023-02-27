@@ -10,16 +10,17 @@ import { CasodermatologicoDetalleComponent } from '../casodermatologico/casoderm
 import { CasodermatologicoListaComponent } from '../casodermatologico/casodermatologico-lista/casodermatologico-lista.component';
 import { CasoreclamadoListaComponent } from '../casodermatologico/casoreclamado-lista/casoreclamado-lista.component';
 import { CasoreclamadoDetalleComponent } from '../casodermatologico/casoreclamado-detalle/casoreclamado-detalle.component';
+import { ValidadorAccesoGuard } from '../guards/validador-acceso.guard'
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch:'full' },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent},
   { path: 'registro', component: RegistroComponent },
-  { path: 'academica', component: AcademicaComponent },
-  { path: 'detalle/:id/:idpaciente', component: CasodermatologicoDetalleComponent },
-  { path: 'detallereclamados/:id/:idpaciente', component: CasoreclamadoDetalleComponent },
-  { path: 'listacasos', component: CasodermatologicoListaComponent },
-  { path: 'casosreclamados', component: CasoreclamadoListaComponent }
+  { path: 'academica', component: AcademicaComponent, canActivate: [ValidadorAccesoGuard]},
+  { path: 'detalle/:id/:idpaciente', component: CasodermatologicoDetalleComponent, canActivate: [ValidadorAccesoGuard] },
+  { path: 'detallereclamados/:id/:idpaciente', component: CasoreclamadoDetalleComponent, canActivate: [ValidadorAccesoGuard] },
+  { path: 'listacasos', component: CasodermatologicoListaComponent, canActivate: [ValidadorAccesoGuard] },
+  { path: 'casosreclamados', component: CasoreclamadoListaComponent, canActivate: [ValidadorAccesoGuard] }
 
 ];
 

@@ -1,12 +1,13 @@
 {
     "menu": {
-      "inicio": "Home",
+      "inicio": "Sign in",
       "registro": "Registry",
       "academica": "Academic Information Registry",
       "casosdermatologicos": "Consult Dermatological Cases",
       "casosreclamados": "Consult Claimed Cases",
       "cerrarsesion": "Logout",
-      "lenguaje": "Select language"
+      "lenguaje": "Select language",
+      "salir": "Sign out"
     },
 
     "login": {

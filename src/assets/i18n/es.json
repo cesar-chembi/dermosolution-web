@@ -1,13 +1,14 @@
 {
 
   "menu": {
-    "inicio": "Inicio",
+    "inicio": "Iniciar sesión",
     "registro": "Registro",
     "academica": "Registro de Información Académica",
     "casosdermatologicos": "Consultar Casos Dermatológicos",
     "casosreclamados": "Consultar Casos Reclamados",
     "cerrarsesion": "Cerrar Sesión",
-    "lenguaje": "Seleccione el lenguaje"
+    "lenguaje": "Seleccione el lenguaje",
+    "salir": "Cerrar sesión"
   },
 
 
