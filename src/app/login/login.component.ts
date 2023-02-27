@@ -27,11 +27,11 @@ export class LoginComponent implements OnInit {
 
 
   login() {
-    const user = {email: this.correo, password: this.contrasena};
-    this.userService.login(user).subscribe(
+
+    this.userService.login(this.correo, this.contrasena).subscribe(
       data => {
         this.userService.setToken(data.token);
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/academica');
       },
       error => {
         console.log(error);
