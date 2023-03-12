@@ -1,4 +1,4 @@
-import { Caso } from './caso';
+import { Caso } from '../caso';
 
 export const CASOS: Caso[] = [
 

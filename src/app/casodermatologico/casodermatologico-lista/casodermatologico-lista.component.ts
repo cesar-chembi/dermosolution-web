@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Caso } from './caso';
-import { CasodermatologicoListaService } from './casodermatologico-lista.service';
+import { Caso } from '../caso';
+import { CasodermatologicoListaService } from '../casodermatologico-lista.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 

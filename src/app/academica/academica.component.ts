@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-//import AWSS3UploadAshClient from "aws-s3-upload-ash";
 import {UtilidadesService} from "../general/utilidades.service";
 import {MessageService} from "primeng/api";
 import {SoporteService} from "./soporte.service";
 import {Soporte} from "./soporte";
-//import { UploadResponse } from 'aws-s3-upload-ash/dist/types';
 import { EnvService } from '../servicios/env.service';
 
 @Component({
@@ -78,7 +76,6 @@ export class AcademicaComponent implements OnInit {
     this.config.region = this.env.S3REGION;
     this.config.accessKeyId = this.env.AWS_AKEY;
     this.config.secretAccessKey = this.env.AWS_SKEY;
-    //this.S3CustomClient = new AWSS3UploadAshClient(this.config);
   }
 
   validarFecha(fecha_grado: string){
@@ -196,7 +193,6 @@ export class AcademicaComponent implements OnInit {
     this.display = true;
   }
   hideDialog() {
-
     this.display = false;
   }
 

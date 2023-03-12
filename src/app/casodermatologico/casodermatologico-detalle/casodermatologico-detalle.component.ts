@@ -1,6 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Caso } from '../casodermatologico-lista/caso';
+import { Caso } from '../caso';
 import { CasodermatologicoDetalleService } from './casodermatologico-detalle.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {Message,MessageService} from 'primeng/api';

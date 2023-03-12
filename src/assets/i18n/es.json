@@ -6,6 +6,7 @@
     "academica": "Registro de Información Académica",
     "casosdermatologicos": "Consultar Casos Dermatológicos",
     "casosreclamados": "Consultar Casos Reclamados",
+    "seguimientodiagnostico": "Seguimiento Diagnósticos",
     "cerrarsesion": "Cerrar Sesión",
     "lenguaje": "Seleccione el lenguaje",
     "salir": "Cerrar sesión"
@@ -41,6 +42,7 @@
     "clave": "Contraseña / clave",
     "aceptar": "Aceptar",
 		"salir": "Salir",
+		"cancelar": "Cancelar",
     "especialidades": "Marque la especializaciones que posee"
 	},
   "soporte": {
@@ -103,5 +105,22 @@
     "verdetalle": "Ver Detalle",
     "diagnosticado": "Diagnosticado",
     "pordiagnosticar": "Por Diagnosticar"
-	}
+	},
+
+  "seguimiento": {
+    "titulo": "Seguimiento casos",
+		"encabezado": "Lista de Seguimientos asignados",
+    "idtratamiento": "Id tratamiento",
+    "fechamsgpaciente": "Fecha de Mensaje Paciente dd/MM/YYYY",
+    "msgpaciente": "Mensaje del Paciente",
+   "fechamsgmedico": "Fecha de Mensaje Medico dd/MM/YYYY",
+    "msgmedico": "Mensaje del  Médico",
+    "msgmedicoPH": "Escriba el mensaje de respuesta. ",
+    "responder": "Responder",
+    "imagenes": "Imágenes del seguimiento",
+    "titulodialog": "Responder mensaje",
+    "msgexito": "Se actualizó el mensaje del médico ",
+    "msgerror": "La actualización no fue exitosa"
+
+  }
 }

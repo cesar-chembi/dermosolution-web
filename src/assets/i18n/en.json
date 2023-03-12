@@ -5,6 +5,7 @@
       "academica": "Academic Information Registry",
       "casosdermatologicos": "Consult Dermatological Cases",
       "casosreclamados": "Consult Claimed Cases",
+      "seguimientodiagnostico": "Diagnostics follow-up",
       "cerrarsesion": "Logout",
       "lenguaje": "Select language",
       "salir": "Sign out"
@@ -104,5 +105,22 @@
     "diagnosticado": "Diagnosed",
     "pordiagnosticar": "To diagnose"
 
-	}
+	},
+  "seguimiento": {
+    "titulo": "Diagnostics follow-up",
+    "encabezado": "List of Assigned Follow-ups",
+    "idtratamiento": "id treatment",
+    "fechamsgpaciente": "Patient Message Date dd/MM/YYYY",
+    "msgpaciente": "Patient Message",
+    "fechamsgmedico": "Medical Message Date dd/MM/YYYY",
+    "msgmedico": "Doctor's Message",
+    "responder": "Respond",
+    "imagenes": "Follow-up images",
+    "titulodialog": "Reply message",
+    "msgexito": "Updated doctor's message ",
+    "msgerror": "The update was not successful"
+
+
+
+  }
 }
