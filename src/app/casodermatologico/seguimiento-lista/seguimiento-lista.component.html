@@ -63,8 +63,9 @@
           <td>{{ c.mensaje_paciente}}</td>
           <td>{{ c.fecha_msg_medico}} </td>
           <td>{{ c.mensaje_medico}}</td>
+
           <td>
-            <button  title=""  (click)="showDialog(c)"  name="borrar" class="button buttonverde" *ngIf="c.mensaje_medico.length <=0 ">
+            <button  title=""  (click)="showDialog(c)"  name="borrar" class="button buttonverde" *ngIf="c.mensaje_medico == null">
               {{ 'seguimiento.responder' | translate }}
             </button></td>
 
