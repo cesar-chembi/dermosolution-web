@@ -70,7 +70,6 @@ export class AcademicaComponent implements OnInit {
       });
   }
   iniciarBucket(){
-    console.log(this.datosList)
     this.config.bucketName = this.env.s3;
     this.config.s3Url = this.env.HTTPS3;
     this.config.region = this.env.S3REGION;

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UtilidadesService} from "../../general/utilidades.service";
 import {SeguimientoService} from "../seguimiento.service";
 import {Seguimiento} from "../seguimiento";
 import {Imagen} from "../imagen";
 import {MessageService} from "primeng/api";
+
 
 @Component({
   selector: 'app-seguimiento-lista',
@@ -30,8 +31,9 @@ export class SeguimientoListaComponent {
   finicial:string;
   edad:string;
   resultado: string;
+  actualizaForm : FormGroup;
 
-  constructor(private seguimientoService: SeguimientoService,
+  constructor(private fbuilder: FormBuilder, private seguimientoService: SeguimientoService,
               private route: ActivatedRoute, public router: Router,
               private utilidadesService:UtilidadesService,
               private messageService: MessageService) {
@@ -44,21 +46,14 @@ export class SeguimientoListaComponent {
     let id = this.route.snapshot.paramMap.get('id')!;
     this.getSeguimientos();
     this.seguimientoSelecionado = new Seguimiento(0,0,"",new Date(), "", new Date(),"");
+    let fechaHoy = new Date()
+
+
+    this.actualizaForm = this.fbuilder.group({
+      msgmedico: ["", Validators.required],
+      fechamsgmedico: [fechaHoy.getFullYear()+"-"+(fechaHoy.getMonth() + 1)+"-"+fechaHoy.getDate()]
+    });
   }
-
-
-  filtroform = new FormGroup({
-    edad: new FormControl('', [Validators.min(0),  Validators.max(100)]),
-    ffinal: new FormControl('', []),
-    finicial: new FormControl('', []),
-    nombre: new FormControl('', []),
-    nacionalidad: new FormControl('', []),
-    sexo: new FormControl('', []),
-    descripcion: new FormControl('', [])
-
-
-  });
-
 
 
   getSeguimientos(): void {
@@ -87,12 +82,12 @@ export class SeguimientoListaComponent {
     this.display = false;
   }
   guardarMensaje(){
-    let fechaHoy = new Date()
-    this.seguimientoSelecionado.fecha_msg_medico = fechaHoy;//fechaHoy.getFullYear()+"-"+(fechaHoy.getMonth() + 1)+"-"+fechaHoy.getDate()
-    this.seguimientoSelecionado.mensaje_medico = "pendiente";
-
-
-
+    if (this.actualizaForm.value.msgmedico == "" || this.actualizaForm.value.msgmedico == null){
+      this.mensajeAdvertencia('EL mensaje del médico esta vacio');
+      return ;
+    }
+    this.seguimientoSelecionado.mensaje_medico = this.actualizaForm.value.msgmedico;
+    this.seguimientoSelecionado.fecha_msg_medico = this.actualizaForm.value.fechamsgmedico
     this.seguimientoService.actualizarSeguimiento(this.seguimientoSelecionado).subscribe(rta => {
         if (rta != null){
           this.mensajeExito("Se actualizó el mensaje del médico ");

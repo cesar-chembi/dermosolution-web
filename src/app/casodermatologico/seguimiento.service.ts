@@ -23,7 +23,7 @@ export class SeguimientoService {
     return this.http.get<Imagen[]>(this.urlSeguimientosImagenes+idseguimiento+"/");
   }
   actualizarSeguimiento(seguimiento: Seguimiento): Observable<any>{
-    return this.http.put<any>(this.urlSeguimientos, seguimiento).pipe();
+    return this.http.put<any>(this.urlSeguimientos+seguimiento.id+"/", seguimiento).pipe();
   }
 
 }

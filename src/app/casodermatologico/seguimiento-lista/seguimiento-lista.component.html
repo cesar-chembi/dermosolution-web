@@ -7,7 +7,7 @@
 </head>
 
 <body>
-
+<p-toast></p-toast>
 
 
 <div id="tabla">
@@ -32,7 +32,7 @@
           <th id="rfechamsgmedico" pSortableColumn="fechamsgmedico">{{ 'seguimiento.fechamsgmedico' | translate }}
             <p-sortIcon field="fechamsgmedico"></p-sortIcon></th>
           <th id="rmsgmedico" pSortableColumn="paciente.msgmedico">{{ 'seguimiento.msgmedico' | translate }}</th>
-          <th/>
+          <th></th>
         </tr>
         <tr>
 
@@ -51,7 +51,7 @@
           <th id="rfiltromsgpmedico">
             <p-columnFilter type="text" field="seguimiento.msgmedico"></p-columnFilter>
           </th>
-          <th/>
+          <th></th>
 
         </tr>
       </ng-template>
@@ -64,7 +64,7 @@
           <td>{{ c.fecha_msg_medico}} </td>
           <td>{{ c.mensaje_medico}}</td>
           <td>
-            <button  title=""  (click)="showDialog(c)"  name="borrar" class="button ingresar">
+            <button  title=""  (click)="showDialog(c)"  name="borrar" class="button buttonverde" *ngIf="c.mensaje_medico.length <=0 ">
               {{ 'seguimiento.responder' | translate }}
             </button></td>
 
@@ -103,16 +103,17 @@
             {{ 'seguimiento.msgpaciente' | translate }}:
           </label>
           <textarea name="msgpaciente"
-                    class="form-control" rows="2" cols="30" >{{seguimientoSelecionado.mensaje_paciente}}
+                    class="form-control" rows="2" cols="30" readonly>{{seguimientoSelecionado.mensaje_paciente}}
                 </textarea>
         </div>
+        <form id="soportesForm"  [formGroup]="actualizaForm" (ngSubmit)="guardarMensaje()">
         <div id="msgrespuesta">
           <label for="msgrespuesta"  class="label">
             {{ 'seguimiento.msgmedico' | translate }}:
           </label>
-          <textarea placeholder="{{'seguimiento.msgmedicoPH'| translate }}" name="msgmedico"
-                    class="form-control" rows="3" cols="30" >{{seguimientoSelecionado.mensaje_medico}}
-                </textarea>
+          <textarea placeholder="{{'seguimiento.msgmedicoPH'| translate }}" name="msgmedico" formControlName="msgmedico"
+                    class="form-control" rows="3" cols="30" >
+          </textarea>
           <div style="width: 100%; float: center">
             <div style="width: 50%; float: left">
               <button title="Cancelar" name="Cancelar" class="button buttonrojo" (click)="hideDialog()">
@@ -120,14 +121,17 @@
               </button>
             </div>
             <div style="width: 50%; float: left">
-              <button title="Cargar" name="Cargar" class="button buttonverde" (click)="guardarMensaje()">
+              <button type="submit" title="Cargar" name="Cargar" class="button buttonverde" >
                 {{ 'soporte.aceptar' | translate }}
               </button>
             </div>
 
-          </div>
-        </div>
 
+          </div>
+
+        </div>
+          <br/>
+        </form>
       </div>
 
     </p-panel>

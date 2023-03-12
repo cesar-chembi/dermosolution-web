@@ -114,6 +114,7 @@
     "msgpaciente": "Patient Message",
     "fechamsgmedico": "Medical Message Date dd/MM/YYYY",
     "msgmedico": "Doctor's Message",
+    "msgmedicoPH": "Write the reply message. ",
     "responder": "Respond",
     "imagenes": "Follow-up images",
     "titulodialog": "Reply message",
