@@ -8,10 +8,15 @@ export interface Caso {
   estado:string;
   fecha_creacion: string;
   paciente:Paciente;
+  tipo:  string;
+  forma: string;
+  numero: string;
+  distribucion: string;
+  color: string;
   //medico: Medico;
-  //perfildermatologico: Perfildermatologico;
+  //perfildermatologico: string;
   diagnosticos:string[];
 
-  imagenesdiagnosticas: Imagenesdiagnosticas[];
+  imagenes: Imagenesdiagnosticas[];
 
 }

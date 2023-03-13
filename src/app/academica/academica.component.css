@@ -30,7 +30,7 @@
 
  }
  .table-striped>thead>tr>th {
-    background-color: #036DCB;
+    background-color: #0F89D1;
     color: white;
     border-color: black;
  }
@@ -147,7 +147,7 @@
     }
 
     #login button:hover {
-        background-color: #0f4c75;
+        background-color: #0F89D1;
         color:#bbe1fa;
     }
 
@@ -201,7 +201,7 @@
     transition: box-shadow 0.2s;
   }
   :host ::ng-deep .p-datatable .p-datatable-header {
-    background: #036DCB;
+    background: #0F89D1;
     color: #495057;
     border: 1px solid black;
     border-width: 1px 0 1px 0;
@@ -213,7 +213,7 @@
   :host ::ng-deep .p-panel .p-panel-header {
     border: 1px solid #dee2e6;
     padding: 1rem;
-    background: #036DCB;
+    background: #0F89D1;
     color: white;
     border-top-right-radius: 1px;
     border-top-left-radius: 1px;
@@ -228,6 +228,6 @@
     border-width: 0 0 1px 0;
     font-weight: 600;
     color: white;
-    background: #036DCB;
+    background: #0F89D1;
     transition: box-shadow 0.2s;
   }

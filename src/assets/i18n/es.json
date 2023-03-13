@@ -7,6 +7,8 @@
     "casosdermatologicos": "Consultar Casos Dermatológicos",
     "casosreclamados": "Consultar Casos Reclamados",
     "seguimientodiagnostico": "Seguimiento Diagnósticos",
+    "nombre": "Nombre",
+    "username": "Usuario",
     "cerrarsesion": "Cerrar Sesión",
     "lenguaje": "Seleccione el lenguaje",
     "salir": "Cerrar sesión"

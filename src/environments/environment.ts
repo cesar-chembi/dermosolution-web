@@ -14,6 +14,7 @@ export const environment = {
   urlSeguimientosImagenes: `${host}api/v1/imagenesdiagnostica/`,
   urlSeguimientos: `${host}api/v1/seguimientos/`,
   urlLogin: `${host}api-user-login/`,
+  urlInfoUsuario: `${host}user-from-token/`,
   urlLogout: `${host}logout/`
 }
 

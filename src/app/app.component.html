@@ -24,6 +24,10 @@
     </a></li>
     <li>
 
+      <li>
+
+
+
     <li>
 
 	 <div class="form-group col-md-8 offset-3">
@@ -37,9 +41,22 @@
 
     </li>
 
+    <li *ngIf="validacion" class="user">
+    <a>
+      <table>
+        <tr>
+          <p>{{ 'menu.nombre' | translate }} : {{ nombre }}</p>
+        </tr>
+        <tr>
+          <p>{{ 'menu.username' | translate }} : {{ username }}</p>
+        </tr>
+      </table>
 
+    </a>
+  </li>
 
   </ul>
+
 
 </nav>
 

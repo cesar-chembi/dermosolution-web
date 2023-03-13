@@ -9,6 +9,5 @@ export interface Paciente {
   correo:string;
   edad:number;
   sexo:string;
-
-
+  perfil_dermatologico:string;
 }
