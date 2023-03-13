@@ -17,6 +17,6 @@ export interface Caso {
   //perfildermatologico: string;
   diagnosticos:string[];
 
-  imagenes: Imagenesdiagnosticas[];
+  imagenes: string[];
 
 }
