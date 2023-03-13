@@ -1,5 +1,5 @@
 import { ComponentFixture } from '@angular/core/testing';
-import { CasodermatologicoListaComponent } from './casodermatologico-lista.component';
+import { CasodermatologicoListaComponent } from './casodermatologico-lista/casodermatologico-lista.component';
 import { CasodermatologicoListaService} from './casodermatologico-lista.service'
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute} from '@angular/router';

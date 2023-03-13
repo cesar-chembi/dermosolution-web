@@ -51,7 +51,7 @@
 
    <p-panel header=" {{ 'detallecaso.tituloperfildermatologico' | translate }}
    {{ 'detallecaso.tituloinformacionpaciente2' | translate }}" [toggleable]="true">
-    Content
+   {{caso.paciente.perfil_dermatologico}}
   </p-panel>
 
 </div>
@@ -70,23 +70,23 @@
 
    <div id="forma">
      <label for="forma" class="label2">
-        {{ 'detallecaso.formalesion' | translate }} : {{caso.descripcion}}
+        {{ 'detallecaso.formalesion' | translate }} : {{caso.forma}}
       </label>
     </div>
 
     <div id="tipo">
       <label for="tipo" class="label2">
-        {{ 'detallecaso.tipolesion' | translate }} : {{caso.descripcion}}
+        {{ 'detallecaso.tipolesion' | translate }} : {{caso.tipo}}
       </label>
     </div>
     <div id="numero">
       <label for="numero" class="label2">
-        {{ 'detallecaso.numerolesion' | translate }} : {{caso.descripcion}}
+        {{ 'detallecaso.numerolesion' | translate }} : {{caso.numero}}
       </label>
     </div>
     <div id="color">
       <label for="color" class="label2">
-        {{ 'detallecaso.colorlesion' | translate }} : {{caso.descripcion}}
+        {{ 'detallecaso.colorlesion' | translate }} : {{caso.color}}
       </label>
     </div>
 
@@ -128,17 +128,14 @@
    {{ 'detallecaso.tituloinformacionpaciente2' | translate }}" [toggleable]="true">
 
    <div class="panel-body" style="background-color:#0F89D1;">
-   <p-carousel [value]="items" [numVisible]="4" [numScroll]="4">
+   <p-carousel [value]="caso.imagenes" [numVisible]="4" [numScroll]="4">
     <ng-template let-item pTemplate="item">
-      <div class="itemlabel">{{ item }}</div>
+      <div class="itemlabel"></div>
       <div class="mb-3">
-        <img src="assets/image/{{item}}.jpg"
-        [alt]="item" styleClass="product-image" />
+        <img src="{{item}}" width="300" height="300"
+         styleClass="product-image" />
     </div>
-    <div class="car-buttons mt-5">
-      <p-button type="button" styleClass="p-button p-button-rounded mr-2" icon="pi pi-search"></p-button>
 
-  </div>
     </ng-template>
   </p-carousel>
 </div>
@@ -156,7 +153,9 @@
  </div>
 </div>
 
-<p-messages  [(value)]="msgs2"></p-messages>
+<p-toast key="reclamado"></p-toast>
+
+
 
 <div id="contenedor" >
   <button type="submit" title="Ingresar" (click)="reclamarCaso()" name="Ingresar" class="button ingresar">

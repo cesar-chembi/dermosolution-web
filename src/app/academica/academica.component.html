@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
 
-    <title>Formulario de Acceso</title>
+    <title>{{ 'soporte.titulo' | translate }}</title>
   </head>
 
   <body>
@@ -16,7 +16,7 @@
           <div id="registro">
 
             <h5 class="titulo">{{ 'soporte.tituloFormcrear' | translate }}</h5>
-            <form id="soportesForm"  [formGroup]="soporteForm" (ngSubmit)="crearSoporte()">
+            <form id="soportesForm"  [formGroup]="soporteForm">
               <div id="medico">
                 <label for="medico" class="label">{{ 'soporte.medico' | translate }}:</label>
                 <input type="text" placeholder="Médico" name="medico" formControlName="medico" required>

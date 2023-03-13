@@ -1,9 +1,10 @@
 import { Component, OnInit,Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Caso } from '../casodermatologico-lista/caso';
+import { Caso } from '../caso';
 import { CasodermatologicoDetalleService } from './casodermatologico-detalle.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {Message,MessageService} from 'primeng/api';
+import { UsuarioService } from "../../usuario/usuario.service";
 
 
 @Component({
@@ -21,7 +22,8 @@ export class CasodermatologicoDetalleComponent implements OnInit {
   idmedico:string;
 	responsiveOptions: any[];
   constructor(private casodermatologicoDetalleService: CasodermatologicoDetalleService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute, private userService: UsuarioService,
+    private messageService: MessageService
    ) {
    this.responsiveOptions = [
      {
@@ -46,9 +48,8 @@ export class CasodermatologicoDetalleComponent implements OnInit {
 
 ngOnInit() {
 
-  //this.idmedico = this.route.snapshot.paramMap.get('id')!;
-
-  this.idmedico = "1";
+  const token: string = this.userService.getToken();
+  this.idmedico = this.userService.getIdmedico();
   let idpaciente = this.route.snapshot.paramMap.get('idpaciente')!;
   this.consultarDetalleReclamadoPorId(parseInt(this.idmedico),parseInt(idpaciente));
 }
@@ -67,24 +68,20 @@ consultarDetalleReclamadoPorId(identificadorcaso: number, identificadorpaciente:
 
 
 reclamarCaso():void{
-  console.log('aguas va a reclamar')
   let date: Date = new Date();
-
   this.casodermatologicoDetalleService.reclamarCaso(parseInt(this.idmedico),
     this.caso.id)
   .subscribe(rta => {
     console.log(rta)
       if (rta != null){
 
-      this.msgs2 = [({severity:'success',
-      summary:'Success', detail:'El Caso fue reclamado correctamente por el medico'})];
+
+        this.messageService.add({key: 'reclamado', severity:'success', summary:'Caso Reclamado Satisfactoriamente', detail:'El Caso fue reclamado correctamente por el medico'});
 
 
     }else{
 
-      this.msgs2 = [(
-         {severity:'error', summary:'Error',
-         detail:'No fue posible reclamar el caso por el medico, intenta de nuevo'})];
+      this.messageService.add({key: 'reclamado', severity:'error', summary:'Error al Reclamar', detail:'No fue posible reclamar el caso por el medico, intenta de nuevo'});
 
     }
 

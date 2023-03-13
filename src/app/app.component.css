@@ -93,9 +93,27 @@ nav.shift ul li a:hover:after {
   height: 100%;
 }
 
+
 .label {
   font-size: 90%;
   color:white;
   text-align: left;
   margin-bottom: 3px;
+}
+
+
+.user {
+  text-align: right;
+  font-size: 11px;
+
+}
+
+#contenedoruser {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#contenedoruser > div {
+  width: 50%;
 }

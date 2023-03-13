@@ -1,29 +1,34 @@
 {
     "menu": {
-      "inicio": "Home",
+      "inicio": "Sign in",
       "registro": "Registry",
       "academica": "Academic Information Registry",
       "casosdermatologicos": "Consult Dermatological Cases",
       "casosreclamados": "Consult Claimed Cases",
+      "nombre": "Name",
+      "username": "Username",
+      "seguimientodiagnostico": "Diagnostics follow-up",
       "cerrarsesion": "Logout",
-      "lenguaje": "Select language"
+      "lenguaje": "Select language",
+      "salir": "Sign out"
     },
 
     "login": {
-    "titulo": "Ingreso",
+    "titulo": "Dermosolutions - Ingreso",
     "aplicacion": "DermoSolutions",
     "correo": "Email:",
-		"correorequerido": "El correo no puede quedar vacío",
-		"correoinvalido": "El correo no es valido",
+		"correorequerido": "The mail can not be empty",
+		"correoinvalido": "The email is not valid",
 		"contrasena": "Password",
-		"contrasenaminimo": "La contrasena debe tener minimo 10 caracteres",
-		"contrasenarequerida": "La contrasena no puede quedar vacía",
-		"botoningresar": "Ingresar",
+		"contrasenaminimo": "The password must have a minimum of 10 characters",
+		"contrasenarequerida": "The password cannot be empty",
+		"botoningresar": "Login",
 		"botoncancelar": "Cancel",
 		"crearcuenta": "Create Account"
 	},
 
   "registro": {
+    "titulo": "Dermosolutions - Registration of professional",
     "tipoIdentificacion": "ID Type",
     "numeroIdentificacion": "Identification number",
     "nombres": "Names",
@@ -41,6 +46,7 @@
 		"salir": "Exit"
 	},
   "soporte": {
+    "titulo": "Dermosolutions - Registration of academic supports",
     "medico": "Doctor",
     "tipo_soporte": "Support type",
     "institucion_educativa": "Educational institution",
@@ -103,5 +109,21 @@
     "diagnosticado": "Diagnosed",
     "pordiagnosticar": "To diagnose"
 
-	}
+	},
+  "seguimiento": {
+    "titulo": "Diagnostics follow-up",
+    "encabezado": "List of Assigned Follow-ups",
+    "idtratamiento": "id treatment",
+    "fechamsgpaciente": "Patient Message Date dd/MM/YYYY",
+    "msgpaciente": "Patient Message",
+    "fechamsgmedico": "Medical Message Date dd/MM/YYYY",
+    "msgmedico": "Doctor's Message",
+    "msgmedicoPH": "Write the reply message. ",
+    "responder": "Respond",
+    "imagenes": "Follow-up images",
+    "titulodialog": "Reply message",
+    "msgexito": "Updated doctor's message ",
+    "msgerror": "The update was not successful"
+
+  }
 }

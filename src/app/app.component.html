@@ -1,21 +1,33 @@
 <app-header></app-header>
 <nav class="shift">
   <ul>
-    <li><a href="#" routerLink="/login" routerLinkActive="Active">
+    <li *ngIf="!validacion"><a href="#" routerLink="/login" routerLinkActive="Active">
       {{ 'menu.inicio' | translate }}
     </a></li>
-    <li><a href="#" routerLink="/registro" routerLinkActive="Active">
+    <li *ngIf="!validacion"><a href="#" routerLink="/registro" routerLinkActive="Active">
       {{ 'menu.registro' | translate }}
     </a></li>
-    <li><a href="#" routerLink="/academica" routerLinkActive="Active">
+    <li *ngIf="validacion"><a href="#" routerLink="/academica" routerLinkActive="Active">
       {{ 'menu.academica' | translate }}
     </a></li>
-    <li><a href="#" routerLink="/listacasos" routerLinkActive="Active">
+    <li *ngIf="validacion"><a href="#" routerLink="/listacasos" routerLinkActive="Active">
       {{ 'menu.casosdermatologicos' | translate }}
     </a></li>
-    <li><a href="#" routerLink="/casosreclamados" routerLinkActive="Active">
+    <li *ngIf="validacion"><a href="#" routerLink="/casosreclamados" routerLinkActive="Active">
       {{ 'menu.casosreclamados' | translate }}
     </a></li>
+    <li *ngIf="validacion"><a href="#" routerLink="/seguimientodiagnostico" routerLinkActive="Active">
+      {{ 'menu.seguimientodiagnostico' | translate }}
+    </a></li>
+    <li *ngIf="validacion"><a href="#" (click) = "eliminarToken()"  routerLinkActive="Active">
+      {{ 'menu.salir' | translate }}
+    </a></li>
+    <li>
+
+      <li>
+
+
+
     <li>
 
 	 <div class="form-group col-md-8 offset-3">
@@ -28,7 +40,23 @@
     </div>
 
     </li>
+
+    <li *ngIf="validacion" class="user">
+    <a>
+      <table>
+        <tr>
+          <p>{{ 'menu.nombre' | translate }} : {{ nombre }}</p>
+        </tr>
+        <tr>
+          <p>{{ 'menu.username' | translate }} : {{ username }}</p>
+        </tr>
+      </table>
+
+    </a>
+  </li>
+
   </ul>
+
 
 </nav>
 

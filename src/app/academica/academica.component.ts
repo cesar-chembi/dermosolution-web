@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import AWSS3UploadAshClient from "aws-s3-upload-ash";
 import {UtilidadesService} from "../general/utilidades.service";
 import {MessageService} from "primeng/api";
 import {SoporteService} from "./soporte.service";
 import {Soporte} from "./soporte";
-import { UploadResponse } from 'aws-s3-upload-ash/dist/types';
 import { EnvService } from '../servicios/env.service';
+import { Route } from '@angular/router';
+import { UsuarioService } from "../usuario/usuario.service";
 
 @Component({
   selector: 'app-academica',
@@ -25,7 +25,7 @@ export class AcademicaComponent implements OnInit {
   datosList:any;
   awsAK:string;
   awsSK:string;
-  S3CustomClient: AWSS3UploadAshClient;
+  //S3CustomClient: AWSS3UploadAshClient;
 
   config = {
     bucketName: '',
@@ -39,6 +39,7 @@ export class AcademicaComponent implements OnInit {
 
   constructor(private fbuilder: FormBuilder, private soporteService: SoporteService,
               private utilidadesService: UtilidadesService, private messageService: MessageService,
+              private userService: UsuarioService,
               private env: EnvService) { }
 
 
@@ -72,13 +73,11 @@ export class AcademicaComponent implements OnInit {
       });
   }
   iniciarBucket(){
-    console.log(this.datosList)
     this.config.bucketName = this.env.s3;
     this.config.s3Url = this.env.HTTPS3;
     this.config.region = this.env.S3REGION;
     this.config.accessKeyId = this.env.AWS_AKEY;
     this.config.secretAccessKey = this.env.AWS_SKEY;
-    this.S3CustomClient = new AWSS3UploadAshClient(this.config);
   }
 
   validarFecha(fecha_grado: string){
@@ -99,9 +98,13 @@ export class AcademicaComponent implements OnInit {
     }
 
   }
+
+/*
   crearSoporte(): void {
     this.handleSendFile()
   }
+*/
+
   registraSoporte(locationfile: string): void {
 
     if (this.soporteForm.invalid){
@@ -146,11 +149,11 @@ export class AcademicaComponent implements OnInit {
     }
   }
   getSoportes()
-  { const idMedico = 1;
+  { const idMedico = Number(this.userService.getIdmedico());
     this.soporteService.getListaSoportesByMedico(idMedico).subscribe(soportes => this.soportes = soportes);
   }
 
-
+/*
   async handleSendFile() {
     await this.S3CustomClient
       .uploadFile(this.fileSelected, this.fileSelected.type, undefined, this.fileSelected.name, "private")
@@ -163,6 +166,8 @@ export class AcademicaComponent implements OnInit {
         this.mensajeAdvertencia("Error al enviar el Archivo al S3, no se puede registrar el soporte")
       })
   }
+*/
+
   borrarSoporte(){
     if (this.idSoporteSelect ==0){
       this.mensajeAdvertencia('No ha selecionado un soporte para borrar');
@@ -190,7 +195,6 @@ export class AcademicaComponent implements OnInit {
     this.display = true;
   }
   hideDialog() {
-
     this.display = false;
   }
 

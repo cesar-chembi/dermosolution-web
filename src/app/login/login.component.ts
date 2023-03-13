@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { UsuarioService } from "../usuario/usuario.service";
 import { Router } from '@angular/router';
+import { UsuarioMenuService } from "../usuario-menu.service";
 
 
 @Component({
@@ -20,18 +21,23 @@ export class LoginComponent implements OnInit {
   resultado: string;
 
   constructor(private translateService: TranslateService, public router: Router,
-    private route: ActivatedRoute, private userService :UsuarioService) {
+    private route: ActivatedRoute, private userService :UsuarioService,
+    private usuarioMenuService :UsuarioMenuService) {
     let selectedLanguage =  this.route.snapshot.paramMap.get('lang');
 
   }
 
 
   login() {
-    const user = {email: this.correo, password: this.contrasena};
-    this.userService.login(user).subscribe(
+
+    this.userService.login(this.correo, this.contrasena).subscribe(
       data => {
         this.userService.setToken(data.token);
-        this.router.navigateByUrl('/');
+        this.userService.setIdmedico(data.id);
+        this.userService.setUser(data.username);
+        this.userService.setName(data.fullname);
+        this.usuarioMenuService.toggle();
+        this.router.navigateByUrl('/academica')
       },
       error => {
         console.log(error);

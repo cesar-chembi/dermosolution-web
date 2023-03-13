@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+
+  <title>{{ 'seguimiento.titulo' | translate }}</title>
+</head>
+
+<body>
+<p-toast></p-toast>
+
+
+<div id="tabla">
+  <p-panel header="{{ 'seguimiento.encabezado' | translate }}">
+  <div class="card">
+    <p-table #dt2 [value]="seguimientos" dataKey="id"
+             [rows]="10" [showCurrentPageReport]="true"
+             [rowsPerPageOptions]="[10,25,50]" [loading]="loading"
+             [paginator]="true" id="myTable"
+             currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
+             [globalFilterFields]="['fecharegistro','paciente.nombre','paciente.nacionalidad','paciente.edad']"
+    >
+
+      <ng-template pTemplate="header" >
+        <tr>
+
+          <th id="rtratamiento" pSortableColumn="idtratamiento"> {{ 'seguimiento.idtratamiento' | translate }}
+            <p-sortIcon field="idtratamiento"></p-sortIcon></th>
+          <th id="rfechamsgpaciente" pSortableColumn="fechamsgpaciente">{{ 'seguimiento.fechamsgpaciente' | translate }}
+            <p-sortIcon field="fechamsgpaciente"></p-sortIcon></th>
+          <th id="rmsgpaciente" pSortableColumn="paciente.msgpaciente">{{ 'seguimiento.msgpaciente' | translate }}</th>
+          <th id="rfechamsgmedico" pSortableColumn="fechamsgmedico">{{ 'seguimiento.fechamsgmedico' | translate }}
+            <p-sortIcon field="fechamsgmedico"></p-sortIcon></th>
+          <th id="rmsgmedico" pSortableColumn="paciente.msgmedico">{{ 'seguimiento.msgmedico' | translate }}</th>
+          <th></th>
+        </tr>
+        <tr>
+
+          <th id="rfiltroidtratamiento">
+            <p-columnFilter type="text" field="seguimiento.idtratamiento"></p-columnFilter>
+          </th>
+          <th id="rfiltrofechapaciente">
+            <p-columnFilter type="text" field="seguimiento.fechamsgpaciente"></p-columnFilter>
+          </th>
+          <th id="rfiltromsgpaciente">
+            <p-columnFilter type="text" field="seguimiento.msgpaciente"></p-columnFilter>
+          </th>
+          <th id="rfiltrofechamedico">
+            <p-columnFilter type="text" field="seguimiento.fechamsgmedico"></p-columnFilter>
+          </th>
+          <th id="rfiltromsgpmedico">
+            <p-columnFilter type="text" field="seguimiento.msgmedico"></p-columnFilter>
+          </th>
+          <th></th>
+
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-c ngFor let-i="rowIndex">
+        <tr [ngClass]="{'row-impar': (i % 2) == 0, 'row-par': (i % 2) != 0}">
+
+          <td>{{ c.tratamiento }}</td>
+          <td>{{ c.fecha_msg_paciente  }} </td>
+          <td>{{ c.mensaje_paciente}}</td>
+          <td>{{ c.fecha_msg_medico}} </td>
+          <td>{{ c.mensaje_medico}}</td>
+
+          <td>
+            <button  title=""  (click)="showDialog(c)"  name="borrar" class="button buttonverde" *ngIf="c.mensaje_medico == null">
+              {{ 'seguimiento.responder' | translate }}
+            </button></td>
+
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="5">No customers found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  </p-panel>
+
+  <p-dialog header="DermoSolutions" [(visible)]="display">
+    <p-panel header="{{ 'seguimiento.titulodialog' | translate }}" >
+      <div class="form">
+
+        <div class="panel-body" >
+          <label class="label">
+            {{ 'seguimiento.imagenes' | translate }}:
+          </label>
+          <p-carousel [value]="imagenes" [numVisible]="4" [numScroll]="4">
+            <ng-template let-item pTemplate="item">
+              <div class="label">{{ item.descripcion }}</div>
+              <div class="mb-3">
+                <img src="{{item.url}}" width="300" height="300"
+                     [alt]="item.descripcion" styleClass="product-image" />
+              </div>
+
+            </ng-template>
+          </p-carousel>
+        </div>
+        <div id="msgpaciente">
+          <label for="msgpaciente" class="label">
+            {{ 'seguimiento.msgpaciente' | translate }}:
+          </label>
+          <textarea name="msgpaciente"
+                    class="form-control" rows="2" cols="30" readonly>{{seguimientoSelecionado.mensaje_paciente}}
+                </textarea>
+        </div>
+        <form id="soportesForm"  [formGroup]="actualizaForm" (ngSubmit)="guardarMensaje()">
+        <div id="msgrespuesta">
+          <label for="msgrespuesta"  class="label">
+            {{ 'seguimiento.msgmedico' | translate }}:
+          </label>
+          <textarea placeholder="{{'seguimiento.msgmedicoPH'| translate }}" name="msgmedico" formControlName="msgmedico"
+                    class="form-control" rows="3" cols="30" >
+          </textarea>
+          <div style="width: 100%; float: center">
+            <div style="width: 50%; float: left">
+              <button title="Cancelar" name="Cancelar" class="button buttonrojo" (click)="hideDialog()">
+                {{ 'soporte.cancelar' | translate }}
+              </button>
+            </div>
+            <div style="width: 50%; float: left">
+              <button type="submit" title="Cargar" name="Cargar" class="button buttonverde" >
+                {{ 'soporte.aceptar' | translate }}
+              </button>
+            </div>
+
+
+          </div>
+
+        </div>
+          <br/>
+        </form>
+      </div>
+
+    </p-panel>
+  </p-dialog>
+
+</div>
+</body>
+</html>
+
+

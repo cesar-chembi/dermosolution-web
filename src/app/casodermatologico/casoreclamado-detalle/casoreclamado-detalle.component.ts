@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Caso } from '../casodermatologico-lista/caso';
+import { Caso } from '../caso';
 import { CasoreclamadoDetalleService } from './casoreclamado-detalle.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {Message,MessageService} from 'primeng/api';
 import { Diagnostico } from './diagnostico';
 import { DatePipe } from '@angular/common';
+import { Imagenesdiagnosticas } from '../casodermatologico-detalle/imagenesdiagnosticas';
 
 
 @Component({
@@ -28,8 +29,9 @@ export class CasoreclamadoDetalleComponent implements OnInit {
 	responsiveOptions: any[];
   pipe = new DatePipe('en-US');
   fechaActual:string;
+  imagenes: Imagenesdiagnosticas[]
   constructor(private casoreclamadoDetalleService: CasoreclamadoDetalleService,
-     private route: ActivatedRoute
+     private route: ActivatedRoute, private messageService: MessageService
     ) {
     this.responsiveOptions = [
       {
@@ -58,6 +60,7 @@ export class CasoreclamadoDetalleComponent implements OnInit {
     let idpaciente = this.route.snapshot.paramMap.get('idpaciente')!;
     this.consultarDetalleReclamadoPorId(parseInt(this.idmedico),parseInt(idpaciente));
 
+
   }
 
 
@@ -75,7 +78,6 @@ export class CasoreclamadoDetalleComponent implements OnInit {
 
 
   actualizarDiagnostico():void{
-    console.log('aguas el diagnostico')
     console.log(this.diagnostico)
     let date: Date = new Date();
     this.fechaActual = null;
@@ -88,17 +90,13 @@ export class CasoreclamadoDetalleComponent implements OnInit {
       this.diagnostico, this.aceptado, this.fechaActual, this.diagnosticoobjeto)
     .subscribe(rta => {
       console.log(rta)
-        if (rta != null){
+    if (rta != null){
 
-        this.msgs2 = [({severity:'success',
-        summary:'Success', detail:'El diagnostico medico se registro correctamente'})];
-
+      this.messageService.add({key: 'diagnosticadomedico', severity:'success', summary:'Caso Diagnosticado Satisfactoriamente', detail:'El diagnostico medico se registro correctamente'});
 
       }else{
 
-        this.msgs2 = [(
-           {severity:'error', summary:'Error',
-           detail:'No fue posible registrar el diagnostico del caso medico, intenta de nuevo'})];
+        this.messageService.add({key: 'diagnosticadomedico', severity:'error', summary:'Error al Diagnosticar el Caso', detail:'No fue posible registrar el diagnostico del caso medico, intenta de nuevo'});
 
       }
 

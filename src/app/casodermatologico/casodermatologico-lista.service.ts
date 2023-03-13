@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { Caso } from '../casodermatologico-lista/caso';
-import {environment} from "../../../environments/environment";
+import { Caso } from './caso';
+import {environment} from "../../environments/environment";
 
 
 

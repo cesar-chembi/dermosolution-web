@@ -23,11 +23,18 @@ import {MessageModule} from 'primeng/message';
 import {MessagesModule} from 'primeng/messages';
 import { FileUploadModule} from 'primeng/fileupload';
 import {CarouselModule} from 'primeng/carousel';
+import {DialogModule} from "primeng/dialog";
+
 import { CasodermatologicoDetalleComponent } from './casodermatologico/casodermatologico-detalle/casodermatologico-detalle.component';
 import { CasoreclamadoDetalleComponent } from './casodermatologico/casoreclamado-detalle/casoreclamado-detalle.component';
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from "primeng/api";
 import {EnvServiceProvider} from "./servicios/env.service.provider";
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+
+// Interceptors
+import { AuthInterceptorService } from './login/AuthInterceptorService.service';
+import {SeguimientoListaComponent} from "./casodermatologico/seguimiento-lista/seguimiento-lista.component";
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -42,14 +49,14 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent, CasodermatologicoListaComponent, CasodermatologicoDetalleComponent,
     CasoreclamadoDetalleComponent,
-    CasoreclamadoListaComponent, LoginComponent,
+    CasoreclamadoListaComponent, LoginComponent,SeguimientoListaComponent
    ],
   imports: [
     BrowserModule,  ReactiveFormsModule, TableModule, CarouselModule,
     BrowserAnimationsModule, PanelModule, FileUploadModule, MessageModule,
     FooterModule, HeaderModule, RegistroModule, MessagesModule,
     AcademicaModule, RouteModule,
-    HttpClientModule,
+    HttpClientModule,DialogModule,
     FormsModule,
     ToastModule,
     MessagesModule,
@@ -69,7 +76,14 @@ export function HttpLoaderFactory(http: HttpClient) {
       enableTitleTranslate: true,
     })
   ],
-  providers: [CookieService, MessageService, EnvServiceProvider],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    },
+
+    CookieService, MessageService, EnvServiceProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
