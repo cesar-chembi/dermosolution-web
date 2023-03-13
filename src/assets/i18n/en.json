@@ -5,6 +5,8 @@
       "academica": "Academic Information Registry",
       "casosdermatologicos": "Consult Dermatological Cases",
       "casosreclamados": "Consult Claimed Cases",
+      "nombre": "Name",
+      "username": "Username",
       "cerrarsesion": "Logout",
       "lenguaje": "Select language",
       "salir": "Sign out"

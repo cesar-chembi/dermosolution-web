@@ -11,6 +11,7 @@ import {environment} from "../../environments/environment";
 export class UsuarioService {
 
   urlLogin: string = environment.urlLogin;
+  urlInfoUsuario: string = environment.urlInfoUsuario;
 
   constructor(private http: HttpClient, private cookies: CookieService) {}
 
@@ -21,10 +22,22 @@ export class UsuarioService {
 
     var parametros  =  '{"username": "' + username +
     '", "password": "' + password+ '"} ';
-   console.log(parametros);
+
 
     return this.http.post<any>(this.urlLogin, parametros, httpOptions);
   }
+
+
+
+  recuperarInformacionUsuarioFromToken(token: string): Observable<any>{
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    }
+
+    var parametros  =  '{"token": "' + token+ '"} ';
+    return this.http.post<any>(this.urlInfoUsuario, parametros, httpOptions);
+  }
+
 
 
 setToken(token: string) {
@@ -37,5 +50,49 @@ getToken() {
 deleteToken(){
   this.cookies.delete("token");
 }
+
+
+
+setIdmedico(idmedico: string) {
+  this.cookies.set("idmedico", idmedico);
+}
+
+
+getIdmedico() {
+  return this.cookies.get("idmedico");
+}
+
+deleteIdmedico(){
+  this.cookies.delete("idmedico");
+}
+
+
+setUser(user: string) {
+  this.cookies.set("user", user);
+}
+
+
+getUser() {
+  return this.cookies.get("user");
+}
+
+deleteUser(){
+  this.cookies.delete("user");
+}
+
+
+setName(name: string) {
+  this.cookies.set("name", name);
+}
+
+
+getName() {
+  return this.cookies.get("name");
+}
+
+deleteName(){
+  this.cookies.delete("name");
+}
+
 
 }

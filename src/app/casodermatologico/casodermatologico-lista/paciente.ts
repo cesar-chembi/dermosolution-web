@@ -10,6 +10,7 @@ export interface Paciente {
   //nacionalidad:string;
   edad:number;
   sexo:string;
+  perfil_dermatologico:string;
   //documento:string;
   //tipodocumento:string;
   //lugarresidencia:string;

@@ -4,10 +4,17 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { UsuarioService } from "../usuario/usuario.service";
+import { HttpContextToken } from '@angular/common/http';
+
+export const BYPASS_JW_TOKEN = new HttpContextToken(() => false);
 
 @Injectable({
   providedIn: 'root'
 })
+
+
+
+
 export class AuthInterceptorService implements HttpInterceptor {
 
   constructor(
@@ -20,6 +27,9 @@ export class AuthInterceptorService implements HttpInterceptor {
 
     let request = req;
 
+    if (req.context.get(BYPASS_JW_TOKEN) === true) {
+      return next.handle(request)
+    }
     if (token) {
       request = req.clone({
         setHeaders: {
@@ -39,6 +49,8 @@ export class AuthInterceptorService implements HttpInterceptor {
 
       })
     );
+
+
   }
 
 }

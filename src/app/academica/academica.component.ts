@@ -7,6 +7,8 @@ import {SoporteService} from "./soporte.service";
 import {Soporte} from "./soporte";
 //import { UploadResponse } from 'aws-s3-upload-ash/dist/types';
 import { EnvService } from '../servicios/env.service';
+import { Route } from '@angular/router';
+import { UsuarioService } from "../usuario/usuario.service";
 
 @Component({
   selector: 'app-academica',
@@ -39,6 +41,7 @@ export class AcademicaComponent implements OnInit {
 
   constructor(private fbuilder: FormBuilder, private soporteService: SoporteService,
               private utilidadesService: UtilidadesService, private messageService: MessageService,
+              private userService: UsuarioService,
               private env: EnvService) { }
 
 
@@ -150,7 +153,7 @@ export class AcademicaComponent implements OnInit {
     }
   }
   getSoportes()
-  { const idMedico = 1;
+  { const idMedico = Number(this.userService.getIdmedico());
     this.soporteService.getListaSoportesByMedico(idMedico).subscribe(soportes => this.soportes = soportes);
   }
 

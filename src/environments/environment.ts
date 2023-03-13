@@ -11,6 +11,7 @@ export const environment = {
   urlEspecialidadMedico: `${host}api/v1/medicosespecialidad/`,
   urlSoportesMedico: `${host}api/v1/soportes/`,
   urlLogin: `${host}api-user-login/`,
+  urlInfoUsuario: `${host}user-from-token/`,
   urlLogout: `${host}logout/`
 }
 

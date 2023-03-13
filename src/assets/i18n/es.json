@@ -6,6 +6,8 @@
     "academica": "Registro de Información Académica",
     "casosdermatologicos": "Consultar Casos Dermatológicos",
     "casosreclamados": "Consultar Casos Reclamados",
+    "nombre": "Nombre",
+    "username": "Usuario",
     "cerrarsesion": "Cerrar Sesión",
     "lenguaje": "Seleccione el lenguaje",
     "salir": "Cerrar sesión"
