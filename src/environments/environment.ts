@@ -10,6 +10,9 @@ export const environment = {
   urlEspecialidad: `${host}api/v1/especialiades/`,
   urlEspecialidadMedico: `${host}api/v1/medicosespecialidad/`,
   urlSoportesMedico: `${host}api/v1/soportes/`,
+  urlSeguimientosMedico: `${host}api/v1/seguimientomedico/`,
+  urlSeguimientosImagenes: `${host}api/v1/imagenesdiagnostica/`,
+  urlSeguimientos: `${host}api/v1/seguimientos/`,
   urlLogin: `${host}api-user-login/`,
   urlLogout: `${host}logout/`
 }

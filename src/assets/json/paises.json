@@ -1,4 +1,5 @@
 [
+  {"cod":"COL", "nombre":"Colombia"},
   {"cod":"AFG", "nombre":"Afganistán"},
   {"cod":"ALB", "nombre":"Albania"},
   {"cod":"DEU", "nombre":"Alemania"},
@@ -42,7 +43,6 @@
   {"cod":"CHN", "nombre":"China"},
   {"cod":"CYP", "nombre":"Chipre"},
   {"cod":"VAT", "nombre":"Ciudad del Vaticano"},
-  {"cod":"COL", "nombre":"Colombia"},
   {"cod":"COM", "nombre":"Comoras"},
   {"cod":"COG", "nombre":"República del Congo"},
   {"cod":"cod", "nombre":"República Democrática del Congo"},

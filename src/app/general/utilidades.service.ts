@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import tiposoporte from "../../assets/json/tiposoporte.json";
 import tiposdocumento from "../../assets/json/tiposdocumento.json";
 import paises from "../../assets/json/paises.json";
+import sexos from "../../assets/json/sexopc.json";
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,9 @@ export class UtilidadesService {
   getPaises(){
     let Paises: any = paises;
     return Paises
+  }
+  getSexos(){
+    let Sexos: any = sexos;
+    return Sexos
   }
 }

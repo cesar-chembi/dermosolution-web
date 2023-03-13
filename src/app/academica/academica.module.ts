@@ -8,10 +8,12 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {TableModule} from "primeng/table";
 import {DialogModule} from "primeng/dialog";
 import {PanelModule} from "primeng/panel";
+import {CarouselModule} from "primeng/carousel";
 
 @NgModule({
   imports: [
-    CommonModule, FileUploadModule, TranslateModule, ToastModule, ReactiveFormsModule, TableModule, DialogModule, PanelModule
+    CommonModule, FileUploadModule, TranslateModule, ToastModule, ReactiveFormsModule, TableModule, DialogModule, PanelModule,
+    CarouselModule,
   ],
   declarations: [AcademicaComponent],
   exports:[AcademicaComponent]
