@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
 
-    <title>{{ 'soporte.titulo' | translate }}</title>
+    <title>Formulario de Acceso</title>
   </head>
 
   <body>
@@ -16,13 +16,7 @@
           <div id="registro">
 
             <h5 class="titulo">{{ 'soporte.tituloFormcrear' | translate }}</h5>
-            <form id="soportesForm"  [formGroup]="soporteForm">
-              <div id="medico">
-                <label for="medico" class="label">{{ 'soporte.medico' | translate }}:</label>
-                <input type="text" placeholder="Médico" name="medico" formControlName="medico" required>
-                <small *ngIf="soporteForm.get('medico')?.touched
-                && soporteForm.get('medico')?.errors?.['required']" class="text-bg-danger">Este dato es requerido</small>
-              </div>
+            <form id="soportesForm"  [formGroup]="soporteForm" (ngSubmit)="crearSoporte()">
               <div id="tipoSoporte">
                 <label for="tipoSoporte" class="label">
                   {{ 'soporte.tipo_soporte' | translate }}:
