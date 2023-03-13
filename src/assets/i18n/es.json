@@ -14,7 +14,7 @@
 
 
  "login": {
-   "titulo": "Ingreso",
+   "titulo": "Dermosolutions - Ingreso",
    "aplicacion": "DermoSolutions",
    "correo": "Correo Electrónico:",
 		"correorequerido": "El correo no puede quedar vacío",
@@ -28,6 +28,7 @@
 	},
 
   "registro": {
+    "titulo": "Dermosolutions - Registro de soportes académicos",
     "tipoIdentificacion": "Tipo de identificación",
     "numeroIdentificacion": "Número de identificación",
     "sexo": "Sexo",
@@ -46,6 +47,7 @@
     "especialidades": "Marque la especializaciones que posee"
 	},
   "soporte": {
+    "titulo": "Dermosolutions - Registro de soportes académicos",
     "medico": "Médico",
     "tipo_soporte": "Tipo de soporte",
     "institucion_educativa": "Institución educativa",
