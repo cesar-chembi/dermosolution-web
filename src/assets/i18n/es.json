@@ -6,6 +6,7 @@
     "academica": "Registro de Información Académica",
     "casosdermatologicos": "Consultar Casos Dermatológicos",
     "casosreclamados": "Consultar Casos Reclamados",
+    "seguimientodiagnostico": "Seguimiento Diagnósticos",
     "nombre": "Nombre",
     "username": "Usuario",
     "cerrarsesion": "Cerrar Sesión",
@@ -15,7 +16,7 @@
 
 
  "login": {
-   "titulo": "Ingreso",
+   "titulo": "Dermosolutions - Ingreso",
    "aplicacion": "DermoSolutions",
    "correo": "Correo Electrónico:",
 		"correorequerido": "El correo no puede quedar vacío",
@@ -29,6 +30,7 @@
 	},
 
   "registro": {
+    "titulo": "Dermosolutions - Registro de soportes académicos",
     "tipoIdentificacion": "Tipo de identificación",
     "numeroIdentificacion": "Número de identificación",
     "sexo": "Sexo",
@@ -43,9 +45,11 @@
     "clave": "Contraseña / clave",
     "aceptar": "Aceptar",
 		"salir": "Salir",
+		"cancelar": "Cancelar",
     "especialidades": "Marque la especializaciones que posee"
 	},
   "soporte": {
+    "titulo": "Dermosolutions - Registro de soportes académicos",
     "medico": "Médico",
     "tipo_soporte": "Tipo de soporte",
     "institucion_educativa": "Institución educativa",
@@ -105,5 +109,22 @@
     "verdetalle": "Ver Detalle",
     "diagnosticado": "Diagnosticado",
     "pordiagnosticar": "Por Diagnosticar"
-	}
+	},
+
+  "seguimiento": {
+    "titulo": "Seguimiento casos",
+		"encabezado": "Lista de Seguimientos asignados",
+    "idtratamiento": "Id tratamiento",
+    "fechamsgpaciente": "Fecha de Mensaje Paciente dd/MM/YYYY",
+    "msgpaciente": "Mensaje del Paciente",
+   "fechamsgmedico": "Fecha de Mensaje Medico dd/MM/YYYY",
+    "msgmedico": "Mensaje del  Médico",
+    "msgmedicoPH": "Escriba el mensaje de respuesta. ",
+    "responder": "Responder",
+    "imagenes": "Imágenes del seguimiento",
+    "titulodialog": "Responder mensaje",
+    "msgexito": "Se actualizó el mensaje del médico ",
+    "msgerror": "La actualización no fue exitosa"
+
+  }
 }

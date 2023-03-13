@@ -16,7 +16,9 @@
     <li *ngIf="validacion"><a href="#" routerLink="/casosreclamados" routerLinkActive="Active">
       {{ 'menu.casosreclamados' | translate }}
     </a></li>
-
+    <li *ngIf="validacion"><a href="#" routerLink="/seguimientodiagnostico" routerLinkActive="Active">
+      {{ 'menu.seguimientodiagnostico' | translate }}
+    </a></li>
     <li *ngIf="validacion"><a href="#" (click) = "eliminarToken()"  routerLinkActive="Active">
       {{ 'menu.salir' | translate }}
     </a></li>

@@ -1,5 +1,5 @@
 
-import { CasodermatologicoListaService} from './casodermatologico-lista.service'
+import { CasodermatologicoListaService} from '../casodermatologico-lista.service'
 import { CasodermatologicoListaComponent } from './casodermatologico-lista.component';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute} from '@angular/router';

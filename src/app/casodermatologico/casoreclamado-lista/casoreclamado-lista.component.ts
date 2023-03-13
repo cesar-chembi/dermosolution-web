@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Caso } from '../casodermatologico-lista/caso';
+import { Caso } from '../caso';
 import { CasoreclamadoListaService } from '../casoreclamado-lista/casoreclamado-lista.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -45,7 +45,6 @@ export class CasoreclamadoListaComponent implements OnInit {
       {nombre: 'HOMBRE', codigo: 'HOMBRE'}
 
     ]
-
 
     this.listapaises = [
       {nombre: 'Colombia', codigo: 'Colombia'},

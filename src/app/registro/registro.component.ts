@@ -130,6 +130,9 @@ export class RegistroComponent implements OnInit {
       return ;
     }
     nuevoMedico.casos_medicos = [];
+    nuevoMedico.soportes_medico = [];
+    nuevoMedico.casos_medicos_medico = [];
+
     this.medicoService.crear(nuevoMedico).subscribe(rta => {
       if (rta != null){
         this.mensajeExito("Se creo el médico  se asignó su ID: "+rta.id);

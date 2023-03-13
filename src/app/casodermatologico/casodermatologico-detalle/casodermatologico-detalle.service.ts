@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Caso } from '../casodermatologico-lista/caso';
+import { Caso } from '../caso';
 import { HttpClient } from '@angular/common/http';
 import {environment} from "../../../environments/environment";
 import { HttpHeaders } from '@angular/common/http';
