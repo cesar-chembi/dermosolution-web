@@ -6,6 +6,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import {Message,MessageService} from 'primeng/api';
 import { Diagnostico } from './diagnostico';
 import { DatePipe } from '@angular/common';
+import { Imagenesdiagnosticas } from '../casodermatologico-detalle/imagenesdiagnosticas';
 
 
 @Component({
@@ -28,6 +29,7 @@ export class CasoreclamadoDetalleComponent implements OnInit {
 	responsiveOptions: any[];
   pipe = new DatePipe('en-US');
   fechaActual:string;
+  imagenes: Imagenesdiagnosticas[]
   constructor(private casoreclamadoDetalleService: CasoreclamadoDetalleService,
      private route: ActivatedRoute, private messageService: MessageService
     ) {
@@ -57,6 +59,7 @@ export class CasoreclamadoDetalleComponent implements OnInit {
     this.idmedico = this.route.snapshot.paramMap.get('id')!;
     let idpaciente = this.route.snapshot.paramMap.get('idpaciente')!;
     this.consultarDetalleReclamadoPorId(parseInt(this.idmedico),parseInt(idpaciente));
+
 
   }
 

@@ -6,7 +6,7 @@ import {SeguimientoService} from "../seguimiento.service";
 import {Seguimiento} from "../seguimiento";
 import {Imagen} from "../imagen";
 import {MessageService} from "primeng/api";
-
+import {UsuarioService} from "../../usuario/usuario.service"
 
 @Component({
   selector: 'app-seguimiento-lista',
@@ -17,7 +17,7 @@ export class SeguimientoListaComponent {
   display: boolean = false;
   idSoporteSelect : number = 0;
   seguimientoSelecionado : Seguimiento;
-  idmedico: number = 2;
+  idmedico: number = 0;
   seguimientos: Seguimiento[] = [];
   imagenes: Imagen[] = [];
   loading: boolean = false;
@@ -35,12 +35,13 @@ export class SeguimientoListaComponent {
 
   constructor(private fbuilder: FormBuilder, private seguimientoService: SeguimientoService,
               private route: ActivatedRoute, public router: Router,
-              private utilidadesService:UtilidadesService,
+              private utilidadesService:UtilidadesService, private usuarioService: UsuarioService,
               private messageService: MessageService) {
   }
 
 
   ngOnInit() {
+    this.idmedico = Number(this.usuarioService.getIdmedico());
     this.paisesList = this.utilidadesService.getPaises();
     this.sexoList = this.utilidadesService.getSexos();
     let id = this.route.snapshot.paramMap.get('id')!;

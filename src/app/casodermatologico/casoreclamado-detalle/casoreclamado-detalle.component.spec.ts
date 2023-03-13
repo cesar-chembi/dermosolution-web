@@ -2,6 +2,7 @@ import { CasoreclamadoDetalleComponent } from './casoreclamado-detalle.component
 import { CasoreclamadoDetalleService } from './casoreclamado-detalle.service';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute} from '@angular/router';
+import {Message,MessageService} from 'primeng/api';
 
 
 
@@ -10,10 +11,11 @@ describe('Service: CasoreclamadoDetalle', () => {
   let clienteHttp: HttpClient;
   let component:  CasoreclamadoDetalleComponent;
   let router: ActivatedRoute;
+  let message: MessageService;
 
   beforeEach(() => {
     servicio = new CasoreclamadoDetalleService(clienteHttp);
-    component = new CasoreclamadoDetalleComponent(servicio, router);
+    component = new CasoreclamadoDetalleComponent(servicio, router, message);
   });
 
 

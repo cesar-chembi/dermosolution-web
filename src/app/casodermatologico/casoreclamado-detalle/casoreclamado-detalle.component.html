@@ -134,10 +134,9 @@
       <div class="panel-body" style="background-color:#0F89D1;">
         <p-carousel [value]="caso.imagenes" [numVisible]="3" [numScroll]="3">
          <ng-template let-item pTemplate="item">
-           <div class="itemlabel">{{ item.url }}</div>
+           <div class="itemlabel"></div>
            <div class="mb-3">
-             <img src="{{item.url}}" width="300" height="300"
-             [alt]="item.url" styleClass="product-image" />
+             <img src="{{item}}" width="300" height="300"  styleClass="product-image" />
          </div>
          </ng-template>
    </p-carousel>
